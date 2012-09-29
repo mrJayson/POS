@@ -1,4 +1,9 @@
 POS::Application.routes.draw do
+  
+  resources :sessions
+
+  resources :users
+
   resources :store_product_infos
 
   resources :stores
