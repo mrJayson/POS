@@ -1,4 +1,6 @@
 POS::Application.routes.draw do
+  resources :store_product_infos
+
   resources :stores
 
   resources :products

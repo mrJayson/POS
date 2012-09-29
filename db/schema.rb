@@ -11,13 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120929113507) do
+ActiveRecord::Schema.define(:version => 20120929114218) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
     t.string   "barcode"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "store_product_infos", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "store_id"
+    t.float    "price"
+    t.integer  "quantity",   :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "store_product_infos", ["product_id"], :name => "index_store_product_infos_on_product_id"
+  add_index "store_product_infos", ["store_id"], :name => "index_store_product_infos_on_store_id"
+
+  create_table "stores", :force => true do |t|
+    t.string   "name"
+    t.integer  "max_capacity"
+    t.integer  "current_capacity", :default => 0
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
 end
