@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930005246) do
+ActiveRecord::Schema.define(:version => 20120930120611) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(:version => 20120930005246) do
     t.string   "password_digest"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
-    t.boolean  "manager",         :default => false
     t.integer  "store_id"
+    t.boolean  "manager",         :default => false
   end
 
 end
