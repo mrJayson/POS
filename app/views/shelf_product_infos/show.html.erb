@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Product:</b>
+  <%= @shelf_product_info.product.name %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @shelf_product_info.quantity %>
+</p>
+
+
+<%= link_to 'Edit', edit_shelf_product_info_path(@shelf_product_info) %> |
+<%= link_to 'Back', shelf_product_infos_path %>

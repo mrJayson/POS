@@ -1,10 +1,13 @@
 <h1>Welcome <%= User.find(session[:user_id]).first_name%></h1>
+<h2>Logged in the <%= Store.find(session[:store_id]).name%></h2>
 
 <%= link_to 'Your account', User.find(session[:user_id])%>
 
 <%= link_to 'All Employees', users_path%>
 
 <%= link_to 'Products Catalog of Store', store_product_infos_path%>
+
+<%= link_to 'Shelves', shelves_path%>
 
 <%= link_to 'Administration', Store.find(session[:store_id])%>
 
