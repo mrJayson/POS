@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930131039) do
+ActiveRecord::Schema.define(:version => 20120930140016) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
@@ -20,13 +20,23 @@ ActiveRecord::Schema.define(:version => 20120930131039) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "shelf_product_infos", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "shelf_id"
+    t.integer  "quantity",   :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "shelf_product_infos", ["product_id"], :name => "index_shelf_product_infos_on_product_id"
+
   create_table "shelves", :force => true do |t|
     t.integer  "aisle"
     t.integer  "max_capacity"
-    t.integer  "current_capacity"
+    t.integer  "current_capacity", :default => 0
     t.integer  "store_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "shelves", ["store_id"], :name => "index_shelves_on_store_id"

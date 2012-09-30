@@ -3,7 +3,7 @@ class CreateShelves < ActiveRecord::Migration
     create_table :shelves do |t|
       t.integer :aisle
       t.integer :max_capacity
-      t.integer :current_capacity
+      t.integer :current_capacity, :default => 0
       t.references :store
 
       t.timestamps

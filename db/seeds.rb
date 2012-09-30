@@ -104,6 +104,96 @@ User.create({
   password: '1234',
   password_confirmation: '1234', 
   store_id: Store.find_by_name('Western Branch').id})
+  
+#########################################################################
 
+Shelf.create({
+  aisle: 1,
+  max_capacity: 100,
+  store_id: Store.find_by_name('Northern Branch').id
+})
 
+Shelf.create({
+  aisle: 2,
+  max_capacity: 90,
+  store_id: Store.find_by_name('Northern Branch').id
+})
+
+Shelf.create({
+  aisle: 3,
+  max_capacity: 110,
+  store_id: Store.find_by_name('Northern Branch').id
+})
+
+Shelf.create({
+  aisle: 1,
+  max_capacity: 100,
+  store_id: Store.find_by_name('Eastern Branch').id
+})
+
+Shelf.create({
+  aisle: 2,
+  max_capacity: 90,
+  store_id: Store.find_by_name('Eastern Branch').id
+})
+
+Shelf.create({
+  aisle: 3,
+  max_capacity: 110,
+  store_id: Store.find_by_name('Eastern Branch').id
+})
+
+Shelf.create({
+  aisle: 1,
+  max_capacity: 100,
+  store_id: Store.find_by_name('Western Branch').id
+})
+
+Shelf.create({
+  aisle: 2,
+  max_capacity: 90,
+  store_id: Store.find_by_name('Western Branch').id
+})
+
+Shelf.create({
+  aisle: 3,
+  max_capacity: 110,
+  store_id: Store.find_by_name('Western Branch').id
+})
+
+Shelf.create({
+  aisle: 1,
+  max_capacity: 100,
+  store_id: Store.find_by_name('Southern Branch').id
+})
+
+Shelf.create({
+  aisle: 2,
+  max_capacity: 90,
+  store_id: Store.find_by_name('Southern Branch').id
+})
+
+Shelf.create({
+  aisle: 3,
+  max_capacity: 110,
+  store_id: Store.find_by_name('Southern Branch').id
+})
+
+#Shelf.create({
+#  max_capacity: ,
+#  store_id: Store.find_by_name('').id
+#})
+
+#########################################################################
+
+ShelfProductInfo.create({
+  product_id: Product.find_by_name('Apple').id,
+  shelf_id: Shelf.find(:first, 
+  :conditions =>["aisle = ? AND store_id = ?", 1, Store.find_by_name('Northern Branch').id])
+})
+
+#ShelfProductInfo.create({
+ # product_id: Product.find_by_name('').id,
+ # shelf_id: Shelf.find(:first, :conditions =>["aisle = ? && store_id = ?", , Store.find_by_name('').id])
+#})
 
