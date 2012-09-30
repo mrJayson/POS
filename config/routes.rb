@@ -1,10 +1,5 @@
 POS::Application.routes.draw do
 
-  resources :order_to_warehouses
-
-  resources :warehouse_product_infos
-
-  resources :warehouses
 
   root to: 'sessions#new'
   #change later to sessions#index where there will be a button to click to sign in
@@ -14,6 +9,16 @@ POS::Application.routes.draw do
   get 'sessions/main'
   
   resources :sessions
+  
+  resources :order_to_warehouses
+
+  resources :warehouse_product_infos
+
+  resources :warehouses
+
+  resources :shelf_product_infos
+
+  resources :shelves
 
   resources :users
 

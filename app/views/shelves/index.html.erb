@@ -1,0 +1,30 @@
+<h1>Listing shelves in the <%= Store.find(session[:store_id]).name%></h1>
+
+<table>
+  <tr>
+    <th>Aisle</th>
+    <th>Max capacity</th>
+    <th>Current capacity</th>
+    <th>Store</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shelves.each do |shelf| %>
+  <tr>
+    <td><%= shelf.aisle %></td>
+    <td><%= shelf.max_capacity %></td>
+    <td><%= shelf.current_capacity %></td>
+    <td><%= shelf.store.name %></td>
+    <td><%= link_to 'Show', shelf %></td>
+    <td><%= link_to 'Edit', edit_shelf_path(shelf) %></td>
+    <td><%= link_to 'Destroy', shelf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shelf', new_shelf_path %>
+<%= link_to 'Back', sessions_main_path %>
