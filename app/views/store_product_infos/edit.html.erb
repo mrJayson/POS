@@ -1,6 +1,32 @@
-<h1>Editing store_product_info</h1>
+<h1>Editing <%= Product.find(@store_product_info.product_id).name%> Information</h1>
 
-<%= render 'form' %>
+<%= form_for(@store_product_info) do |f| %>
+  <% if @store_product_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@store_product_info.errors.count, "error") %> prohibited this store_product_info from being saved:</h2>
+
+      <ul>
+      <% @store_product_info.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :quantity %><br />
+    <%= f.number_field :quantity %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @store_product_info %> |
 <%= link_to 'Back', store_product_infos_path %>

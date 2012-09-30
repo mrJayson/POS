@@ -3,7 +3,7 @@ class StoreProductInfosController < ApplicationController
   # GET /store_product_infos.json
   def index
     @store_product_infos = StoreProductInfo.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @store_product_infos }
@@ -41,25 +41,39 @@ class StoreProductInfosController < ApplicationController
   # POST /store_product_infos.json
   def create
     @store_product_info = StoreProductInfo.new(params[:store_product_info])
-    @store_product_info.quantity = 0
-    respond_to do |format|
-      if @store_product_info.save
-        format.html { redirect_to @store_product_info, notice: 'Store product info was successfully created.' }
-        format.json { render json: @store_product_info, status: :created, location: @store_product_info }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @store_product_info.errors, status: :unprocessable_entity }
+    if @store_product_info.validates_uniqueness_in_store(session[:store_id], @store_product_info.product_id)
+      @store_product_info.quantity = 0
+      @store_product_info.store_id = session[:store_id]
+      respond_to do |format|
+        if @store_product_info.save
+          format.html { redirect_to @store_product_info, notice: 'Store product info was successfully created.' }
+          format.json { render json: @store_product_info, status: :created, location: @store_product_info }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @store_product_info.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      render action: "new"
+     # format.html { render action: "new" }
+     # format.json { render json: @store_product_info.errors, status: :unprocessable_entity }
+
     end
+    
   end
 
   # PUT /store_product_infos/1
   # PUT /store_product_infos/1.json
   def update
     @store_product_info = StoreProductInfo.find(params[:id])
+    
 
+    
     respond_to do |format|
       if @store_product_info.update_attributes(params[:store_product_info])
+        store = Store.find(@store_product_info.store_id)
+        store.current_capacity = store.sum
+        store.save
         format.html { redirect_to @store_product_info, notice: 'Store product info was successfully updated.' }
         format.json { head :no_content }
       else
