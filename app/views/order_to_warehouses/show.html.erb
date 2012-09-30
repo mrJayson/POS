@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Order status:</b>
+  <%= @order_to_warehouse.order_status %>
+</p>
+
+<p>
+  <b>Time stamp:</b>
+  <%= @order_to_warehouse.time_stamp %>
+</p>
+
+<p>
+  <b>Warehouse:</b>
+  <%= @order_to_warehouse.warehouse %>
+</p>
+
+<p>
+  <b>Store:</b>
+  <%= @order_to_warehouse.store %>
+</p>
+
+<p>
+  <b>Warehouse product info:</b>
+  <%= @order_to_warehouse.warehouse_product_info %>
+</p>
+
+<p>
+  <b>Store product info:</b>
+  <%= @order_to_warehouse.store_product_info %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_to_warehouse_path(@order_to_warehouse) %> |
+<%= link_to 'Back', order_to_warehouses_path %>
