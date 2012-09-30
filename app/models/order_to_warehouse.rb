@@ -6,5 +6,5 @@ class OrderToWarehouse < ActiveRecord::Base
   
   attr_accessible :order_status, :time_stamp, :store_id, :warehouse_id
   
-  validates_presence_of :store_id, :warehouse_id, :order_status, :time_stamp
+  validates_presence_of :store_id, :warehouse_id, :order_status
 end

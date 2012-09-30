@@ -50,6 +50,9 @@ Store.create({name: 'Northern Branch', max_capacity: 900})
 
 #########################################################################
 
+Warehouse.create({max_capacity: 10000, current_capacity: 600})
+
+#########################################################################
 StoreProductInfo.create({
   product_id: Product.find_by_name('Apple').id,
    store_id: Store.find_by_name('Northern Branch').id,
@@ -70,6 +73,57 @@ StoreProductInfo.create({
   product_id: Product.find_by_name('Eggfruit').id,
    store_id: Store.find_by_name('Northern Branch').id, 
    price:7})
+
+#########################################################################
+
+WarehouseProductInfo.create({
+  product_id: Product.find_by_name('Apple').id, 
+  quantity:100
+})
+
+
+WarehouseProductInfo.create({
+  product_id: Product.find_by_name('Banana').id, 
+  quantity:200
+})
+
+
+WarehouseProductInfo.create({
+  product_id: Product.find_by_name('Durian').id, 
+  quantity:300
+})
+
+#########################################################################
+
+OrderToWarehouse.create({
+  store_id: Store.find_by_name('Northern Branch').id,
+  warehouse_id: 1, 
+  order_status: 'completed'  
+})
+
+OrderToWarehouse.create({
+  store_id: Store.find_by_name('Eastern Branch').id,
+  warehouse_id: 1, 
+  order_status: 'waiting'
+})
+
+OrderToWarehouse.create({
+  store_id: Store.find_by_name('Southern Branch').id,
+  warehouse_id: 1, 
+  order_status: 'sent'
+})
+
+OrderToWarehouse.create({
+  store_id: Store.find_by_name('Western Branch').id,
+  warehouse_id: 1, 
+  order_status: 'waiting'
+})
+
+OrderToWarehouse.create({
+  store_id: Store.find_by_name('Central Branch').id,
+  warehouse_id: 1, 
+  order_status: 'waiting'
+})
 
 #########################################################################
 
