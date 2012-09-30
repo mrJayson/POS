@@ -1,4 +1,5 @@
 class WarehouseProductInfo < ActiveRecord::Base
+  has_many :order_to_warehouse
   belongs_to :product
   belongs_to :warehouse
   
