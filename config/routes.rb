@@ -1,5 +1,9 @@
 POS::Application.routes.draw do
 
+  resources :order_to_warehouses
+
+  resources :warehouse_product_infos
+
   resources :warehouses
 
   root to: 'sessions#new'

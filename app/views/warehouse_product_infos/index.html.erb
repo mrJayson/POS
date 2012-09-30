@@ -1,0 +1,27 @@
+<h1>Listing warehouse_product_infos</h1>
+
+<table>
+  <tr>
+    <th>Quantity</th>
+    <th>Product</th>
+    <th>Warehouse</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @warehouse_product_infos.each do |warehouse_product_info| %>
+  <tr>
+    <td><%= warehouse_product_info.quantity %></td>
+    <td><%= warehouse_product_info.product %></td>
+    <td><%= warehouse_product_info.warehouse %></td>
+    <td><%= link_to 'Show', warehouse_product_info %></td>
+    <td><%= link_to 'Edit', edit_warehouse_product_info_path(warehouse_product_info) %></td>
+    <td><%= link_to 'Destroy', warehouse_product_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Warehouse product info', new_warehouse_product_info_path %>

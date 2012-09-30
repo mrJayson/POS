@@ -1,0 +1,41 @@
+<%= form_for(@order_to_warehouse) do |f| %>
+  <% if @order_to_warehouse.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order_to_warehouse.errors.count, "error") %> prohibited this order_to_warehouse from being saved:</h2>
+
+      <ul>
+      <% @order_to_warehouse.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :order_status %><br />
+    <%= f.text_field :order_status %>
+  </div>
+  <div class="field">
+    <%= f.label :time_stamp %><br />
+    <%= f.datetime_select :time_stamp %>
+  </div>
+  <div class="field">
+    <%= f.label :warehouse %><br />
+    <%= f.text_field :warehouse %>
+  </div>
+  <div class="field">
+    <%= f.label :store %><br />
+    <%= f.text_field :store %>
+  </div>
+  <div class="field">
+    <%= f.label :warehouse_product_info %><br />
+    <%= f.text_field :warehouse_product_info %>
+  </div>
+  <div class="field">
+    <%= f.label :store_product_info %><br />
+    <%= f.text_field :store_product_info %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

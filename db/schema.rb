@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930130915) do
+ActiveRecord::Schema.define(:version => 20120930140005) do
+
+  create_table "order_to_warehouses", :force => true do |t|
+    t.string   "order_status",              :default => "waiting"
+    t.datetime "time_stamp"
+    t.integer  "warehouse_id"
+    t.integer  "store_id"
+    t.integer  "warehouse_product_info_id"
+    t.integer  "store_product_info_id"
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+  end
+
+  add_index "order_to_warehouses", ["store_id"], :name => "index_order_to_warehouses_on_store_id"
+  add_index "order_to_warehouses", ["store_product_info_id"], :name => "index_order_to_warehouses_on_store_product_info_id"
+  add_index "order_to_warehouses", ["warehouse_id"], :name => "index_order_to_warehouses_on_warehouse_id"
+  add_index "order_to_warehouses", ["warehouse_product_info_id"], :name => "index_order_to_warehouses_on_warehouse_product_info_id"
 
   create_table "products", :force => true do |t|
     t.string   "name"
@@ -50,6 +66,17 @@ ActiveRecord::Schema.define(:version => 20120930130915) do
     t.boolean  "manager",         :default => false
     t.integer  "store_id"
   end
+
+  create_table "warehouse_product_infos", :force => true do |t|
+    t.integer  "quantity",     :default => 0
+    t.integer  "product_id"
+    t.integer  "warehouse_id"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "warehouse_product_infos", ["product_id"], :name => "index_warehouse_product_infos_on_product_id"
+  add_index "warehouse_product_infos", ["warehouse_id"], :name => "index_warehouse_product_infos_on_warehouse_id"
 
   create_table "warehouses", :force => true do |t|
     t.integer  "max_capacity"
