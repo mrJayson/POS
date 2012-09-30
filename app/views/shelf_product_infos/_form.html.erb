@@ -1,0 +1,33 @@
+<%= form_for(@shelf_product_info) do |f| %>
+  <% if @shelf_product_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shelf_product_info.errors.count, "error") %> prohibited this shelf_product_info from being saved:</h2>
+
+      <ul>
+      <% @shelf_product_info.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :benchmark %><br />
+    <%= f.number_field :benchmark %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br />
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :product %><br />
+    <%= f.text_field :product %>
+  </div>
+  <div class="field">
+    <%= f.label :shelf %><br />
+    <%= f.text_field :shelf %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

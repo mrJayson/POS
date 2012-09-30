@@ -1,0 +1,2 @@
+module ShelfProductInfosHelper
+end

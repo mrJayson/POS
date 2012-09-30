@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Max capacity:</b>
+  <%= @shelf.max_capacity %>
+</p>
+
+<p>
+  <b>Current capacity:</b>
+  <%= @shelf.current_capacity %>
+</p>
+
+<p>
+  <b>Store:</b>
+  <%= @shelf.store %>
+</p>
+
+
+<%= link_to 'Edit', edit_shelf_path(@shelf) %> |
+<%= link_to 'Back', shelves_path %>

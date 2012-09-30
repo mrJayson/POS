@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930005246) do
+ActiveRecord::Schema.define(:version => 20120930070129) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,28 @@ ActiveRecord::Schema.define(:version => 20120930005246) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "shelf_product_infos", :force => true do |t|
+    t.integer  "benchmark"
+    t.integer  "quantity",   :default => 0
+    t.integer  "product_id"
+    t.integer  "shelf_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "shelf_product_infos", ["product_id"], :name => "index_shelf_product_infos_on_product_id"
+  add_index "shelf_product_infos", ["shelf_id"], :name => "index_shelf_product_infos_on_shelf_id"
+
+  create_table "shelves", :force => true do |t|
+    t.integer  "max_capacity"
+    t.integer  "current_capacity", :default => 0
+    t.integer  "store_id"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "shelves", ["store_id"], :name => "index_shelves_on_store_id"
 
   create_table "store_product_infos", :force => true do |t|
     t.integer  "product_id"
@@ -47,8 +69,26 @@ ActiveRecord::Schema.define(:version => 20120930005246) do
     t.string   "password_digest"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
-    t.boolean  "manager",         :default => false
     t.integer  "store_id"
+    t.boolean  "manager",         :default => false
+  end
+
+  create_table "warehouse_product_infos", :force => true do |t|
+    t.integer  "quantity",     :default => 0
+    t.integer  "product_id"
+    t.integer  "warehouse_id"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "warehouse_product_infos", ["product_id"], :name => "index_warehouse_product_infos_on_product_id"
+  add_index "warehouse_product_infos", ["warehouse_id"], :name => "index_warehouse_product_infos_on_warehouse_id"
+
+  create_table "warehouses", :force => true do |t|
+    t.integer  "max_capacity"
+    t.integer  "current_capacity", :default => 0
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
 end

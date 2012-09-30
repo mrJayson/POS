@@ -1,0 +1,29 @@
+<%= form_for(@shelf) do |f| %>
+  <% if @shelf.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shelf.errors.count, "error") %> prohibited this shelf from being saved:</h2>
+
+      <ul>
+      <% @shelf.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :max_capacity %><br />
+    <%= f.number_field :max_capacity %>
+  </div>
+  <div class="field">
+    <%= f.label :current_capacity %><br />
+    <%= f.number_field :current_capacity %>
+  </div>
+  <div class="field">
+    <%= f.label :store %><br />
+    <%= f.text_field :store %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
