@@ -1,4 +1,6 @@
-<h1>Listing shelf_product_infos</h1>
+<h1>Listing Products</h1>
+<h2>On Aisle <%= Shelf.find(session[:shelf_id]).aisle%></h2>
+<h3>In the <%= Store.find(session[:store_id]).name%></h3>
 
 <table>
   <tr>

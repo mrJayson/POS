@@ -1,4 +1,6 @@
-<h1>Editing shelf_product_info</h1>
+<h1>Editing <%= Product.find(@shelf_product_info.product_id).name%> Information</h1>
+<h2>On shelf <%= Shelf.find(session[:shelf_id]).aisle%></h2>
+<h3>In the <%= Store.find(session[:store_id]).name%></h3>
 
 <%= form_for(@shelf_product_info) do |f| %>
   <% if @shelf_product_info.errors.any? %>

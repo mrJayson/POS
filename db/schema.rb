@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20120930140005) do
+ActiveRecord::Schema.define(:version => 20120930140016) do
 
   create_table "order_to_warehouses", :force => true do |t|
     t.string   "order_status",              :default => "waiting"
@@ -29,7 +28,6 @@ ActiveRecord::Schema.define(:version => 20120930140005) do
   add_index "order_to_warehouses", ["store_product_info_id"], :name => "index_order_to_warehouses_on_store_product_info_id"
   add_index "order_to_warehouses", ["warehouse_id"], :name => "index_order_to_warehouses_on_warehouse_id"
   add_index "order_to_warehouses", ["warehouse_product_info_id"], :name => "index_order_to_warehouses_on_warehouse_product_info_id"
-
 
   create_table "products", :force => true do |t|
     t.string   "name"
