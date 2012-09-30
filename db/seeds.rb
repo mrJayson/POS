@@ -43,6 +43,28 @@ Store.create ({name: 'Southern Branch', max_capacity: 1200})
 Store.create ({name: 'Eastern Branch', max_capacity: 1000})
 Store.create ({name: 'Northern Branch', max_capacity: 900})
 
+
+StoreProductInfo.create ({
+  product_id: Product.find_by_name('Apple').id,
+   store_id: Store.find_by_name('Northern Branch').id,
+    price:2})
+StoreProductInfo.create ({
+  product_id: Product.find_by_name('Banana').id,
+   store_id: Store.find_by_name('Eastern Branch').id,
+    price:3})
+StoreProductInfo.create ({
+  product_id: Product.find_by_name('Cherry').id,
+   store_id: Store.find_by_name('Southern Branch').id,
+    price:10})
+StoreProductInfo.create ({
+  product_id: Product.find_by_name('Durian').id,
+   store_id: Store.find_by_name('Western Branch').id,
+    price:5})
+StoreProductInfo.create ({
+  product_id: Product.find_by_name('Eggfruit').id,
+   store_id: Store.find_by_name('Northern Branch').id, 
+   price:7})
+
 #User.create ({first_name: 'Jason', last_name: 'Huang', user_name: 'JH', password_digest: '1234', store_id: 1})
 #StoreProductInfo.create ({})
 User.create ({
