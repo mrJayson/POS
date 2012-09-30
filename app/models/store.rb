@@ -1,6 +1,8 @@
 class Store < ActiveRecord::Base
   attr_accessible :current_capacity, :max_capacity, :name
   
+  has_many :shelves
+  
   
   validates_presence_of :current_capacity, :max_capacity, :name
   

@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Aisle:</b>
+  <%= @shelf.aisle %>
+</p>
+
+<p>
+  <b>Max capacity:</b>
+  <%= @shelf.max_capacity %>
+</p>
+
+<p>
+  <b>Current capacity:</b>
+  <%= @shelf.current_capacity %>
+</p>
+
+<p>
+  <b>Store:</b>
+  <%= @shelf.store.name %>
+</p>
+
+
+<%= link_to 'Products on shelf', shelf_product_infos_path %>
+<%= link_to 'Edit', edit_shelf_path(@shelf) %> |
+<%= link_to 'Back', shelves_path %>

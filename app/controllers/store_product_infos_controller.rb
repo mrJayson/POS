@@ -2,7 +2,7 @@ class StoreProductInfosController < ApplicationController
   # GET /store_product_infos
   # GET /store_product_infos.json
   def index
-    @store_product_infos = StoreProductInfo.all
+    @store_product_infos = StoreProductInfo.find(:all, :conditions => ["store_id = ?", session[:store_id]])
     
     respond_to do |format|
       format.html # index.html.erb
