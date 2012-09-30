@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Max capacity:</b>
+  <%= @warehouse.max_capacity %>
+</p>
+
+<p>
+  <b>Current capacity:</b>
+  <%= @warehouse.current_capacity %>
+</p>
+
+
+<%= link_to 'Edit', edit_warehouse_path(@warehouse) %> |
+<%= link_to 'Back', warehouses_path %>

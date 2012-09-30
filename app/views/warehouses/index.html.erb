@@ -1,0 +1,25 @@
+<h1>Listing warehouses</h1>
+
+<table>
+  <tr>
+    <th>Max capacity</th>
+    <th>Current capacity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @warehouses.each do |warehouse| %>
+  <tr>
+    <td><%= warehouse.max_capacity %></td>
+    <td><%= warehouse.current_capacity %></td>
+    <td><%= link_to 'Show', warehouse %></td>
+    <td><%= link_to 'Edit', edit_warehouse_path(warehouse) %></td>
+    <td><%= link_to 'Destroy', warehouse, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Warehouse', new_warehouse_path %>
