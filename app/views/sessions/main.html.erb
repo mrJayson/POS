@@ -1,6 +1,10 @@
 <h1>Welcome <%= User.find(session[:user_id]).first_name%></h1>
 
-<%=session[:store_id]%>
+<%= link_to 'Your account', User.find(session[:user_id])%>
+
+<%= link_to 'All Employees', users_path%>
+
+<%= link_to 'Products Catalog of Store', store_product_infos_path%>
 
 
 <%= link_to 'log off', new_session_path, :controller=> "sessions", :action => 'destroy'%>

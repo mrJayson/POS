@@ -51,7 +51,31 @@ User.create ({
   user_name: 'JasonHuang',
   password: '1234',
   password_confirmation: '1234', 
-  store_id: Store.find_by_name('Central Branch').id})
+  store_id: Store.find_by_name('Northern Branch').id})
+  
+User.create ({
+  first_name: 'Yeri',
+  last_name: 'Chung',
+  user_name: 'YeriChung',
+  password: '1234',
+  password_confirmation: '1234', 
+  store_id: Store.find_by_name('Southern Branch').id})
+  
+User.create ({
+  first_name: 'Sheryl',
+  last_name: 'Shi',
+  user_name: 'SherylShi',
+  password: '1234',
+  password_confirmation: '1234', 
+  store_id: Store.find_by_name('Eastern Branch').id})
+  
+User.create ({
+  first_name: 'Peter',
+  last_name: 'Godfrey',
+  user_name: 'PeterGodfrey',
+  password: '1234',
+  password_confirmation: '1234', 
+  store_id: Store.find_by_name('Western Branch').id})
 
 #Employee.create ({first_name: , last_name: , user_name: , password_digest: , store_id })
 

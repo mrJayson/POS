@@ -10,6 +10,8 @@
     <th></th>
     <th></th>
   </tr>
+  <%@store_product_infos = StoreProductInfo.find(:all, :conditions => ["store_id = ?", session[:store_id]])%> 
+
 
 <% @store_product_infos.each do |store_product_info| %>
   <tr>
