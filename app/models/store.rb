@@ -4,5 +4,5 @@ class Store < ActiveRecord::Base
   
     validates_presence_of :current_capacity, :max_capacity, :name
   
-  validates_uniqueness_of :current_capacity, :max_capacity, :name
+  validates_uniqueness_of :max_capacity, :name
 end

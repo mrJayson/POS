@@ -1,5 +1,12 @@
 POS::Application.routes.draw do
   
+  root to: 'sessions#new'
+  #change later to sessions#index where there will be a button to click to sign in
+  
+  
+  #order of the resources and gets matter, put all relating gets above the resource
+  get 'sessions/main'
+  
   resources :sessions
 
   resources :users
