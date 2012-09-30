@@ -34,7 +34,7 @@ Product.create({name: 'Xylophone',  barcode: '0000000024'})
 Product.create({name: 'Yoghurt',  barcode: '0000000025'})
 Product.create({name: 'Zucchini',  barcode: '0000000026'})
 
-
+#########################################################################
 
 Store.create({name: 'Central Branch', max_capacity: 2000})
 Store.create({name: 'Western Branch', max_capacity: 800})
@@ -42,6 +42,13 @@ Store.create({name: 'Southern Branch', max_capacity: 1200})
 Store.create({name: 'Eastern Branch', max_capacity: 1000})
 Store.create({name: 'Northern Branch', max_capacity: 900})
 
+Store.create({name: 'Central Branch', max_capacity: 2000})
+Store.create({name: 'Western Branch', max_capacity: 800})
+Store.create({name: 'Southern Branch', max_capacity: 1200})
+Store.create({name: 'Eastern Branch', max_capacity: 1000})
+Store.create({name: 'Northern Branch', max_capacity: 900})
+
+#########################################################################
 
 StoreProductInfo.create({
   product_id: Product.find_by_name('Apple').id,
@@ -64,7 +71,7 @@ StoreProductInfo.create({
    store_id: Store.find_by_name('Northern Branch').id, 
    price:7})
 
-
+#########################################################################
 
 User.create({
   first_name: 'Jason',
