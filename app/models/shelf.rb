@@ -1,5 +1,6 @@
 class Shelf < ActiveRecord::Base
   belongs_to :store
+  has_many :shelf_product_infos
   attr_accessible :aisle, :current_capacity, :max_capacity, :store_id
   
   validates_presence_of :aisle, :current_capacity, :max_capacity, :store_id

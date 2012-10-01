@@ -1,5 +1,5 @@
 <h1>Listing users</h1>
-<h2>employed in the <%= Store.find(session[:store_id]).name%></h2>
+<h2>employed in the <%= current_store.name%></h2>
 
 <table>
   <tr>
@@ -10,8 +10,6 @@
     <th></th>
     <th></th>
   </tr>
-  
-  <%@users = User.find(:all, :conditions => ["store_id = ?", session[:store_id]])%> 
 
 <% @users.each do |user| %>
   <tr>

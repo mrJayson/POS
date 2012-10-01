@@ -1,8 +1,10 @@
 class ShelfProductInfosController < ApplicationController
   # GET /shelf_product_infos
   # GET /shelf_product_infos.json
+  include ShelvesHelper
+  include ShelfProductInfosHelper
   def index
-    @shelf_product_infos = ShelfProductInfo.find(:all, :conditions => ["shelf_id = ?", session[:shelf_id]])
+    @shelf_product_infos = products_on_shelf
 
     respond_to do |format|
       format.html # index.html.erb

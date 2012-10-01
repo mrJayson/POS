@@ -1,7 +1,7 @@
-<h1>Welcome <%= User.find(session[:user_id]).first_name%></h1>
-<h2>Logged in the <%= Store.find(session[:store_id]).name%></h2>
+<h1>Welcome <%= current_user.first_name%></h1>
+<h2>Logged in the <%= current_store.name%></h2>
 
-<%= link_to 'Your account', User.find(session[:user_id])%>
+<%= link_to 'Your account', current_user%>
 
 <%= link_to 'All Employees', users_path%>
 
@@ -9,7 +9,7 @@
 
 <%= link_to 'Shelves', shelves_path%>
 
-<%= link_to 'Administration', Store.find(session[:store_id])%>
+<%= link_to 'Administration', current_store%>
 
 
 <%= link_to 'log off', new_session_path, :controller=> "sessions", :action => 'destroy'%>

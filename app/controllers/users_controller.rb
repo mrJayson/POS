@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+  include UsersHelper
   def index
-    @users = User.all
+    @users = users_in_store
 
     respond_to do |format|
       format.html # index.html.erb

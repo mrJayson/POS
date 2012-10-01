@@ -1,8 +1,9 @@
 class ShelvesController < ApplicationController
   # GET /shelves
   # GET /shelves.json
+  include ShelvesHelper
   def index
-    @shelves = Shelf.find(:all, :conditions => ["store_id = ?", session[:store_id]])
+    @shelves = shelves_in_store
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +15,8 @@ class ShelvesController < ApplicationController
   # GET /shelves/1.json
   def show
     @shelf = Shelf.find(params[:id])
+    
+    #remember which aisle they are visiting
     session[:shelf_id] = params[:id]
 
     respond_to do |format|
@@ -42,31 +45,11 @@ class ShelvesController < ApplicationController
   # POST /shelves.json
   def create
     @shelf = Shelf.new(params[:shelf])
-    
     @shelf.store_id = session[:store_id]
-    
     @shelf.current_capacity = 0
     
-      aisle = 1
-      
-      @store = Store.find(session[:store_id])
-      
-      @storeshelf = @store.shelves
-      
-      
-      
-      @storeshelf.each do |a|
-        if a.aisle == aisle
-          aisle = aisle +  1
-        else
-          #if there is a gap in the aisle numbers, stop and this will be the aisle number
-          break
-        end
-      end
-      
-      @shelf.aisle = aisle
+    @shelf.aisle = get_available_aisle_number
     
-
     respond_to do |format|
       if @shelf.save
         format.html { redirect_to @shelf, notice: 'Shelf was successfully created.' }

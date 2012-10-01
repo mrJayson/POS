@@ -1,6 +1,6 @@
 <h1>Listing Products</h1>
-<h2>On Aisle <%= Shelf.find(session[:shelf_id]).aisle%></h2>
-<h3>In the <%= Store.find(session[:store_id]).name%></h3>
+<h2>On Aisle <%= current_shelf.aisle%></h2>
+<h3>In the <%= current_store.name%></h3>
 
 <table>
   <tr>
@@ -24,6 +24,6 @@
 
 <br />
 
-<%= link_to 'Back to shelf', Shelf.find(session[:shelf_id]) %>
+<%= link_to 'Back to shelf', current_shelf %>
 
 <%= link_to 'New Shelf product info', new_shelf_product_info_path %>

@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+  include StoresHelper
   # GET /stores
   # GET /stores.json
   def index

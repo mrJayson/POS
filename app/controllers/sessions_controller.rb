@@ -17,11 +17,16 @@ class SessionsController < ApplicationController
   end
   
   def create
+    #get user
     user = User.find_by_user_name(params[:user_name])
+    #check if user exists and if the password is correct
     if user && user.authenticate(params[:password])
       
+      #store the user and which store they belong to in session
       session[:user_id] = user.id
       session[:store_id] = user.store_id
+      
+      #redirect to the main sessions page
       redirect_to  sessions_main_path, :action => "main" , :notice => "Logged in!"
     else
       

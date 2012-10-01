@@ -1,4 +1,4 @@
-<h1>Register New Product in the <%= Store.find(session[:store_id]).name%></h1>
+<h1>Register New Product in the <%= current_store.name%></h1>
 
 <%= form_for(@store_product_info) do |f| %>
   <% if @store_product_info.errors.any? %>
