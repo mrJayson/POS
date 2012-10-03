@@ -24,7 +24,7 @@ describe WarehousesController do
   # Warehouse. As you add validations to Warehouse, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:current_capacity => 1, :max_capacity => 1}
   end
 
   # This should return the minimal set of values that should be in the session
@@ -37,7 +37,7 @@ describe WarehousesController do
   describe "GET index" do
     it "assigns all warehouses as @warehouses" do
       warehouse = Warehouse.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
       assigns(:warehouses).should eq([warehouse])
     end
   end

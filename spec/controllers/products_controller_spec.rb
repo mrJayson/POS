@@ -24,7 +24,7 @@ describe ProductsController do
   # Product. As you add validations to Product, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {name: "name", barcode: "barcode"}
   end
 
   # This should return the minimal set of values that should be in the session
@@ -37,7 +37,7 @@ describe ProductsController do
   describe "GET index" do
     it "assigns all products as @products" do
       product = Product.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
       assigns(:products).should eq([product])
     end
   end

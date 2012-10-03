@@ -18,7 +18,6 @@ describe "users/edit" do
       assert_select "input#user_first_name", :name => "user[first_name]"
       assert_select "input#user_last_name", :name => "user[last_name]"
       assert_select "input#user_user_name", :name => "user[user_name]"
-      assert_select "input#user_password_digest", :name => "user[password_digest]"
     end
   end
 end

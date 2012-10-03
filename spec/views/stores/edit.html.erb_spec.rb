@@ -5,7 +5,7 @@ describe "stores/edit" do
     @store = assign(:store, stub_model(Store,
       :name => "MyString",
       :max_capacity => 1,
-      :current_capacity => 1
+      :current_capacity => 10
     ))
   end
 

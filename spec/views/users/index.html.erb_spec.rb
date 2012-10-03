@@ -4,17 +4,19 @@ describe "users/index" do
   before(:each) do
     assign(:users, [
       stub_model(User,
-        :first_name => "First Name",
-        :last_name => "Last Name",
-        :user_name => "User Name",
-        :password_digest => "Password Digest"
-      ),
+        :first_name => "first_name",
+          :last_name => "last_name",
+          :user_name => "user_name",
+          :password => "1",
+          :password_confirmation => "1",
+          :store_id => 1),
       stub_model(User,
-        :first_name => "First Name",
-        :last_name => "Last Name",
-        :user_name => "User Name",
-        :password_digest => "Password Digest"
-      )
+        :first_name => "first_name",
+          :last_name => "last_name",
+          :user_name => "user_name",
+          :password => "1",
+          :password_confirmation => "1",
+          :store_id => 1)
     ])
   end
 

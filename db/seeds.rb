@@ -42,12 +42,6 @@ Store.create({name: 'Southern Branch', max_capacity: 1200})
 Store.create({name: 'Eastern Branch', max_capacity: 1000})
 Store.create({name: 'Northern Branch', max_capacity: 900})
 
-Store.create({name: 'Central Branch', max_capacity: 2000})
-Store.create({name: 'Western Branch', max_capacity: 800})
-Store.create({name: 'Southern Branch', max_capacity: 1200})
-Store.create({name: 'Eastern Branch', max_capacity: 1000})
-Store.create({name: 'Northern Branch', max_capacity: 900})
-
 #########################################################################
 
 StoreProductInfo.create({

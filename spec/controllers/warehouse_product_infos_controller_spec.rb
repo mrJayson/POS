@@ -24,7 +24,7 @@ describe WarehouseProductInfosController do
   # WarehouseProductInfo. As you add validations to WarehouseProductInfo, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:quantity => 1, :product_id => 1, :warehouse_id => 1}
   end
 
   # This should return the minimal set of values that should be in the session
@@ -37,7 +37,7 @@ describe WarehouseProductInfosController do
   describe "GET index" do
     it "assigns all warehouse_product_infos as @warehouse_product_infos" do
       warehouse_product_info = WarehouseProductInfo.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
       assigns(:warehouse_product_infos).should eq([warehouse_product_info])
     end
   end

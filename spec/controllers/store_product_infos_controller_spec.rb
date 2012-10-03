@@ -24,20 +24,21 @@ describe StoreProductInfosController do
   # StoreProductInfo. As you add validations to StoreProductInfo, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:price => 1, :quantity => 1, :product_id => 1, :store_id => 1}
   end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # StoreProductInfosController. Be sure to keep this updated too.
   def valid_session
-    {}
+    {:store_id => 1
+    }
   end
 
   describe "GET index" do
     it "assigns all store_product_infos as @store_product_infos" do
       store_product_info = StoreProductInfo.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
       assigns(:store_product_infos).should eq([store_product_info])
     end
   end

@@ -2,8 +2,10 @@ class ShelvesController < ApplicationController
   # GET /shelves
   # GET /shelves.json
   include ShelvesHelper
+  
   def index
     @shelves = shelves_in_store
+    
 
     respond_to do |format|
       format.html # index.html.erb
