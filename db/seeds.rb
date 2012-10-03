@@ -197,3 +197,6 @@ ShelfProductInfo.create({
  # shelf_id: Shelf.find(:first, :conditions =>["aisle = ? && store_id = ?", , Store.find_by_name('').id])
 #})
 
+#########################################################################
+
+Warehouse.create({current_capacity: '0', max_capacity: '10000'})

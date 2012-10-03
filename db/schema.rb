@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930140016) do
+ActiveRecord::Schema.define(:version => 20121001081554) do
 
   create_table "order_to_warehouses", :force => true do |t|
     t.string   "order_status",              :default => "waiting"
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(:version => 20120930140016) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "receipts", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "store_transaction_id"
+    t.integer  "served_by_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "receipts", ["member_id"], :name => "index_receipts_on_member_id"
+  add_index "receipts", ["served_by_id"], :name => "index_receipts_on_served_by_id"
+  add_index "receipts", ["store_transaction_id"], :name => "index_receipts_on_store_transaction_id"
 
   create_table "shelf_product_infos", :force => true do |t|
     t.integer  "product_id"
@@ -91,7 +103,7 @@ ActiveRecord::Schema.define(:version => 20120930140016) do
   create_table "warehouse_product_infos", :force => true do |t|
     t.integer  "quantity",     :default => 0
     t.integer  "product_id"
-    t.integer  "warehouse_id"
+    t.integer  "warehouse_id", :default => 1
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end
