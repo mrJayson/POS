@@ -7,13 +7,9 @@
 
 <p>
   <b>Product:</b>
-  <%= @warehouse_product_info.product %>
+  <%= @warehouse_product_info.product.name %>
 </p>
 
-<p>
-  <b>Warehouse:</b>
-  <%= @warehouse_product_info.warehouse %>
-</p>
 
 
 <%= link_to 'Edit', edit_warehouse_product_info_path(@warehouse_product_info) %> |

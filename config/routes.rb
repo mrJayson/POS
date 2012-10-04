@@ -13,6 +13,7 @@ POS::Application.routes.draw do
   
   resources :order_to_warehouses
 
+  match '/warehouse_product_infos/:id/quantity', :to => 'warehouse_product_infos#quantity', :as => 'quantity'
   resources :warehouse_product_infos
 
   resources :warehouses
@@ -23,6 +24,8 @@ POS::Application.routes.draw do
 
   resources :users
 
+  match '/store_product_infos/:id/price', :to => 'store_product_infos#price', :as => 'price'
+  match '/store_product_infos/:id/quantity', :to => 'store_product_infos#quantity', :as => 'quantity'
   resources :store_product_infos
 
   resources :stores

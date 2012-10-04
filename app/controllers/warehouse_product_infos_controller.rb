@@ -36,6 +36,11 @@ class WarehouseProductInfosController < ApplicationController
   def edit
     @warehouse_product_info = WarehouseProductInfo.find(params[:id])
   end
+  
+    # GET /warehouse_product_infos/1/quantity
+  def quantity
+    @warehouse_product_info = WarehouseProductInfo.find(params[:id])
+  end
 
   # POST /warehouse_product_infos
   # POST /warehouse_product_infos.json

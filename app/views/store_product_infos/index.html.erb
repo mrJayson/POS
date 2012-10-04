@@ -20,7 +20,11 @@
     <td><%= store_product_info.price %></td>
     <td><%= store_product_info.quantity %></td>
     <td><%= link_to 'Show', store_product_info %></td>
-    <td><%= link_to 'Edit', edit_store_product_info_path(store_product_info) %></td>
+    <td></td>
+    <td><%= link_to 'Change Price', :action => 'price', :id => store_product_info %></td>
+    <td></td>
+    <td><%= link_to 'Change Quantity', :action => 'quantity', :id => store_product_info %></td>
+    <td></td>
     <td><%= link_to 'Destroy', store_product_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
