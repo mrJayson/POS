@@ -33,11 +33,15 @@ describe ShelvesController do
   def valid_session
     {:store_id => 1}
   end
+  
+  before do
+    Store.create({name: 'Northern Branch', max_capacity: 900})
+  end
 
   describe "GET index" do
     it "assigns all shelves as @shelves" do
       shelf = Shelf.create! valid_attributes
-      get :index, {}
+      get :index, {}, valid_session
       assigns(:shelves).should eq([shelf])
     end
   end

@@ -32,7 +32,6 @@ group :test, :development do
   gem 'launchy'
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'wdm', '~> 0.0.3'
-  gem 'webrat'
 end
 
 # To use ActiveModel has_secure_password

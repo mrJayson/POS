@@ -4,14 +4,6 @@ class SessionsController < ApplicationController
     
   end
   
-  def new
-    
-  end
-  
-  def show
-    
-  end
-  
   def main
     
   end
@@ -37,6 +29,12 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to new_session_path, :notice => "Logged out!"
+    session[:store_id] = nil
+    session[:shelf_id] = nil
+    
+    respond_to do |format|
+      format.html { redirect_to root_url, :notice => "Logged out!" }
+      format.json { head :no_content }
+    end
   end
 end

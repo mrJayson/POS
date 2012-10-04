@@ -6,6 +6,7 @@ class ShelvesController < ApplicationController
   def index
     @shelves = shelves_in_store
     
+    
 
     respond_to do |format|
       format.html # index.html.erb
