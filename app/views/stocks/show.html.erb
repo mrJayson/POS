@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Location:</b>
+  <%= @stock.location.name %>
+</p>
+
+<p>
+  <b>Product:</b>
+  <%= @stock.product.name %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @stock.quantity %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @stock.price %>
+</p>
+
+
+<%= link_to 'Back', stocks_path %>
