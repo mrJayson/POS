@@ -1,6 +1,13 @@
 POSV2::Application.routes.draw do
-
   
+  root :to => 'sessions#signin'
+
+  get 'sessions/main'
+
+  get 'sessions/signin'
+
+  resources :sessions, :only => [:create, :destroy]
+
   resources :products, :only => [:index, :create, :new]
   
   match '/stocks/:id/quantitychange', :to => 'stocks#quantitychange', :as => 'quantitychange'
