@@ -41,6 +41,12 @@ class ShelvesController < ApplicationController
     @shelf = Shelf.find(params[:id])
   end
 
+  # GET /shelves/1/limit
+  def limit
+    @shelf = Shelf.find(params[:id])
+  end
+
+
   # POST /shelves
   # POST /shelves.json
   def create

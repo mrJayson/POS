@@ -18,7 +18,9 @@
     <td><%= shelf.current_capacity %></td>
     <td><%= shelf.store.name %></td>
     <td><%= link_to 'Show', shelf %></td>
-    <td><%= link_to 'Edit', edit_shelf_path(shelf) %></td>
+    <td></td>
+    <td><%= link_to 'Change Maximum Capacity', :action => 'limit', :id => shelf %></td>
+    <td></td>
     <td><%= link_to 'Destroy', shelf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

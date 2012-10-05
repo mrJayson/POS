@@ -17,9 +17,7 @@
 
   <div class="field">
     <%= f.label :product %><br />
-    <%= f.collection_select :product_id,
-    get_products_from_store,
-    :id, :name %>
+    <%= f.collection_select :product_id, Store_product_info.all, :id, :product_id %>
   </div>
 
   <div class="actions">

@@ -18,7 +18,8 @@ POS::Application.routes.draw do
   resources :warehouses
 
   resources :shelf_product_infos
-
+  
+  match '/shelves/:id/limit', :to => 'shelves#limit', :as => 'limit'
   resources :shelves
 
   resources :users

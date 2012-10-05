@@ -46,7 +46,13 @@ class StoreProductInfosController < ApplicationController
     # GET /store_product_infos/1/quantity
   def quantity
     @store_product_info = StoreProductInfo.find(params[:id])
-    @store_product_info.quantity = @store_product_info.quantity + @store_product_info.update_quantity
+    #@store_product_info.quantity = @store_product_info.quantity + @store_product_info.update_quantity
+  respond_to do |format|
+    if @store_product_info.update_attributes(params[:store_product_info])
+      self.quantity += self.update_quantity
+    end
+  end
+
   end
 
   # POST /store_product_infos
@@ -99,3 +105,4 @@ class StoreProductInfosController < ApplicationController
     end
   end
 end
+
