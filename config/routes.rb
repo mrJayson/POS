@@ -5,6 +5,8 @@ POSV2::Application.routes.draw do
   get 'sessions/main'
 
   get 'sessions/signin'
+  
+  resources :employees
 
   resources :sessions, :only => [:create, :destroy]
 
