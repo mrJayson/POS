@@ -1,6 +1,4 @@
-<h1>Registering New Product Information</h1>
-<h2>On shelf <%= Shelf.find(session[:shelf_id]).aisle%></h2>
-<h3>In the <%= Store.find(session[:store_id]).name%></h3>
+<h1>Changing Product Quantity</h1>
 
 <%= form_for(@shelf_product_info) do |f| %>
   <% if @shelf_product_info.errors.any? %>
@@ -16,15 +14,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :product %><br />
-    <%= f.collection_select :product_id,
-    remaining_products_to_register_on_shelf,
-    :id, :name %>
+    <%= f.label :quantity %><br />
+    <%= f.number_field :update_quantity %>
   </div>
-
+  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'update', action: 'quantity' %>
   </div>
 <% end %>
 
+<%= link_to 'Show', @shelf_product_info %> |
 <%= link_to 'Back', shelf_product_infos_path %>

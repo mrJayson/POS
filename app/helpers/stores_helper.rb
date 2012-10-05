@@ -5,6 +5,7 @@ module StoresHelper
     sum = 0
     store_product_infos.each do |sp|
       sum = sum + sp.quantity
+      
     end
     return sum
     

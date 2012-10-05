@@ -24,7 +24,9 @@ describe OrderToWarehousesController do
   # OrderToWarehouse. As you add validations to OrderToWarehouse, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:order_status => "waiting",
+      :store_id => 1,
+      :warehouse_id => 1}
   end
 
   # This should return the minimal set of values that should be in the session
@@ -37,7 +39,7 @@ describe OrderToWarehousesController do
   describe "GET index" do
     it "assigns all order_to_warehouses as @order_to_warehouses" do
       order_to_warehouse = OrderToWarehouse.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
       assigns(:order_to_warehouses).should eq([order_to_warehouse])
     end
   end

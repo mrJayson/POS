@@ -4,14 +4,12 @@ class StoreProductInfo < ActiveRecord::Base
   belongs_to :store
   has_many :shelf_product_info
 
-  attr_accessible :price, :quantity, :product_id, :store_id
+  attr_accessible :price, :quantity, :product_id, :store_id 
+  attr_accessor :update_quantity
   
   validates_presence_of :price, :quantity, :product_id, :store_id
   
   validates_numericality_of :price, :quantity
-    
-  attr_accessor :update_quantity
-#  before_save :increase_quantity
   
     
   def validates_uniqueness_in_store (store_id, product_id)

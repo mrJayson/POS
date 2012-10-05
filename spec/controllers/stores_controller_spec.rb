@@ -24,20 +24,20 @@ describe StoresController do
   # Store. As you add validations to Store, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:current_capacity => 1, :max_capacity => 1, :name => "name"}
   end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # StoresController. Be sure to keep this updated too.
   def valid_session
-    {}
+    {} 
   end
 
   describe "GET index" do
     it "assigns all stores as @stores" do
       store = Store.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
       assigns(:stores).should eq([store])
     end
   end

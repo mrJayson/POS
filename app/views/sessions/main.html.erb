@@ -12,4 +12,7 @@
 <%= link_to 'Administration', current_store%>
 
 
-<%= link_to 'log off', new_session_path, :controller=> "sessions", :action => 'destroy'%>
+<%#= button_to 'log off', :controller=> "sessions", :action => 'destroy', :method => 'delete'%>
+<%#= button_to "delete", current_user, :method=>:delete, :class=>:destroy %>
+
+<%= button_to 'log off', root_url, id: session[:user_id], controller: 'sessions', action: 'destroy', method: 'delete'%>

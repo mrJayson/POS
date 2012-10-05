@@ -24,18 +24,35 @@ describe ShelfProductInfosController do
   # ShelfProductInfo. As you add validations to ShelfProductInfo, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {quantity: 1, product_id: 1, shelf_id: 1}
   end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # ShelfProductInfosController. Be sure to keep this updated too.
   def valid_session
-    {}
+    {shelf_id: 1, store_id: 1}
   end
-
+  
+  before do
+    Store.create({name: 'Northern Branch', max_capacity: 900})
+    
+    Shelf.create({
+      aisle: 1,
+      max_capacity: 100,
+      store_id: Store.find_by_name('Northern Branch').id
+    })
+  end
+  
   describe "GET index" do
     it "assigns all shelf_product_infos as @shelf_product_infos" do
+      Store.create({name: 'Northern Branch', max_capacity: 2000})
+      
+      Shelf.create({
+        aisle: 1,
+        max_capacity: 100,
+        store_id: Store.find_by_name('Northern Branch').id
+      })
       shelf_product_info = ShelfProductInfo.create! valid_attributes
       get :index, {}, valid_session
       assigns(:shelf_product_infos).should eq([shelf_product_info])

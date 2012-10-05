@@ -24,14 +24,18 @@ describe ShelvesController do
   # Shelf. As you add validations to Shelf, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {aisle: 1, current_capacity: 1, max_capacity: 1, store_id: 1}
   end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # ShelvesController. Be sure to keep this updated too.
   def valid_session
-    {}
+    {:store_id => 1}
+  end
+  
+  before do
+    Store.create({name: 'Northern Branch', max_capacity: 900})
   end
 
   describe "GET index" do

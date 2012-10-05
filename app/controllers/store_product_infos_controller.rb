@@ -47,12 +47,11 @@ class StoreProductInfosController < ApplicationController
   def quantity
     @store_product_info = StoreProductInfo.find(params[:id])
     #@store_product_info.quantity = @store_product_info.quantity + @store_product_info.update_quantity
-  respond_to do |format|
-    if @store_product_info.update_attributes(params[:store_product_info])
-      self.quantity += self.update_quantity
+    respond_to do |format|
+      if @store_product_info.update_attributes(params[:store_product_info])
+        self.quantity += self.update_quantity
+      end
     end
-  end
-
   end
 
   # POST /store_product_infos
@@ -80,10 +79,18 @@ class StoreProductInfosController < ApplicationController
     @store_product_info = StoreProductInfo.find(params[:id])
     
     respond_to do |format|
+      #used if changing quantity, update_quantity is a virtual attribute
+      #and cannot be stored in the database, must 
+      if params[:store_product_info].has_key?(:update_quantity)
+        params[:store_product_info][:quantity] = @store_product_info.quantity + params[:store_product_info][:update_quantity].to_i
+        params[:store_product_info].delete(:update_quantity)
+      end
+      
       if @store_product_info.update_attributes(params[:store_product_info])
-        store = current_store
-        store.current_capacity = sum_store_quantity
-        store.save
+        
+        #recalculate the sum quantity of the store by summing the store_product_infos
+        current_store.update_attributes({:current_capacity => sum_store_quantity})
+        
         format.html { redirect_to @store_product_info, notice: 'Store product info was successfully updated.' }
         format.json { head :no_content }
       else

@@ -1,14 +1,15 @@
 POS::Application.routes.draw do
 
 
-  root to: 'sessions#new'
+  root to: 'sessions#index'
   #change later to sessions#index where there will be a button to click to sign in
-  
   
   #order of the resources and gets matter, put all relating gets above the resource
   get 'sessions/main'
   
-  resources :sessions
+  match '/signout', to: 'sessions#destroy', via: :delete
+  
+  resources :sessions, only: [:index, :create, :destroy]
   
   resources :order_to_warehouses
 
@@ -24,7 +25,7 @@ POS::Application.routes.draw do
 
   resources :users
 
-  match '/store_product_infos/:id/price', :to => 'store_product_infos#price', :as => 'price'
+  get '/store_product_infos/:id/price', :to => 'store_product_infos#price', :as => 'price'
   match '/store_product_infos/:id/quantity', :to => 'store_product_infos#quantity', :as => 'quantity'
   resources :store_product_infos
 
