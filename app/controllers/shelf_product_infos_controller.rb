@@ -44,7 +44,8 @@ class ShelfProductInfosController < ApplicationController
   # POST /shelf_product_infos.json
   def create
     @shelf_product_info = ShelfProductInfo.new(params[:shelf_product_info])
-
+    @shelf_product_info.shelf_id = session[:shelf_id]
+    #link shelf_product_info with current shelf that the user is visiting
     respond_to do |format|
       if @shelf_product_info.save
         format.html { redirect_to @shelf_product_info, notice: 'Shelf product info was successfully created.' }

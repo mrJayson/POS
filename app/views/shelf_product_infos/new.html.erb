@@ -18,7 +18,7 @@
   <div class="field">
     <%= f.label :product %><br />
     <%= f.collection_select :product_id,
-    get_products_from_store,
+    remaining_products_to_register_on_shelf,
     :id, :name %>
   </div>
 
