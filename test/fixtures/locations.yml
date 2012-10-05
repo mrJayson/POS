@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  max_capacity: 1
+  location_type: MyString
+  parent: 
+
+two:
+  max_capacity: 1
+  location_type: MyString
+  parent: 

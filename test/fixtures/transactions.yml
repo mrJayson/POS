@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  location: 
+  employee: 
+  member: 
+  product_list: MyString
+  total_price: 1
+  loyalty_points_to_add: 1
+  payment_type: MyString
+
+two:
+  location: 
+  employee: 
+  member: 
+  product_list: MyString
+  total_price: 1
+  loyalty_points_to_add: 1
+  payment_type: MyString

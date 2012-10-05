@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  location: 
+  product: 
+  benchmark: 1
+  standard_quantity: 1
+  quantity: 1
+  price: 1.5
+
+two:
+  location: 
+  product: 
+  benchmark: 1
+  standard_quantity: 1
+  quantity: 1
+  price: 1.5
