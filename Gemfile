@@ -31,7 +31,7 @@ group :test, :development do
   gem 'guard-rspec'
   gem 'launchy'
   gem 'rb-fsevent', '~> 0.9.1'
-  #gem 'wdm', '~> 0.0.3'
+  gem 'wdm', '~> 0.0.3'
 end
 
 # To use ActiveModel has_secure_password
