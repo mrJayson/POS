@@ -13,7 +13,4 @@ class Location < ActiveRecord::Base
   validates_presence_of :name, :location_type, :max_capacity
   
   
-  def location_types
-    return ["Store", "Shelf"]
-  end
 end

@@ -13,16 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20121005060257) do
 
-  create_table "employees", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "user_name"
-    t.string   "status"
-    t.string   "password_digest"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
   create_table "locations", :force => true do |t|
     t.string   "name"
     t.integer  "max_capacity"
@@ -30,13 +20,6 @@ ActiveRecord::Schema.define(:version => 20121005060257) do
     t.integer  "location_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-  end
-
-  create_table "members", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "products", :force => true do |t|
@@ -51,29 +34,13 @@ ActiveRecord::Schema.define(:version => 20121005060257) do
     t.integer  "product_id"
     t.integer  "benchmark"
     t.integer  "standard_quantity"
-    t.integer  "quantity"
+    t.integer  "quantity",          :default => 0
     t.integer  "price"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   add_index "stocks", ["location_id"], :name => "index_stocks_on_location_id"
   add_index "stocks", ["product_id"], :name => "index_stocks_on_product_id"
-
-  create_table "transactions", :force => true do |t|
-    t.integer  "location_id"
-    t.integer  "employee_id"
-    t.integer  "member_id"
-    t.string   "product_list"
-    t.integer  "total_price"
-    t.integer  "loyalty_points_to_add"
-    t.string   "payment_type"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-  end
-
-  add_index "transactions", ["employee_id"], :name => "index_transactions_on_employee_id"
-  add_index "transactions", ["location_id"], :name => "index_transactions_on_location_id"
-  add_index "transactions", ["member_id"], :name => "index_transactions_on_member_id"
 
 end

@@ -17,10 +17,12 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  
   <div class="field">
     <%= f.label :max_capacity %><br />
     <%= f.text_field :max_capacity %>
   </div>
+  
   <div class="field">
     <%= f.label :location_type %><br />
 	<%= f.select :location_type, [['Shelf', 'Shelf'],['Store','Store']] %>
