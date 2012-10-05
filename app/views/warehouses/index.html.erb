@@ -20,6 +20,7 @@
 <% end %>
 </table>
 
+<%= button_to 'log off', root_url, id: session[:user_id], controller: 'sessions', action: 'destroy', method: 'delete'%>
 <br />
 
 

@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     session[:store_id] = nil
     session[:shelf_id] = nil
+    session[:sesstion_type] = nil
   end
   
   def main
@@ -19,13 +20,21 @@ class SessionsController < ApplicationController
       #store the user and which store they belong to in session
       session[:user_id] = user.id
       session[:store_id] = user.store_id
+      session[:session_type] = user.account_type
       
       #redirect to the main sessions page
-      redirect_to  sessions_main_path, :action => "main" , :notice => "Logged in!"
+      if session[:session_type] == "store"
+          redirect_to  sessions_main_path, :action => "main" , :notice => "Logged in!"
+      elsif session[:session_type] = "warehouse"
+        redirect_to warehouses_path
+     
+      else
+        flash.now.alert = "Error in log in"
+        render "index"
+      end
     else
-      
       flash.now.alert = "Invalid username or password"
-      render "new"
+      render "index"
     end
   end
 

@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @user.account_type = session[:session_type]
 
     respond_to do |format|
       if @user.save
