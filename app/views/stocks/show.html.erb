@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <b>Standard Quantity:</b>
+  <%= @stock.standard_quantity %>
+</p>
+
+<p>
   <b>Quantity:</b>
   <%= @stock.quantity %>
 </p>
@@ -20,5 +25,9 @@
   <%= @stock.price %>
 </p>
 
+<p>
+  <b>Benchmark:</b>
+  <%= @stock.benchmark %>
+</p>
 
 <%= link_to 'Back', stocks_path %>

@@ -18,7 +18,7 @@ class StocksController < ApplicationController
   end
 
   def create
-    @stocks = Stock.new(params[:product])
+    @stock = Stock.new(params[:stock])
     
     respond_to do |format|
       if @stock.save
@@ -32,35 +32,46 @@ class StocksController < ApplicationController
   end
 
   def edit
-    @stocks = Stock.find(params[:id])
+    @stock = Stock.find(params[:id])
+  end
+
+  def quantitychange
+    @stock = Stock.find(params[:id])
   end
 
   def show
-    @stocks = Stock.all
+    @stock = Stock.find(params[:id])
 
     respond_to do |format|
       format.html #show.html.erb
-      format.json { render json: @stocks}
+      format.json { render json: @stock}
     end
   end
 
   def update
-    @stocks = Stock.find(params[:id])
+    @stock = Stock.find(params[:id])
+ 
     
     respond_to do |format|
-      if @stocks.update_attributes(params[:id])
+      
+    if params[:stock].has_key?(:update_quantity)
+        params[:stock][:quantity] = @stock.quantity + params[:stock][:update_quantity].to_i
+        params[:stock].delete(:update_quantity)
+    end
+    
+      if @stock.update_attributes(params[:stock])
         format.html {redirect_to stocks_path, notice: 'Stock was successfully updated.'}
         format.json { head :no_content }
       else
         format.html {render action: "edit"}
-        format.hmtl { render json: @stocks.errors, status: :unprocessable_entity }
+        format.hmtl { render json: @stock.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
-    @stocks = Stock.find(params[:id])
-    @stocks.destroy
+    @stock = Stock.find(params[:id])
+    @stock.destroy
     
     respond_to do |format|
       format.html { redirect_to stocks_url}

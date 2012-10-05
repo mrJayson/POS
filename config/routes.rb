@@ -1,11 +1,13 @@
 POSV2::Application.routes.draw do
 
-
+  
   resources :products, :only => [:index, :create, :new]
   
+  match '/stocks/:id/quantitychange', :to => 'stocks#quantitychange', :as => 'quantitychange'
   resources :stocks
   
-
+  resources :locations
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
