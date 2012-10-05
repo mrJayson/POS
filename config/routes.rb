@@ -1,6 +1,8 @@
 POSV2::Application.routes.draw do
 
   
+  resources :locations
+
   resources :products, :only => [:index, :create, :new]
 
   # The priority is based upon order of creation:
