@@ -8,7 +8,9 @@ class Location < ActiveRecord::Base
   has_many :transactions
   
 
-  attr_accessible :name, :location_type, :max_capacity, :parent_id, :location_id
+  attr_accessible :name, :location_type, :max_capacity, :location_id
+  
+  validates_presence_of :name, :location_type, :max_capacity
   
   
   def location_types

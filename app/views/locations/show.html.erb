@@ -1,2 +1,16 @@
-<h1>Locations#show</h1>
-<p>Find me in app/views/locations/show.html.erb</p>
+
+<h1><%=@location.name%></h1>
+<% if @location.location_type == 'Shelf'%>
+ 
+<% end %>
+
+
+<p>
+  <b>Maximum Capacity:</b>
+  <%= @location.max_capacity %>
+</p>
+
+
+
+
+<%= link_to 'Back', locations_path %>
