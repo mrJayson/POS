@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
   
   def index
-    session[:user_id] = nil
-    session[:store_id] = nil
-    session[:shelf_id] = nil
-    session[:sesstion_type] = nil
+    #session[:user_id] = nil
+    #session[:store_id] = nil
+    #session[:shelf_id] = nil
+    #session[:sesstion_type] = nil
   end
   
   def main
@@ -39,9 +39,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    #session[:user_id] = nil
-    #session[:store_id] = nil
-    #session[:shelf_id] = nil
+    session[:user_id] = nil
+    session[:store_id] = nil
+    session[:shelf_id] = nil
     #does not null ids so must be put in index, the log in screen
     
     respond_to do |format|
