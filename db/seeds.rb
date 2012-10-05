@@ -36,37 +36,6 @@ Product.create({name: 'Zucchini',  barcode: '0000000026'})
 
 #########################################################################
 
-Store.create({name: 'Central Branch', max_capacity: 2000})
-Store.create({name: 'Western Branch', max_capacity: 800})
-Store.create({name: 'Southern Branch', max_capacity: 1200})
-Store.create({name: 'Eastern Branch', max_capacity: 1000})
-Store.create({name: 'Northern Branch', max_capacity: 900})
-
-#########################################################################
-
-StoreProductInfo.create({
-  product_id: Product.find_by_name('Apple').id,
-   store_id: Store.find_by_name('Northern Branch').id,
-    price:2})
-StoreProductInfo.create({
-  product_id: Product.find_by_name('Banana').id,
-   store_id: Store.find_by_name('Eastern Branch').id,
-    price:3})
-StoreProductInfo.create({
-  product_id: Product.find_by_name('Cherry').id,
-   store_id: Store.find_by_name('Southern Branch').id,
-    price:10})
-StoreProductInfo.create({
-  product_id: Product.find_by_name('Durian').id,
-   store_id: Store.find_by_name('Western Branch').id,
-    price:5})
-StoreProductInfo.create({
-  product_id: Product.find_by_name('Eggfruit').id,
-   store_id: Store.find_by_name('Northern Branch').id, 
-   price:7})
-
-#########################################################################
-
 User.create({
   first_name: 'Jason',
   last_name: 'Huang',
@@ -101,89 +70,122 @@ User.create({
   
 #########################################################################
 
-Shelf.create({
-  aisle: 1,
-  max_capacity: 100,
-  store_id: Store.find_by_name('Northern Branch').id
-})
+Store.create({name: 'Central Branch', max_capacity: 2000})
+Store.create({name: 'Western Branch', max_capacity: 800})
+Store.create({name: 'Southern Branch', max_capacity: 1200})
+Store.create({name: 'Eastern Branch', max_capacity: 1000})
+Store.create({name: 'Northern Branch', max_capacity: 900})
 
-Shelf.create({
-  aisle: 2,
-  max_capacity: 90,
-  store_id: Store.find_by_name('Northern Branch').id
-})
+#########################################################################
 
-Shelf.create({
-  aisle: 3,
-  max_capacity: 110,
-  store_id: Store.find_by_name('Northern Branch').id
-})
+StoreProductInfo.create({
+  product_id: Product.find_by_name('Apple').id, store_id: Store.find_by_name('Northern Branch').id, price:2})
+StoreProductInfo.create({
+  product_id: Product.find_by_name('Banana').id, store_id: Store.find_by_name('Northern Branch').id, price:3})
+StoreProductInfo.create({
+  product_id: Product.find_by_name('Cherry').id, store_id: Store.find_by_name('Northern Branch').id, price:7})
+StoreProductInfo.create({
+  product_id: Product.find_by_name('Eggfruit').id, store_id: Store.find_by_name('Northern Branch').id,  price:7})
+StoreProductInfo.create({
+  product_id: Product.find_by_name('Fairy Floss').id, store_id: Store.find_by_name('Northern Branch').id, price:7})
+  
+StoreProductInfo.create({
+  product_id: Product.find_by_name('Cherry').id, store_id: Store.find_by_name('Southern Branch').id, price:10})
+StoreProductInfo.create({
+  product_id: Product.find_by_name('Yoghurt').id, store_id: Store.find_by_name('Southern Branch').id, price:10})
+  
+StoreProductInfo.create({
+  product_id: Product.find_by_name('Raspberry').id, store_id: Store.find_by_name('Eastern Branch').id, price:3})
+StoreProductInfo.create({
+  product_id: Product.find_by_name('Banana').id, store_id: Store.find_by_name('Eastern Branch').id, price:3})
+  
+StoreProductInfo.create({
+  product_id: Product.find_by_name('Durian').id, store_id: Store.find_by_name('Western Branch').id, price:5})
+StoreProductInfo.create({
+  product_id: Product.find_by_name('Grape').id, store_id: Store.find_by_name('Western Branch').id, price:5})
 
-Shelf.create({
-  aisle: 1,
-  max_capacity: 100,
-  store_id: Store.find_by_name('Eastern Branch').id
-})
-
-Shelf.create({
-  aisle: 2,
-  max_capacity: 90,
-  store_id: Store.find_by_name('Eastern Branch').id
-})
-
-Shelf.create({
-  aisle: 3,
-  max_capacity: 110,
-  store_id: Store.find_by_name('Eastern Branch').id
-})
-
-Shelf.create({
-  aisle: 1,
-  max_capacity: 100,
-  store_id: Store.find_by_name('Western Branch').id
-})
-
-Shelf.create({
-  aisle: 2,
-  max_capacity: 90,
-  store_id: Store.find_by_name('Western Branch').id
-})
-
-Shelf.create({
-  aisle: 3,
-  max_capacity: 110,
-  store_id: Store.find_by_name('Western Branch').id
-})
+#########################################################################
 
 Shelf.create({
   aisle: 1,
   max_capacity: 100,
-  store_id: Store.find_by_name('Southern Branch').id
-})
-
+  store_id: Store.find_by_name('Northern Branch').id})
 Shelf.create({
   aisle: 2,
   max_capacity: 90,
-  store_id: Store.find_by_name('Southern Branch').id
-})
-
+  store_id: Store.find_by_name('Northern Branch').id})
 Shelf.create({
   aisle: 3,
   max_capacity: 110,
-  store_id: Store.find_by_name('Southern Branch').id
-})
-
-#Shelf.create({
-#  max_capacity: ,
-#  store_id: Store.find_by_name('').id
-#})
+  store_id: Store.find_by_name('Northern Branch').id})
+Shelf.create({
+  aisle: 1,
+  max_capacity: 100,
+  store_id: Store.find_by_name('Eastern Branch').id})
+Shelf.create({
+  aisle: 2,
+  max_capacity: 90,
+  store_id: Store.find_by_name('Eastern Branch').id})
+Shelf.create({
+  aisle: 3,
+  max_capacity: 110,
+  store_id: Store.find_by_name('Eastern Branch').id})
+Shelf.create({
+  aisle: 1,
+  max_capacity: 100,
+  store_id: Store.find_by_name('Western Branch').id})
+Shelf.create({
+  aisle: 2,
+  max_capacity: 90,
+  store_id: Store.find_by_name('Western Branch').id})
+Shelf.create({
+  aisle: 3,
+  max_capacity: 110,
+  store_id: Store.find_by_name('Western Branch').id})
+Shelf.create({
+  aisle: 1,
+  max_capacity: 100,
+  store_id: Store.find_by_name('Southern Branch').id})
+Shelf.create({
+  aisle: 2,
+  max_capacity: 90,
+  store_id: Store.find_by_name('Southern Branch').id})
+Shelf.create({
+  aisle: 3,
+  max_capacity: 110,
+  store_id: Store.find_by_name('Southern Branch').id})
 
 #########################################################################
 
 ShelfProductInfo.create({
   product_id: Product.find_by_name('Apple').id,
   shelf_id: Shelf.find(:first, 
-  :conditions =>["aisle = ? AND store_id = ?", 1, Store.find_by_name('Northern Branch').id])
+  :conditions =>["aisle = ? AND store_id = ?",
+     1, Store.find_by_name('Northern Branch').id])
+})
+ShelfProductInfo.create({
+  product_id: Product.find_by_name('Banana').id,
+  shelf_id: Shelf.find(:first, 
+  :conditions =>["aisle = ? AND store_id = ?",
+     1, Store.find_by_name('Northern Branch').id])
+})
+ShelfProductInfo.create({
+  product_id: Product.find_by_name('Cherry').id,
+  shelf_id: Shelf.find(:first, 
+  :conditions =>["aisle = ? AND store_id = ?",
+     1, Store.find_by_name('Northern Branch').id])
+})
+ShelfProductInfo.create({
+  product_id: Product.find_by_name('Eggfruit').id,
+  shelf_id: Shelf.find(:first, 
+  :conditions =>["aisle = ? AND store_id = ?",
+     2, Store.find_by_name('Northern Branch').id])
+})
+ShelfProductInfo.create({
+  product_id: Product.find_by_name('Fairy Floss').id,
+  shelf_id: Shelf.find(:first, 
+  :conditions =>["aisle = ? AND store_id = ?",
+     2, Store.find_by_name('Northern Branch').id])
 })
 
 #ShelfProductInfo.create({
@@ -193,4 +195,4 @@ ShelfProductInfo.create({
 
 #########################################################################
 
-Warehouse.create({current_capacity: '0', max_capacity: '10000'})
+Warehouse.create({max_capacity: '10000'})

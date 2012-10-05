@@ -24,7 +24,7 @@ POS::Application.routes.draw do
 
   resources :users
 
-  match '/store_product_infos/:id/price', :to => 'store_product_infos#price', :as => 'price'
+  get '/store_product_infos/:id/price', :to => 'store_product_infos#price', :as => 'price'
   match '/store_product_infos/:id/quantity', :to => 'store_product_infos#quantity', :as => 'quantity'
   resources :store_product_infos
 

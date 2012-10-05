@@ -1,0 +1,27 @@
+<h1>Changing Product Quantity</h1>
+
+<%= form_for(@shelf_product_info) do |f| %>
+  <% if @shelf_product_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shelf_product_info.errors.count, "error") %> prohibited this shelf_product_info from being saved:</h2>
+
+      <ul>
+      <% @shelf_product_info.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :quantity %><br />
+    <%= f.number_field :update_quantity %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit 'update', action: 'quantity' %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @shelf_product_info %> |
+<%= link_to 'Back', shelf_product_infos_path %>
