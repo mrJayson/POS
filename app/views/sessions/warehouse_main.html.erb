@@ -1,1 +1,7 @@
-<h1>Welcome <%= current_user.first_name%></h1>
+<h1>Welcome <%= warehouse.name%></h1>
+
+
+
+<%= link_to 'Inventory', warehouse%>
+
+<%= link_to 'log out', sessions_signout_path, :method => :delete%>

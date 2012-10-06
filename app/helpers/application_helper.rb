@@ -16,6 +16,10 @@ module ApplicationHelper
     return session[:current_location_type]
   end
   
+  def warehouse
+    return Location.find_by_name("Warehouse")
+  end
+  
   def session_type
     if session[:status] == "staff" || session[:status] == "manager"
       return "store"

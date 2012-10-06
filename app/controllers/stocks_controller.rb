@@ -27,13 +27,23 @@ class StocksController < ApplicationController
 
   def create
     @stock = Stock.new(params[:stock])
-    #@stock.location_id = current_store.id
-    @stock.location = current_store
+    
     marginal_quantity=0
+    
+    if current_location_type == "store"
+    @stock.location = current_store
+    
+    else
+    @stock.location = warehouse
+    end
     
     respond_to do |format|
       if @stock.save
+        if current_location_type == "store"
         format.html { redirect_to controller: 'locations', action: 'store', :id => current_store.id, notice: 'Stock was successfully created.' }
+        else
+        format.html { redirect_to controller: 'locations', action: 'store', :id => warehouse.id, notice: 'Stock was successfully created.' }  
+        end
         format.json { render json: @stock, status: :created, location: @stock }
       else
         format.html { render action: "new" }

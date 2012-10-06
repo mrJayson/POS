@@ -58,14 +58,10 @@ class LocationsController < ApplicationController
     
     if @location.location_type == "store"
       redirect_to controller: 'locations', action: 'store', :id => @location.id
-      
     elsif @location.location_type == "shelf"
-      
       redirect_to controller: 'locations', action: 'shelf', :id => @location.id
-      
     elsif @location.location_type == "warehouse"
       redirect_to controller: 'locations', action: 'warehouse', :id => @location.id
-      
     else
       respond_to do |format|
         format.html # show.html.erb
@@ -80,7 +76,6 @@ class LocationsController < ApplicationController
     session[:shelf_id] = @location.id#assign the shelf_id for reference later on
     session[:current_location_type] = @location.location_type
     #change location type for different filtering of views
-    
   end
   
   def store
@@ -92,6 +87,8 @@ class LocationsController < ApplicationController
   end
   
   def warehouse
+    @location = @location = Location.find(params[:id])#get warehouse
+    @stocks = @location.stocks#get products in warehouse/all products
     session[:current_location_type] = @location.location_type
     #change location type for different filtering of views
     
