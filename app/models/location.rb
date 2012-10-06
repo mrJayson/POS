@@ -1,4 +1,5 @@
 class Location < ActiveRecord::Base
+  include StocksHelper
   include LocationsHelper
   
   belongs_to :location
@@ -17,8 +18,6 @@ class Location < ActiveRecord::Base
   validates_numericality_of :max_capacity
   
   validate :max_greater_than_current
-  
-
   
   def max_greater_than_current
     

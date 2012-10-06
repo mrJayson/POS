@@ -9,6 +9,8 @@ class SessionsController < ApplicationController
       session[:user_id] = employee.id
       session[:status] = employee.status
       session[:marginal_quantity] = "0"
+      session[:shelf_id] = nil
+      session[:current_location_type] = nil
       #session[:store_id] = user.store_id
       #session[:session_type] = user.account_type
       

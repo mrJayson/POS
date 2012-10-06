@@ -30,4 +30,10 @@
   <%= @stock.benchmark %>
 </p>
 
-<%= link_to 'Back', stocks_path %>
+<% if current_location_type == "store" %>
+<%= link_to 'Back', current_store %>
+<% elsif current_location_type == "shelf" %>
+<%= link_to 'Back', current_shelf %>
+<% else %>
+
+<% end %>

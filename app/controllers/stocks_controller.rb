@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
   include ApplicationHelper
-  include LocationsHelper
+  include StocksHelper
   def index
     
     @stocks = Stock.all
