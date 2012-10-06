@@ -1,19 +1,14 @@
 class LocationsController < ApplicationController
+  include ApplicationHelper
   def index
     @locations = Location.all
-    
-    
   end
 
   def new
-    
     @location = Location.new
-    
-    
   end
 
   def create
-    
     @location = Location.new(params[:location])
     
     respond_to do |format|
@@ -57,10 +52,48 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @location }
+    
+    session[:current_location_type] = @location.location_type
+    #change location type for different filtering of views
+    
+    if @location.location_type == "store"
+      redirect_to controller: 'locations', action: 'store', :id => @location.id
+      
+    elsif @location.location_type == "shelf"
+      
+      redirect_to controller: 'locations', action: 'shelf', :id => @location.id
+      
+    elsif @location.location_type == "warehouse"
+      redirect_to controller: 'locations', action: 'warehouse', :id => @location.id
+      
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @location }
+      end
     end
+  end
+  
+  def shelf
+    @location = Location.find(params[:id])#get shelf
+    @stocks = @location.stocks#get products on shelf
+    session[:shelf_id] = @location.id#assign the shelf_id for reference later on
+    session[:current_location_type] = @location.location_type
+    #change location type for different filtering of views
+    
+  end
+  
+  def store
+    @location = @location = Location.find(params[:id])#get store
+    @stocks = @location.stocks#get products instore
+    @shelves = @location.locations #getting shelves
+    session[:current_location_type] = @location.location_type
+    #change location type for different filtering of views
+  end
+  
+  def warehouse
+    session[:current_location_type] = @location.location_type
+    #change location type for different filtering of views
+    
   end
 end

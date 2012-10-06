@@ -17,14 +17,15 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  
   <div class="field">
     <%= f.label :max_capacity %><br />
     <%= f.text_field :max_capacity %>
   </div>
+  
   <div class="field">
     <%= f.label :location_type %><br />
-    <%#= select_tag(:location_type, options_for_select([['Shelf', 'Shelf'],['Store', 'Store']], 2)) %>
-	<%= f.select :location_type, [['Shelf', 'Shelf'],['Store','Store']] %>
+	<%= f.select :location_type, [['shelf', 'shelf'],['store','store']] %>
   </div>
   <div class="field">
     <%= f.label :location_id %><br />

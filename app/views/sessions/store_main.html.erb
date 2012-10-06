@@ -1,0 +1,18 @@
+<h1>Welcome <%= current_user.first_name%></h1>
+<% if session[:status] == "manager"%>
+	<h2>You are a manager!</h2>
+<% end %>
+
+<h2><%=current_store.name%></h2>
+
+
+
+<%= link_to 'Staff', employees_path%>
+
+<%= link_to 'Inventory', current_store%>
+
+<%#= link_to 'Orders', orders_path%>
+
+<%#= link_to 'Administration', current_store%>
+
+<%= link_to 'log out', sessions_signout_path, :method => :delete%>

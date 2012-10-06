@@ -5,7 +5,7 @@ class CreateStocks < ActiveRecord::Migration
       t.references :product
       t.integer :benchmark
       t.integer :standard_quantity
-      t.integer :quantity
+      t.integer :quantity, :default => 0
       t.integer :price
 
       t.timestamps

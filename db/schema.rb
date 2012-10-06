@@ -11,17 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121005060257) do
+ActiveRecord::Schema.define(:version => 20121006074912) do
 
   create_table "employees", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "user_name"
-    t.string   "status"
     t.string   "password_digest"
+    t.string   "status"
+    t.integer  "transaction_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "location_id"
   end
+
+  add_index "employees", ["location_id"], :name => "index_employees_on_location_id"
 
   create_table "locations", :force => true do |t|
     t.string   "name"
@@ -37,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20121005060257) do
     t.string   "last_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "user_name"
   end
 
   create_table "products", :force => true do |t|
@@ -51,23 +56,23 @@ ActiveRecord::Schema.define(:version => 20121005060257) do
     t.integer  "product_id"
     t.integer  "benchmark"
     t.integer  "standard_quantity"
-    t.integer  "quantity"
+    t.integer  "quantity",          :default => 0
     t.integer  "price"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   add_index "stocks", ["location_id"], :name => "index_stocks_on_location_id"
   add_index "stocks", ["product_id"], :name => "index_stocks_on_product_id"
 
   create_table "transactions", :force => true do |t|
-    t.integer  "location_id"
-    t.integer  "employee_id"
-    t.integer  "member_id"
-    t.string   "product_list"
-    t.integer  "total_price"
     t.integer  "loyalty_points_to_add"
     t.string   "payment_type"
+    t.string   "product_list"
+    t.integer  "total_price"
+    t.integer  "location_id"
+    t.integer  "member_id"
+    t.integer  "employee_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
