@@ -15,7 +15,13 @@
   
   <div class="field">
   	<%= f.label :product %> <br />
-  	<%= f.collection_select :product_id, Product.all, :id, :name%>
+	<% if current_location_type == "store"%>
+  	<%= f.collection_select :product_id, get_remaining_products_for_register(current_store), :id, :name%>
+	<% elsif current_location_type == "shelf"%>
+	<%= f.collection_select :product_id, get_remaining_products_for_register(current_shelf), :id, :name%>
+	<% else %>
+	
+	<% end%>
   </div>
 
   <div class="field">

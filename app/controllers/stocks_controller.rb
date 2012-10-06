@@ -42,7 +42,7 @@ class StocksController < ApplicationController
         if current_location_type == "store"
         format.html { redirect_to controller: 'locations', action: 'store', :id => current_store.id, notice: 'Stock was successfully created.' }
         else
-        format.html { redirect_to controller: 'locations', action: 'store', :id => warehouse.id, notice: 'Stock was successfully created.' }  
+        format.html { redirect_to controller: 'locations', action: 'warehouse', :id => warehouse.id, notice: 'Stock was successfully created.' }  
         end
         format.json { render json: @stock, status: :created, location: @stock }
       else
@@ -81,7 +81,11 @@ class StocksController < ApplicationController
     respond_to do |format|
       if @stock.update_attributes(params[:stock])
         set_marginal_quantity=0
-        format.html {redirect_to controller: 'locations', action: 'store', :id => current_store.id, notice: 'Stock was successfully updated.'}
+        if current_location_type == "store"
+        format.html { redirect_to controller: 'locations', action: 'store', :id => current_store.id, notice: 'Stock was successfully created.' }
+        else
+        format.html { redirect_to controller: 'locations', action: 'warehouse', :id => warehouse.id, notice: 'Stock was successfully created.' }  
+        end
         format.json { head :no_content }
       else
 
