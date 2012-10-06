@@ -12,11 +12,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.collection_select :location_id, Location.all, :id, :name%>
-  </div>
   
   <div class="field">
   	<%= f.label :product %> <br />
@@ -24,15 +19,15 @@
   </div>
 
   <div class="field">
-    <%= f.label :standard_quantity %><br />
-    <%= f.number_field :standard_quantity %>
-  </div>
-  
-  <div class="field">
     <%= f.label :price %><br />
     <%= f.number_field :price %>
   </div>
-  
+
+  <div class="field">
+    <%= f.label :standard_quantity %><br />
+    <%= f.number_field :standard_quantity %>
+  </div>
+
   <div class="field">
     <%= f.label :benchmark %><br />
     <%= f.number_field :benchmark %>

@@ -2,10 +2,12 @@ class StocksController < ApplicationController
   include ApplicationHelper
   def index
     
-    if session_type == "store"
-    @stocks =  Stock.find(:all, :conditions => ["location_id = ?", current_store.id])
+    @stocks = Stock.all
     
-    end
+    #if session_type == "store"
+    #@stocks =  Stock.find(:all, :conditions => ["location_id = ?", current_store.id])
+    #end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @stocks }
@@ -24,10 +26,11 @@ class StocksController < ApplicationController
 
   def create
     @stock = Stock.new(params[:stock])
+    @stock.location_id = current_store.id
     
     respond_to do |format|
       if @stock.save
-        format.html { redirect_to stocks_path, notice: 'Stock was successfully created.' }
+        format.html { redirect_to controller: 'locations', action: 'store', :id => current_store.id, notice: 'Stock was successfully created.' }
         format.json { render json: @stock, status: :created, location: @stock }
       else
         format.html { render action: "new" }
@@ -60,8 +63,8 @@ class StocksController < ApplicationController
     respond_to do |format|
       
     if params[:stock].has_key?(:update_quantity)
-        params[:stock][:quantity] = @stock.quantity + params[:stock][:update_quantity].to_i
-        params[:stock].delete(:update_quantity)
+      params[:stock][:quantity] = @stock.quantity + params[:stock][:update_quantity].to_i
+      params[:stock].delete(:update_quantity)
     end
     
       if @stock.update_attributes(params[:stock])
