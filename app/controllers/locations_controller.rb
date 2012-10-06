@@ -54,13 +54,13 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
     
     if @location.location_type == "store"
-      redirect_to locations_store_path
+      redirect_to controller: 'locations', action: 'store', :id => @location.id
       
     elsif @location.location_type == "shelf"
-      redirect_to locations_shelf_path
+      redirect_to controller: 'locations', action: 'shelf', :id => @location.id
       
     elsif @location.location_type == "warehouse"
-      redirect_to locations_warehouse_path
+      redirect_to controller: 'locations', action: 'warehouse', :id => @location.id
       
     else
       respond_to do |format|
@@ -71,12 +71,13 @@ class LocationsController < ApplicationController
   end
   
   def shelf
-    
+    @location = Location.find(params[:id])#get shelf
+    @stocks = @location.stocks#get products on shelf
   end
   
   def store
-    @location = current_store
-    @stocks = @location.stocks
+    @location = @location = Location.find(params[:id])#get store
+    @stocks = @location.stocks#get products instore
     @shelves = @location.locations #getting shelves
   end
   

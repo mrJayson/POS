@@ -29,22 +29,22 @@ Location.create ({
   location_id: Location.find_by_name("Warehouse").id})
 #########################################################################
 Location.create ({
-  name: "shelf1",
+  name: "1",
   location_type: 'shelf',
   max_capacity: 100,
   location_id: Location.find_by_name("Northern Branch").id})
 Location.create ({
-  name: "shelf2",
+  name: "2",
   location_type: 'shelf',
   max_capacity: 100,
   location_id: Location.find_by_name("Northern Branch").id})
 Location.create ({
-  name: "shelf3",
+  name: "3",
   location_type: 'shelf',
   max_capacity: 100,
   location_id: Location.find_by_name("Northern Branch").id})
 Location.create ({
-  name: "shelf1",
+  name: "1",
   location_type: 'shelf',
   max_capacity: 80,
   location_id: Location.find_by_name("Southern Branch").id})
@@ -140,24 +140,6 @@ Stock.create ({
   benchmark: 20
 })
 Stock.create ({
-  location_id: Location.find_by_name('Northern Branch').id,
-  product_id: Product.find_by_name('Cherry').id,
-  standard_quantity: 100,
-  quantity: 0,
-  price: 3,
-  benchmark: 20
-})
-=begin
-  Stock.create ({
-    location_id: Location.find_by_name('Shelf1').id,
-    product_id: Product.find_by_name('Apple').id,
-    standard_quantity: 20,
-    quantity: 0,
-    price: 3,
-    benchmark: 5
-  })
-=end
-Stock.create ({
   location_id: Location.find_by_name('Southern Branch').id,
   product_id: Product.find_by_name('Banana').id,
   standard_quantity: 30,
@@ -165,3 +147,64 @@ Stock.create ({
   price: 3,
   benchmark: 10
 })
+Stock.create ({
+  location_id: Location.find_by_name('Northern Branch').id,
+  product_id: Product.find_by_name('Apple').id,
+  standard_quantity: 100,
+  quantity: 24,
+  price: 3,
+  benchmark: 20
+})
+Stock.create ({
+  location_id: Location.find_by_name('Northern Branch').id,
+  product_id: Product.find_by_name('Quince').id,
+  standard_quantity: 100,
+  quantity: 1,
+  price: 3,
+  benchmark: 20
+})
+Stock.create ({
+  location_id: Location.find_by_name('Southern Branch').id,
+  product_id: Product.find_by_name('Xylophone').id,
+  standard_quantity: 30,
+  quantity: 0,
+  price: 3,
+  benchmark: 10
+})
+Stock.create ({
+  location_id: Location.find_by_name('Northern Branch').id,
+  product_id: Product.find_by_name('Watermelon').id,
+  standard_quantity: 100,
+  quantity: 0,
+  price: 3,
+  benchmark: 20
+})
+
+#########################################################################
+
+Stock.create ({
+  location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Northern Branch').id).id,
+  product_id: Product.find_by_name('Apple').id,
+  standard_quantity: 20,
+  quantity: 23,
+  price: 3,
+  benchmark: 5
+})
+Stock.create ({
+  location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Northern Branch').id).id,
+  product_id: Product.find_by_name('Quince').id,
+  standard_quantity: 20,
+  quantity: 44,
+  price: 3,
+  benchmark: 5
+})
+Stock.create ({
+  location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Northern Branch').id).id,
+  product_id: Product.find_by_name('Watermelon').id,
+  standard_quantity: 20,
+  quantity: 9,
+  price: 3,
+  benchmark: 5
+})
+
+
