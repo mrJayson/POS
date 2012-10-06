@@ -42,7 +42,10 @@ class SessionsController < ApplicationController
     end
   end
 
-  def main
+  def store_main
+  end
+  
+  def warehouse_main
   end
 
   def signin

@@ -2,7 +2,9 @@ POSV2::Application.routes.draw do
   
   root :to => 'sessions#signin'
 
-  get 'sessions/main'
+  get 'sessions/warehouse_main'
+  
+  get 'sessions/store_main'
 
   get 'sessions/signin'
   

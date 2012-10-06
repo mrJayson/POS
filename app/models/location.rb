@@ -3,7 +3,7 @@ class Location < ActiveRecord::Base
   belongs_to :location
   
   has_many :locations
-  
+  has_many :employees
   has_many :stocks
   has_many :transactions
   
