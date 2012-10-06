@@ -16,6 +16,8 @@
     <td><%= location.location_type %></td>
 		<% if location.location_id == nil%>
 	<td><%= location.location_id%></td>
+		<% else %>
+	<td><%= location.location.name%></td>
 		<% end %>
     <td><%= link_to 'Show', location %></td>
     <td><%= link_to 'Change Maximum Capacity', edit_location_path(location) %></td>

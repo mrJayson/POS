@@ -8,3 +8,13 @@
 
 
 Location.create ({name: "Warehouse", location_type: 'warehouse', max_capacity: 100000, location_id: nil})
+
+Employee.create ({first_name: "Warehouse", last_name: "Admin",
+   status: "warehouse", user_name: "admin",
+   password: "1234", password_confirmation: "1234",
+   location_id: Location.find_by_name("Warehouse")})
+
+Employee.create ({first_name: "Jason", last_name: "Huang",
+   status: "manager", user_name: "JasonHuang",
+   password: "1234", password_confirmation: "1234",
+   location_id: ""})

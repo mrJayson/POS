@@ -7,19 +7,22 @@ class SessionsController < ApplicationController
       
       #store the user and which store they belong to in session
       session[:user_id] = employee.id
+      session[:status] = employee.status
       #session[:store_id] = user.store_id
       #session[:session_type] = user.account_type
       
       #redirect to the main sessions page
-      #if session[:session_type] == "store"
-          redirect_to  sessions_main_path, :action => "main" , :notice => "Logged in!"
-      #elsif session[:session_type] = "warehouse"
-        #redirect_to warehouses_path
+      if session[:status] == "staff"
+        redirect_to locations_path
+      elsif session[:status] == "manager"
+          redirect_to sessions_main_path, :action => "main" , :notice => "Logged in!"
+      elsif session[:status] = "warehouse"
+        redirect_to products_path
      
-      #else
+      else
         #flash.now.alert = "Error in log in"
         #render "index"
-      #end
+      end
     else
       render "signin"
       flash.now.alert = "Invalid username or password"
