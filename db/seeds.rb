@@ -100,3 +100,51 @@ Employee.create({
   status: "manager",
   location_id: "Store4"})
 
+#########################################################################
+
+Stock.create ({
+  location_id: Location.find_by_name('Store1').id,
+  product_id: Product.find_by_name('Apple').id,
+  standard_quantity: 100,
+  quantity: 0,
+  price: 3,
+  benchmark: 20
+})
+
+Stock.create ({
+  location_id: Location.find_by_name('Store1').id,
+  product_id: Product.find_by_name('Banana').id,
+  standard_quantity: 100,
+  quantity: 0,
+  price: 3,
+  benchmark: 20
+})
+
+Stock.create ({
+  location_id: Location.find_by_name('Store1').id,
+  product_id: Product.find_by_name('Cherry').id,
+  standard_quantity: 100,
+  quantity: 0,
+  price: 3,
+  benchmark: 20
+})
+
+Stock.create ({
+  location_id: Location.find_by_name('Shelf1').id,
+  product_id: Product.find_by_name('Apple').id,
+  standard_quantity: 20,
+  quantity: 0,
+  price: 3,
+  benchmark: 5
+})
+
+Stock.create ({
+  location_id: Location.find_by_name('Store2').id,
+  product_id: Product.find_by_name('Banana').id,
+  standard_quantity: 30,
+  quantity: 0,
+  price: 3,
+  benchmark: 10
+})
+
+
