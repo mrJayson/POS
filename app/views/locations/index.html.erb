@@ -3,7 +3,9 @@
 <table>
   <tr>
     <th>Name</th>
+    <td></td>
     <th>Location Type</th>
+    
 	<th>Parent Location</th>
     <th></th>
     <th></th>
@@ -13,12 +15,15 @@
 <% @locations.each do |location| %>
   <tr>
     <td><%= location.name %></td>
+    <td></td>
     <td><%= location.location_type %></td>
 		<% if location.location_id == nil%>
+	
 	<td><%= location.location_id%></td>
 		<% else %>
 	<td><%= location.location.name%></td>
 		<% end %>
+	<td></td>
     <td><%= link_to 'Show', location %></td>
     <td><%= link_to 'Change Maximum Capacity', edit_location_path(location) %></td>
     <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -40,8 +40,9 @@
 
   <div class="field">
     <%= f.label :employee_status %><br />
-    <%= f.text_field :status %>
+	<%= f.select :status, [['manager', 'manager'],['employee','employee']] %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

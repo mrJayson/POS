@@ -11,18 +11,18 @@
 
 Location.create ({name: "Warehouse", location_type: 'warehouse', max_capacity: 100000, location_id: nil})
 
-Location.create ({name: "Store1", location_type: 'store', max_capacity: 500, location_id: "Warehouse"})
-Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 100, location_id: "Store1"})
-Location.create ({name: "Shelf2", location_type: 'shelf', max_capacity: 100, location_id: "Store1"})
+Location.create ({name: "Store1", location_type: 'store', max_capacity: 500, location_id: Location.find_by_name("Warehouse").id})
+Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 100, location_id: Location.find_by_name("Store1").id})
+#Location.create ({name: "Shelf2", location_type: 'shelf', max_capacity: 100, location_id: "Store1"})
 
-Location.create ({name: "Store2", location_type: 'store', max_capacity: 600, location_id: "Warehouse"})
-Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: "Store2"})
+Location.create ({name: "Store2", location_type: 'store', max_capacity: 600, location_id: 1})
+Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: Location.find_by_name("Store2").id})
 
-Location.create ({name: "Store3", location_type: 'store', max_capacity: 800, location_id: "Warehouse"})
-Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: "Store3"})
+Location.create ({name: "Store3", location_type: 'store', max_capacity: 800, location_id: 1})
+#Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: "Store3"})
 
-Location.create ({name: "Store4", location_type: 'store', max_capacity: 500, location_id: "Warehouse"})
-Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: "Store4"})
+Location.create ({name: "Store4", location_type: 'store', max_capacity: 500, location_id: 1})
+#Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: "Store4"})
 
 #########################################################################
 
@@ -99,3 +99,4 @@ Employee.create({
   password_confirmation: '1234', 
   status: "manager",
   location_id: "Store4"})
+
