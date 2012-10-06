@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       #store the user and which store they belong to in session
       session[:user_id] = employee.id
       session[:status] = employee.status
+      session[:marginal_quantity] = "0"
       #session[:store_id] = user.store_id
       #session[:session_type] = user.account_type
       

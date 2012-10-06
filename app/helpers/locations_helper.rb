@@ -1,5 +1,14 @@
 module LocationsHelper
-  include ApplicationHelper
+  include ApplicationHelper  
+  @@marginal_quantity = 0
+  
+  def set_marginal_quantity(t)
+    @@marginal_quantity = t
+  end
+  
+  def get_marginal_quantity
+    return @@marginal_quantity
+  end
   
   def sum_location_quantity (location)
     stocks = location.stocks

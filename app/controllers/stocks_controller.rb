@@ -1,5 +1,6 @@
 class StocksController < ApplicationController
   include ApplicationHelper
+  include LocationsHelper
   def index
     
     @stocks = Stock.all
@@ -26,7 +27,9 @@ class StocksController < ApplicationController
 
   def create
     @stock = Stock.new(params[:stock])
-    @stock.location_id = current_store.id
+    #@stock.location_id = current_store.id
+    @stock.location = current_store
+    marginal_quantity=0
     
     respond_to do |format|
       if @stock.save
@@ -43,8 +46,9 @@ class StocksController < ApplicationController
     @stock = Stock.find(params[:id])
   end
 
-  def quantitychange
+  def quantity
     @stock = Stock.find(params[:id])
+    
   end
 
   def show
@@ -59,20 +63,20 @@ class StocksController < ApplicationController
   def update
     @stock = Stock.find(params[:id])
  
-    
-    respond_to do |format|
-      
     if params[:stock].has_key?(:update_quantity)
+      set_marginal_quantity(params[:stock][:update_quantity].to_i)
       params[:stock][:quantity] = @stock.quantity + params[:stock][:update_quantity].to_i
       params[:stock].delete(:update_quantity)
     end
-    
+    respond_to do |format|
       if @stock.update_attributes(params[:stock])
-        format.html {redirect_to stocks_path, notice: 'Stock was successfully updated.'}
+        set_marginal_quantity=0
+        format.html {redirect_to controller: 'locations', action: 'store', :id => current_store.id, notice: 'Stock was successfully updated.'}
         format.json { head :no_content }
       else
-        format.html {render action: "edit"}
-        format.hmtl { render json: @stock.errors, status: :unprocessable_entity }
+
+        format.html {render action: "quantity"}
+        format.json { render json: @stock.errors, status: :unprocessable_entity }
       end
     end
   end

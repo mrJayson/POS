@@ -18,7 +18,7 @@ POSV2::Application.routes.draw do
 
   resources :products, :only => [:index, :create, :new]
   
-  match '/stocks/:id/quantitychange', :to => 'stocks#quantitychange', :as => 'quantitychange'
+  get '/stocks/:id/quantity', :to => 'stocks#quantity', :as => 'quantity_stock'
   resources :stocks
   
   get 'locations/shelf'
