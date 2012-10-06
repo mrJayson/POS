@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Location Type</th>
+	<th>Parent Location</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,9 @@
   <tr>
     <td><%= location.name %></td>
     <td><%= location.location_type %></td>
+		<% if location.location_id == nil%>
+	<td><%= location.location_id%></td>
+		<% end %>
     <td><%= link_to 'Show', location %></td>
     <td><%= link_to 'Change Maximum Capacity', edit_location_path(location) %></td>
     <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>

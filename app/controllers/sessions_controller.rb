@@ -21,8 +21,9 @@ class SessionsController < ApplicationController
         #render "index"
       #end
     else
+      render "signin"
       flash.now.alert = "Invalid username or password"
-      render "index"
+      
     end
   end
 
