@@ -12,16 +12,13 @@ class SessionsController < ApplicationController
       #session[:session_type] = user.account_type
       
       #redirect to the main sessions page
-      if session[:status] == "staff"
-        redirect_to locations_path
-      elsif session[:status] == "manager"
-          redirect_to sessions_main_path, :action => "main" , :notice => "Logged in!"
-      elsif session[:status] = "warehouse"
-        redirect_to products_path
-     
+      if session[:status] == "warehouse"
+        redirect_to sessions_warehouse_main_path, :action => "main" , :notice => "Logged in!"
+      elsif session[:status] == "staff" || session[:status] == "manager"
+          redirect_to sessions_store_main_path, :action => "main" , :notice => "Logged in!"
       else
-        #flash.now.alert = "Error in log in"
-        #render "index"
+        flash.now.alert = "Error in log in"
+        render "index"
       end
     else
       render "signin"

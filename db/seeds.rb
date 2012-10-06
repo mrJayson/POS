@@ -11,18 +11,18 @@
 
 Location.create ({name: "Warehouse", location_type: 'warehouse', max_capacity: 100000, location_id: nil})
 
-Location.create ({name: "Store1", location_type: 'store', max_capacity: 500, location_id: Location.find_by_name("Warehouse").id})
-Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 100, location_id: Location.find_by_name("Store1").id})
-#Location.create ({name: "Shelf2", location_type: 'shelf', max_capacity: 100, location_id: "Store1"})
+Location.create ({name: "Northern Branch", location_type: 'store', max_capacity: 500, location_id: Location.find_by_name("Warehouse").id})
+Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 100, location_id: Location.find_by_name("Northern Branch").id})
+#Location.create ({name: "Shelf2", location_type: 'shelf', max_capacity: 100, location_id: "Northern Branch"})
 
-Location.create ({name: "Store2", location_type: 'store', max_capacity: 600, location_id: 1})
-Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: Location.find_by_name("Store2").id})
+Location.create ({name: "Southern Branch", location_type: 'store', max_capacity: 600, location_id: 1})
+Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: Location.find_by_name("Southern Branch").id})
 
-Location.create ({name: "Store3", location_type: 'store', max_capacity: 800, location_id: 1})
-#Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: "Store3"})
+Location.create ({name: "Western Branch", location_type: 'store', max_capacity: 800, location_id: 1})
+#Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: "Western Branch"})
 
-Location.create ({name: "Store4", location_type: 'store', max_capacity: 500, location_id: 1})
-#Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: "Store4"})
+Location.create ({name: "Eastern Branch", location_type: 'store', max_capacity: 500, location_id: 1})
+#Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: "Eastern Branch"})
 
 #########################################################################
 
@@ -62,7 +62,7 @@ Employee.create({
   password: '1234',
   password_confirmation: '1234', 
   status: "warehouse",
-  location_id: Location.find_by_name("Warehouse")})
+  location_id: Location.find_by_name("Warehouse").id})
  
 Employee.create({
   first_name: 'Jason',
@@ -71,7 +71,7 @@ Employee.create({
   password: '1234',
   password_confirmation: '1234', 
   status: "manager",
-  location_id: "Store1"})
+  location_id: "Northern Branch"})
   
   Employee.create({
   first_name: 'Yere',
@@ -80,7 +80,7 @@ Employee.create({
   password: '1234',
   password_confirmation: '1234', 
   status: "manager",
-  location_id: "Store2"})
+  location_id: "Southern Branch"})
   
   Employee.create({
   first_name: 'Peter',
@@ -89,7 +89,7 @@ Employee.create({
   password: '1234',
   password_confirmation: '1234', 
   status: "manager",
-  location_id: "Store3"})
+  location_id: "Western Branch"})
   
   Employee.create({
   first_name: 'Sheryl',
@@ -98,5 +98,5 @@ Employee.create({
   password: '1234',
   password_confirmation: '1234', 
   status: "manager",
-  location_id: "Store4"})
+  location_id: "Eastern Branch"})
 
