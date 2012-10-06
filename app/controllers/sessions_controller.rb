@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
       if session[:status] == "warehouse"
         redirect_to sessions_warehouse_main_path, :action => "main" , :notice => "Logged in!"
       elsif session[:status] == "staff" || session[:status] == "manager"
-          redirect_to sessions_store_main_path, :action => "main" , :notice => "Logged in!"
+        session[:store_id] = employee.location_id
+        redirect_to sessions_store_main_path, :action => "main" , :notice => "Logged in!"
       else
         flash.now.alert = "Error in log in"
         render "index"
@@ -29,9 +30,8 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    #session[:store_id] = nil
-    #session[:shelf_id] = nil
-    #does not null ids so must be put in index, the log in screen
+    session[:store_id] = nil
+    session[:status] = nil
     
     respond_to do |format|
       format.html { redirect_to root_url, :notice => "Logged out!" }
@@ -40,11 +40,15 @@ class SessionsController < ApplicationController
   end
 
   def store_main
+    
   end
   
   def warehouse_main
   end
 
   def signin
+  end
+  
+  def signout
   end
 end

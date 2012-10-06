@@ -1,13 +1,18 @@
 <h1>Welcome <%= current_user.first_name%></h1>
+<% if session[:status] == "manager"%>
+	<h2>You are a manager!</h2>
+<% end %>
 
-<%#= link_to 'Your account', current_user%>
+<h2><%=current_store.name%></h2>
 
-<%#= link_to 'All Employees', users_path%>
 
-<%#= link_to 'Products Catalog of Store', store_product_infos_path%>
 
-<%#= link_to 'Shelves', shelves_path%>
+<%= link_to 'Staff', employees_path%>
+
+<%= link_to 'Inventory', current_store%>
+
+<%#= link_to 'Orders', orders_path%>
 
 <%#= link_to 'Administration', current_store%>
 
-<%#= link_to 'log out', signout_path, :method => :delete%>
+<%= link_to 'log out', sessions_signout_path, :method => :delete%>

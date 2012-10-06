@@ -2,13 +2,17 @@ POSV2::Application.routes.draw do
   
   root :to => 'sessions#signin'
 
+  
+  
+  
+  
   get 'sessions/warehouse_main'
   
   get 'sessions/store_main'
 
   get 'sessions/signin'
   
-  resources :employees
+  get 'sessions/signout'
 
   resources :sessions, :only => [:create, :destroy]
 
@@ -17,8 +21,15 @@ POSV2::Application.routes.draw do
   match '/stocks/:id/quantitychange', :to => 'stocks#quantitychange', :as => 'quantitychange'
   resources :stocks
   
+  get 'locations/shelf'
+  
+  get 'locations/store'
+  
+  get 'locations/warehouse'
+  
   resources :locations
   
+  resources :employees
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,11 +1,16 @@
 class StocksController < ApplicationController
+  include ApplicationHelper
   def index
-    @stocks =  Stock.all
     
+    if session_type == "store"
+    @stocks =  Stock.find(:all, :conditions => ["location_id = ?", current_store.id])
+    
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @stocks }
     end
+    
   end
 
   def new

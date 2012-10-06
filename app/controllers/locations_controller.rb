@@ -1,19 +1,14 @@
 class LocationsController < ApplicationController
+  include ApplicationHelper
   def index
     @locations = Location.all
-    
-    
   end
 
   def new
-    
     @location = Location.new
-    
-    
   end
 
   def create
-    
     @location = Location.new(params[:location])
     
     respond_to do |format|
@@ -57,10 +52,35 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @location }
+    
+    if @location.location_type == "store"
+      redirect_to locations_store_path
+      
+    elsif @location.location_type == "shelf"
+      redirect_to locations_shelf_path
+      
+    elsif @location.location_type == "warehouse"
+      redirect_to locations_warehouse_path
+      
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @location }
+      end
     end
+  end
+  
+  def shelf
+    
+  end
+  
+  def store
+    @location = current_store
+    @stocks = @location.stocks
+    @shelves = @location.locations #getting shelves
+  end
+  
+  def warehouse
+    
   end
 end

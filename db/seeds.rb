@@ -1,28 +1,53 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
 # Examples:
-#
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #########################################################################
-
-
 Location.create ({name: "Warehouse", location_type: 'warehouse', max_capacity: 100000, location_id: nil})
-
-Location.create ({name: "Northern Branch", location_type: 'store', max_capacity: 500, location_id: Location.find_by_name("Warehouse").id})
-Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 100, location_id: Location.find_by_name("Northern Branch").id})
-#Location.create ({name: "Shelf2", location_type: 'shelf', max_capacity: 100, location_id: "Northern Branch"})
-
-Location.create ({name: "Southern Branch", location_type: 'store', max_capacity: 600, location_id: 1})
-Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: Location.find_by_name("Southern Branch").id})
-
-Location.create ({name: "Western Branch", location_type: 'store', max_capacity: 800, location_id: 1})
-#Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: "Western Branch"})
-
-Location.create ({name: "Eastern Branch", location_type: 'store', max_capacity: 500, location_id: 1})
-#Location.create ({name: "shelf1", location_type: 'shelf', max_capacity: 80, location_id: "Eastern Branch"})
+#########################################################################
+Location.create ({
+  name: "Northern Branch",
+  location_type: 'store',
+  max_capacity: 500,
+  location_id: Location.find_by_name("Warehouse").id})
+Location.create ({
+  name: "Southern Branch",
+  location_type: 'store',
+  max_capacity: 600,
+  location_id: Location.find_by_name("Warehouse").id})
+Location.create ({
+  name: "Western Branch",
+  location_type: 'store',
+  max_capacity: 800,
+  location_id: Location.find_by_name("Warehouse").id})
+Location.create ({
+  name: "Eastern Branch",
+  location_type: 'store',
+  max_capacity: 500,
+  location_id: Location.find_by_name("Warehouse").id})
+#########################################################################
+Location.create ({
+  name: "shelf1",
+  location_type: 'shelf',
+  max_capacity: 100,
+  location_id: Location.find_by_name("Northern Branch").id})
+Location.create ({
+  name: "shelf2",
+  location_type: 'shelf',
+  max_capacity: 100,
+  location_id: Location.find_by_name("Northern Branch").id})
+Location.create ({
+  name: "shelf3",
+  location_type: 'shelf',
+  max_capacity: 100,
+  location_id: Location.find_by_name("Northern Branch").id})
+Location.create ({
+  name: "shelf1",
+  location_type: 'shelf',
+  max_capacity: 80,
+  location_id: Location.find_by_name("Southern Branch").id})
 
 #########################################################################
 
@@ -63,7 +88,6 @@ Employee.create({
   password_confirmation: '1234', 
   status: "warehouse",
   location_id: Location.find_by_name("Warehouse").id})
- 
 Employee.create({
   first_name: 'Jason',
   last_name: 'Huang',
@@ -71,32 +95,73 @@ Employee.create({
   password: '1234',
   password_confirmation: '1234', 
   status: "manager",
-  location_id: "Northern Branch"})
-  
-  Employee.create({
+  location_id: Location.find_by_name("Northern Branch").id})
+Employee.create({
   first_name: 'Yere',
   last_name: 'Chung',
   user_name: 'YereChung',
   password: '1234',
   password_confirmation: '1234', 
   status: "manager",
-  location_id: "Southern Branch"})
-  
-  Employee.create({
+  location_id: Location.find_by_name("Southern Branch").id})
+Employee.create({
   first_name: 'Peter',
   last_name: 'Godfrey',
   user_name: 'PeterGodfrey',
   password: '1234',
   password_confirmation: '1234', 
   status: "manager",
-  location_id: "Western Branch"})
-  
-  Employee.create({
+  location_id: Location.find_by_name("Western Branch").id})
+Employee.create({
   first_name: 'Sheryl',
   last_name: 'Shi',
   user_name: 'SherylShi',
   password: '1234',
   password_confirmation: '1234', 
   status: "manager",
-  location_id: "Eastern Branch"})
+  location_id: Location.find_by_name("Eastern Branch").id})
 
+#########################################################################
+
+Stock.create ({
+  location_id: Location.find_by_name('Northern Branch').id,
+  product_id: Product.find_by_name('Apple').id,
+  standard_quantity: 100,
+  quantity: 24,
+  price: 3,
+  benchmark: 20
+})
+Stock.create ({
+  location_id: Location.find_by_name('Northern Branch').id,
+  product_id: Product.find_by_name('Banana').id,
+  standard_quantity: 100,
+  quantity: 1,
+  price: 3,
+  benchmark: 20
+})
+Stock.create ({
+  location_id: Location.find_by_name('Northern Branch').id,
+  product_id: Product.find_by_name('Cherry').id,
+  standard_quantity: 100,
+  quantity: 0,
+  price: 3,
+  benchmark: 20
+})
+=begin
+  Stock.create ({
+    location_id: Location.find_by_name('Shelf1').id,
+    product_id: Product.find_by_name('Apple').id,
+    standard_quantity: 20,
+    quantity: 0,
+    price: 3,
+    benchmark: 5
+  })
+=end
+Stock.create ({
+  location_id: Location.find_by_name('Southern Branch').id,
+  product_id: Product.find_by_name('Banana').id,
+  standard_quantity: 30,
+  quantity: 0,
+  price: 3,
+  benchmark: 10
+})
