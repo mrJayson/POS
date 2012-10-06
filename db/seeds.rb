@@ -5,7 +5,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #########################################################################
-Location.create ({name: "Warehouse", location_type: 'warehouse', max_capacity: 100000, location_id: nil})
+Location.create ({name: "Warehouse", location_type: 'warehouse', max_capacity: 100000, location_id: object_id})#object_id = nil
 #########################################################################
 Location.create ({
   name: "Northern Branch",

@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  include ApplicationHelper
   def index
     @employees = Employee.all
   end
@@ -9,6 +10,7 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new(params[:employee])
+    @employee.location_id = current_store.id
     if @employee.save
       redirect_to employees_path
     else

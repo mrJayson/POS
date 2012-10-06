@@ -12,6 +12,11 @@ class Location < ActiveRecord::Base
   attr_accessible :name, :location_type, :max_capacity, :location_id, :stock_id
   
   validates_presence_of :name, :location_type, :max_capacity
+  validates_presence_of :location_id, :unless => :is_warehouse?
+  
+  def is_warehouse?
+    :location_type == "warehouse"
+  end
   
   validates_inclusion_of :location_type, :in => ["shelf", "store", "warehouse"]
   
