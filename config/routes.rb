@@ -10,6 +10,8 @@ POSV2::Application.routes.draw do
   get 'sessions/signin'
   
   get 'sessions/signout'
+  
+  resources :transactions
 
   resources :sessions, :only => [:create, :destroy]
 
@@ -31,7 +33,7 @@ POSV2::Application.routes.draw do
   
   resources :employees
   
-  resources :transactions, :except => [:edit, :update]
+  #resources :transactions, :except => [:edit, :update]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,4 +1,27 @@
+
 <h1>Transactions#index</h1>
 
+<h1>Listing Transaction history</h1>
 
-<%= link_to 'Checkout', new_transaction_path %>
+<table>
+  <tr>
+    <th>Transaction No.</th>
+
+    <th></th>
+  </tr>
+
+
+
+<% @transaction.each do |transaction| %>
+  <tr>
+    <td><%= transaction.id %></td>
+
+    <td><%= link_to 'Show', transaction %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to "next",transactions_path, :method => :post%>
+
+<br />
+

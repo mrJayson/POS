@@ -58,10 +58,16 @@ Location.create( {
   location_type: 'shelf',
   max_capacity: 80,
   location_id: Location.find_by_name("Southern Branch").id } )
+
+#########################################################################
+
+#initial transaction open
+Transaction.create({:payment_type => 'pending'})
   
 #########################################################################
 ## Products/Stock
 #########################################################################
+
 Product.create({name: 'Apple', barcode: '0000000001'})
 Stock.create ({location_id: Location.find_by_name("Warehouse").id, product_id: Product.find_by_barcode('0000000001').id, standard_quantity: 0, quantity: 0, price: 0, benchmark: 0})
 Product.create({name: 'Banana',     barcode: '0000000002'})
@@ -238,3 +244,14 @@ Stock.create ({
 
 
 #########################################################################
+=begin
+Transaction.create({
+  loyalty_points_to_add: 0,
+  payment_type: nil,
+  product_list: nil,
+  total_price: 0,
+  location_id: 2,
+  member_id: nil,
+  employee_id: nil
+  })
+=end

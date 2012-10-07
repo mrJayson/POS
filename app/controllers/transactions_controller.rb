@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
-  include ApplicationHelper
+
+  include TransactionsHelper
 
   def index
     
@@ -10,10 +11,9 @@ class TransactionsController < ApplicationController
       format.json { render json: @transactions }
     end
     
-  end
-
   def new
     @transaction = Transaction.new
+
     
     respond_to do |format|
       format.html # new.html
@@ -21,26 +21,18 @@ class TransactionsController < ApplicationController
     end
   end
 
+
   def create
-    @transaction = Transaction.new(params[:transaction])
-    
-    #restricting some validations before saving
-    
-    respond_to do |format|
-      if @transaction.save
-        format.json { render json: @transaction, status: :created, location: @transaction }
-       
-       #actions for what happens after it is the transaction is created
-       
-      else
-        format.html { render action: "new" }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
-      end
-    end
+
+    @transaction = Transaction.new({:payment_type => 'pending'})
+    @transaction.save
+    redirect_to @transaction
+
   end
 
   def show
     @transaction = Transaction.find(params[:id])
+
 
     respond_to do |format|
       format.html #show.html
@@ -58,4 +50,14 @@ class TransactionsController < ApplicationController
       format.html { head :no_content }
     end
   end
+
+  def edit
+    @transaction = Transaction.find(params[:id])
+  end
+
+  def update
+    @transaction = Transaction.find(params[:id])
+  end
+
+
 end

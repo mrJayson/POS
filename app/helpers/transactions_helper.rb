@@ -1,4 +1,5 @@
 module TransactionsHelper
+
   include ApplicationHelper
   
   def get_total_amount(list)
@@ -8,6 +9,15 @@ module TransactionsHelper
       total += s.price
     end
     return total
+
+  
+  def current_transaction
+    return Transaction.last
+  end
+  
+  def complete_transaction
+    Transaction.create({payment_type: 'pending'})
+
   end
   
 end
