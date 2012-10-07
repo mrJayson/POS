@@ -122,6 +122,19 @@ class StocksController < ApplicationController
           format.json { render json: @stock.errors, status: :unprocessable_entity }
         end
       end
+    else
+      respond_to do |format|
+        if @stock.update_attributes(params[:stock])
+          set_marginal_quantity=0
+
+          format.html { redirect_to controller: 'locations', action: current_location_type, :id => current_location.id, notice: 'Stock was successfully updated.'}
+
+          format.json { head :no_content }
+        else
+          format.html {render action: "quantity"}
+          format.json { render json: @stock.errors, status: :unprocessable_entity }
+        end
+      end
     end
   end
 
