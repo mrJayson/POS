@@ -11,6 +11,8 @@ POSV2::Application.routes.draw do
   
   get 'sessions/signout'
   
+  post 'transactions/scan_item'
+  
   resources :transactions
 
   resources :sessions, :only => [:create, :destroy]

@@ -20,6 +20,17 @@ module StocksHelper
     return @@marginal_quantity
   end
   
+  def get_current_products_in_store(location)
+    
+    current = []
+    
+    location.stocks.each do |s|
+      current << s.product
+    end
+    
+    return current
+  end
+  
   def get_remaining_products_for_register (location)
     current = []
     
@@ -32,6 +43,8 @@ module StocksHelper
     location.location.stocks.each do |s|
       parent_location_stocks << s.product
     end
+    
+    #refactor this function
     
     return parent_location_stocks - current
   end

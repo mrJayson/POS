@@ -59,6 +59,29 @@ class TransactionsController < ApplicationController
 
   def update
     @transaction = Transaction.find(params[:id])
+    
+    if params[:transaction].has_key?('new_item')
+      item = Transaction::Transaction_Entry.new
+      item.transaction_id = current_transaction.id
+      item.product_id = params[:transaction][:new_item]#params returned should be id number
+      @transaction.product_list << item
+       
+      if @transaction.save
+        redirect_to current_transaction
+      else
+        redirect_to current_transaction
+      end
+      
+      
+    else
+      format.html { render 'scan_item'}
+      format.html { head :no_content }
+      
+    end
+  end
+  
+  def scan_item
+    @transaction = current_transaction
   end
 
 
