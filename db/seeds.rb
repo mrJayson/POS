@@ -153,7 +153,7 @@ Stock.create ({
   location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Apple').id,
   standard_quantity: 100,
-  quantity: 24,
+  quantity: 40,
   price: 3,
   benchmark: 20
 })
@@ -161,7 +161,7 @@ Stock.create ({
   location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Banana').id,
   standard_quantity: 100,
-  quantity: 1,
+  quantity: 400,
   price: 3,
   benchmark: 20
 })
@@ -169,23 +169,15 @@ Stock.create ({
   location_id: Location.find_by_name('Southern Branch').id,
   product_id: Product.find_by_name('Banana').id,
   standard_quantity: 30,
-  quantity: 0,
+  quantity: 300,
   price: 3,
   benchmark: 10
 })
 Stock.create ({
   location_id: Location.find_by_name('Northern Branch').id,
-  product_id: Product.find_by_name('Apple').id,
-  standard_quantity: 100,
-  quantity: 24,
-  price: 3,
-  benchmark: 20
-})
-Stock.create ({
-  location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Quince').id,
   standard_quantity: 100,
-  quantity: 1,
+  quantity: 20,
   price: 3,
   benchmark: 20
 })
@@ -212,7 +204,7 @@ Stock.create ({
   location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Northern Branch').id).id,
   product_id: Product.find_by_name('Apple').id,
   standard_quantity: 20,
-  quantity: 23,
+  quantity: 30,
   price: 3,
   benchmark: 5
 })
@@ -220,7 +212,7 @@ Stock.create ({
   location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Northern Branch').id).id,
   product_id: Product.find_by_name('Quince').id,
   standard_quantity: 20,
-  quantity: 44,
+  quantity: 20,
   price: 3,
   benchmark: 5
 })
@@ -228,7 +220,7 @@ Stock.create ({
   location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Northern Branch').id).id,
   product_id: Product.find_by_name('Watermelon').id,
   standard_quantity: 20,
-  quantity: 9,
+  quantity: 10,
   price: 3,
   benchmark: 5
 })

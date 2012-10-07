@@ -53,7 +53,7 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
     
-    session[:current_location_type] = @location.location_type
+    session[:current_location_type] = nil
     #change location type for different filtering of views
     
     if @location.location_type == "store"

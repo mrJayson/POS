@@ -2,6 +2,16 @@ module StocksHelper
   
   @@marginal_quantity = 0
   
+  @@direction = ""
+  
+  def set_direction(d)
+    @@direction = d
+  end
+  
+  def get_direction
+    return @@direction
+  end
+  
   def set_marginal_quantity(t)
     @@marginal_quantity = t
   end

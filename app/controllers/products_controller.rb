@@ -24,6 +24,7 @@ class ProductsController < ApplicationController
     
     respond_to do |format|
       if @product.save
+        #create default stock in warehouse since all products registered must be in warehouse
         @stock = Stock.create ({
           location_id: Location.find_by_name('Warehouse').id,
           product_id: @product.id,

@@ -1,8 +1,6 @@
 POSV2::Application.routes.draw do
   
   root :to => 'sessions#signin'
-
-  match '/:controller(/:action(/:id))'
   
   get 'sessions/warehouse_main'
   
@@ -17,6 +15,9 @@ POSV2::Application.routes.draw do
   resources :products, :only => [:index, :create, :new]
   
   get '/stocks/:id/quantity', :to => 'stocks#quantity', :as => 'quantity_stock'
+  
+  get '/stocks/:id/product_movement', :to => 'stocks#product_movement', :as => 'movement_stock'
+  
   resources :stocks
   
   get 'locations/shelf'

@@ -9,7 +9,10 @@ module ApplicationHelper
   end
   
   def current_shelf
-    return Location.find(session[:shelf_id]) if session[:shelf_id] != nil
+    if session[:shelf_id] != nil
+      return Location.find(session[:shelf_id]) 
+    end
+    return nil
   end
   
   def current_location_type

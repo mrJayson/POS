@@ -11,7 +11,8 @@
   <%= sum_location_quantity (@location) %>
 </p>
 
-<%= link_to 'register new product into store', new_stock_path%>
+<%= link_to 'register new product onto shelf', new_stock_path%></br>
+
 
 <h3>Products Registered On Shelf</h3>
 <table>
@@ -30,6 +31,7 @@
     <td><%= link_to 'Show', stock %></td>
     <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
     <td><%= link_to 'Update Quantity', quantity_stock_path(stock) %></td>
+	<td><%= link_to 'Move products between this shelf and back storage', movement_stock_path(stock) %></td>
     <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
