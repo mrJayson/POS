@@ -9,6 +9,8 @@ module TransactionsHelper
       total += s.price
     end
     return total
+    
+  end
 
   
   def current_transaction

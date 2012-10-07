@@ -62,7 +62,9 @@ Location.create( {
 #########################################################################
 
 #initial transaction open
-Transaction.create({:payment_type => 'pending'})
+t = Transaction.new({:payment_type => 'pending', :product_list => {"Apple" => 1, 'Banana' => 2}})
+puts t.valid?
+t.save
   
 #########################################################################
 ## Products/Stock

@@ -1,14 +1,13 @@
 class Transaction < ActiveRecord::Base
   
-  include TransactionHelper
   
-  serialize :product_list
+  serialize :product_list, Hash
   
   belongs_to :location
   belongs_to :employee
   belongs_to :member
   
-  attr_accessible :loyalty_points_to_add, :payment_type, :total_price
+  attr_accessible :loyalty_points_to_add, :payment_type, :total_price, :product_list
   
   validates_inclusion_of :payment_type, :in => ["pending", "cash", "credit"]
   

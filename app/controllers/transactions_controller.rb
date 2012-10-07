@@ -11,6 +11,8 @@ class TransactionsController < ApplicationController
       format.json { render json: @transactions }
     end
     
+  end
+    
   def new
     @transaction = Transaction.new
 
