@@ -11,8 +11,6 @@ class SessionsController < ApplicationController
       session[:marginal_quantity] = "0"
       session[:shelf_id] = nil
       session[:current_location_type] = nil
-      #session[:store_id] = user.store_id
-      #session[:session_type] = user.account_type
       
       #redirect to the main sessions page
       if session[:status] == "warehouse"

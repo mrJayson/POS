@@ -54,8 +54,11 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
     
     session[:current_location_type] = nil
+    session[:shelf_id] = nil
     #change location type for different filtering of views
     
+    redirect_to controller: 'locations', action: @location.location_type, id: @location.id
+=begin
     if @location.location_type == "store"
       redirect_to controller: 'locations', action: 'store', :id => @location.id
     elsif @location.location_type == "shelf"
@@ -68,6 +71,7 @@ class LocationsController < ApplicationController
         format.json { render json: @location }
       end
     end
+=end
   end
   
   def shelf

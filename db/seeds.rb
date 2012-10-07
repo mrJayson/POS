@@ -164,7 +164,7 @@ Stock.create ({
   location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Apple').id,
   standard_quantity: 100,
-  quantity: 40,
+  quantity: 70,
   price: 3,
   benchmark: 20
 })

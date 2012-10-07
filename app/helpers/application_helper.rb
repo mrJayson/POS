@@ -30,5 +30,17 @@ module ApplicationHelper
       return "warehouse"
     end
   end
+  
+  def current_location
+    return current_shelf if current_shelf != nil
+    
+    if current_location_type == "warehouse"
+      return warehouse 
+    elsif current_location_type == "store"
+      return current_store
+    else
+      return nil
+    end
+  end
 
 end

@@ -29,6 +29,7 @@ class Location < ActiveRecord::Base
     if (sum_location_quantity(self) + get_marginal_quantity) > max_capacity
       errors.add(:max_capacity, "moving too much stock into location")
     end
+    set_marginal_quantity(0)
   end
   
   #current_quantity must always be positive

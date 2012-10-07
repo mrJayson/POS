@@ -2,18 +2,12 @@ class StocksController < ApplicationController
   include ApplicationHelper
   include StocksHelper
   def index
-    
     @stocks = Stock.all
-    
-    #if session_type == "store"
-    #@stocks =  Stock.find(:all, :conditions => ["location_id = ?", current_store.id])
-    #end
     
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @stocks }
     end
-    
   end
 
   def new
@@ -41,13 +35,8 @@ class StocksController < ApplicationController
     
     respond_to do |format|
       if @stock.save
-        if current_location_type == "store"
-          format.html { redirect_to controller: 'locations', action: 'store', :id => current_store.id, notice: 'Stock was successfully updated.'}
-        elsif current_location_type == "shelf"
-          format.html { redirect_to controller: 'locations', action: 'shelf', :id => current_shelf.id, notice: 'Stock was successfully updated.'}
-        else current_location_type == "warehouse"
-          format.html { redirect_to controller: 'locations', action: 'warehouse', :id => warehouse.id, notice: 'Stock was successfully updated.'}
-        end
+
+        format.html { redirect_to controller: 'locations', action: current_location_type, :id => current_location.id, notice: 'Stock was successfully updated.'}
         format.json { render json: @stock, status: :created, location: @stock }
       else
         format.html { render action: "new" }
@@ -78,6 +67,7 @@ class StocksController < ApplicationController
     @stock = Stock.find(params[:id])
     
     #movement of products across locations
+    #must refactor this function badly
     if params[:stock].has_key?(:movement_direction) && params[:stock].has_key?(:update_quantity)
       set_direction(params[:stock][:movement_direction])#remembers the direction of movement
       params[:stock].delete(:movement_direction)
@@ -95,18 +85,21 @@ class StocksController < ApplicationController
       from_stock.quantity -= marginal_movement
       set_marginal_quantity(marginal_movement)
       respond_to do |format|
-        if to_stock.save && from_stock.save
-          if current_location_type == "store"
-            format.html { redirect_to controller: 'locations', action: 'store', :id => current_store.id, notice: 'Stock was successfully updated.'}
-          elsif current_location_type == "shelf"
-            format.html { redirect_to controller: 'locations', action: 'shelf', :id => current_shelf.id, notice: 'Stock was successfully updated.'}
-          else current_location_type == "warehouse"
-            format.html { redirect_to controller: 'locations', action: 'warehouse', :id => warehouse.id, notice: 'Stock was successfully updated.'}
+
+        if to_stock.valid?
+          set_marginal_quantity(marginal_movement * -1)
+          #need to *-1 for the 2nd validation check
+          if from_stock.valid?
+            to_stock.save
+            from_stock.save
+            format.html { redirect_to controller: 'locations', action: current_location_type, :id => current_location.id, notice: 'Stock was successfully updated.'}
+
+            format.json { head :no_content }
+          else
+            #display errors here
+            format.html {render action: "product_movement"}
+            format.json { render json: @stock.errors, status: :unprocessable_entity }
           end
-          format.json { head :no_content }
-        else
-          format.html {render action: "product_movement"}
-          format.json { render json: @stock.errors, status: :unprocessable_entity }
         end
       end
       
@@ -120,13 +113,10 @@ class StocksController < ApplicationController
       respond_to do |format|
         if @stock.update_attributes(params[:stock])
           set_marginal_quantity=0
-          if current_location_type == "store"
-            format.html { redirect_to controller: 'locations', action: 'store', :id => current_store.id, notice: 'Stock was successfully updated.'}
-          elsif current_location_type == "shelf"
-            format.html { redirect_to controller: 'locations', action: 'shelf', :id => current_shelf.id, notice: 'Stock was successfully updated.'}
-          else current_location_type == "warehouse"
-            format.html { redirect_to controller: 'locations', action: 'warehouse', :id => warehouse.id, notice: 'Stock was successfully updated.'}
-          end
+
+          format.html { redirect_to controller: 'locations', action: current_location_type, :id => current_location.id, notice: 'Stock was successfully updated.'}
+
+          format.json { head :no_content }
         else
           format.html {render action: "quantity"}
           format.json { render json: @stock.errors, status: :unprocessable_entity }
