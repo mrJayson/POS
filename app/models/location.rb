@@ -15,7 +15,7 @@ class Location < ActiveRecord::Base
   
   validates_presence_of :name, :location_type, :max_capacity
   validates_inclusion_of :location_type, :in => ["shelf", "store", "warehouse"]
-  validates_numericality_of :max_capacity
+  validates_numericality_of :max_capacity, :greater_than_or_equal_to => 0
   
   #all locations except warehouse must have a parent location
   validates_presence_of :location_id, :unless => :is_warehouse?
@@ -28,6 +28,14 @@ class Location < ActiveRecord::Base
   def max_greater_than_current
     if (sum_location_quantity(self) + get_marginal_quantity) > max_capacity
       errors.add(:max_capacity, "moving too much stock into location")
+    end
+  end
+  
+  #current_quantity must always be positive
+  validate :current_greater_than_zero
+  def current_greater_than_zero
+    if (sum_location_quantity(self) + get_marginal_quantity) < 0
+      errors.add(:max_capacity, "quantity is a negative number")
     end
   end
   

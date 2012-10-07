@@ -1,0 +1,25 @@
+var stocks = new Array();
+<% for stock in @stocks -%>
+  stocks.push(new Array(<%= stock.location_id %>, '<%=h stock.product.name %>', <%= stock.id %>));
+<% end -%>
+
+function locationSelected() {
+  location_id = $('movement_location_id').getValue();
+  options = $('movement_stock_id').options;
+  options.length = 1;
+  stocks.each(function(stock) {
+    if (stock[0] == location_id) {
+      options[options.length] = new Option(stock[1], stock[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('stock_field').hide();
+  } else {
+    $('stock_field').show();
+  }
+}
+
+document.observe('dom:loaded', function() {
+  locationSelected();
+  $('movement_location_id').observe('change', locationSelected);
+});

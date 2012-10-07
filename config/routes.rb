@@ -2,9 +2,7 @@ POSV2::Application.routes.draw do
   
   root :to => 'sessions#signin'
 
-  
-  
-  
+  match '/:controller(/:action(/:id))'
   
   get 'sessions/warehouse_main'
   
