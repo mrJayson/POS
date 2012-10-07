@@ -5,52 +5,63 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #########################################################################
-Location.create ({name: "Warehouse", location_type: "warehouse", max_capacity: 100000, location_id: object_id})#object_id = nil
+## Locations
 #########################################################################
-Location.create ({
+## Warehouse
+Location.create( {
+  name: "Warehouse",
+  location_type: "warehouse",
+  max_capacity: 100000,
+  location_id: object_id } )
+                   #object_id = nil
+#########################################################################
+## Stores
+Location.create( {
   name: "Northern Branch",
   location_type: 'store',
   max_capacity: 500,
-  location_id: Location.find_by_name("Warehouse").id})
-Location.create ({
+  location_id: Location.find_by_name("Warehouse").id } )
+Location.create( {
   name: "Southern Branch",
   location_type: 'store',
   max_capacity: 600,
-  location_id: Location.find_by_name("Warehouse").id})
-Location.create ({
+  location_id: Location.find_by_name("Warehouse").id } )
+Location.create( {
   name: "Western Branch",
   location_type: 'store',
   max_capacity: 800,
-  location_id: Location.find_by_name("Warehouse").id})
-Location.create ({
+  location_id: Location.find_by_name("Warehouse").id } )
+Location.create( {
   name: "Eastern Branch",
   location_type: 'store',
   max_capacity: 500,
-  location_id: Location.find_by_name("Warehouse").id})
+  location_id: Location.find_by_name("Warehouse").id } )
 #########################################################################
-Location.create ({
+## Shelves
+Location.create( {
   name: "1",
   location_type: 'shelf',
   max_capacity: 100,
-  location_id: Location.find_by_name("Northern Branch").id})
-Location.create ({
+  location_id: Location.find_by_name("Northern Branch").id } )
+Location.create ( {
   name: "2",
   location_type: 'shelf',
   max_capacity: 100,
-  location_id: Location.find_by_name("Northern Branch").id})
-Location.create ({
+  location_id: Location.find_by_name("Northern Branch").id } )
+Location.create( {
   name: "3",
   location_type: 'shelf',
   max_capacity: 100,
-  location_id: Location.find_by_name("Northern Branch").id})
-Location.create ({
+  location_id: Location.find_by_name("Northern Branch").id } )
+Location.create( {
   name: "1",
   location_type: 'shelf',
   max_capacity: 80,
-  location_id: Location.find_by_name("Southern Branch").id})
-
+  location_id: Location.find_by_name("Southern Branch").id } )
+  
 #########################################################################
-
+## Products/Stock
+#########################################################################
 Product.create({name: 'Apple', barcode: '0000000001'})
 Stock.create ({location_id: Location.find_by_name("Warehouse").id, product_id: Product.find_by_barcode('0000000001').id, standard_quantity: 0, quantity: 0, price: 0, benchmark: 0})
 Product.create({name: 'Banana',     barcode: '0000000002'})
