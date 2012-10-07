@@ -1,5 +1,6 @@
 POSV2::Application.routes.draw do
   
+
   root :to => 'sessions#signin'
 
   
@@ -30,6 +31,8 @@ POSV2::Application.routes.draw do
   resources :locations
   
   resources :employees
+  
+  resources :transactions, :except => [:edit, :update]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

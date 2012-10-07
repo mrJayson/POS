@@ -1,0 +1,51 @@
+<h1>Transactions#new</h1>
+
+
+<%= form_for(@transaction) do |f| %>
+  <% if @transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+      <% @transaction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+	<div class = "field">
+		<%= f.label :product_list%> <br />
+		<%= f.collection_select :product_list, Product.all, :id, :name%>
+	</div>
+
+
+	<p>
+		<b>Total Price:</b>
+		<%= @transaction.total_price%>
+	</p>
+	
+  <div class="field">
+    <%= f.label :payment_type %><br />
+	<%= f.select :payment_type, [['Cash', 'Cash'],['EFTPOS','EFTPOS'], ['Gift Card', 'Gift Card']] %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :amount_received %><br />
+    <%= f.number_field :amount_received %>
+  </div>
+  
+  <p>
+  	<b>Loyalty Points Collected:</b>
+  	<%= @transaction.loyalty_points_to_add%>
+  </p>
+  
+  #should redirect to the show page
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>
+
+<%= link_to 'Back', transactions_path %>
