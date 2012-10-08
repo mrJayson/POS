@@ -8,7 +8,6 @@ module TransactionsHelper
   end
   
   def complete_transaction
-    
     t = Transaction.create({:payment_type => 'pending', product_list: []})
   end
   
@@ -46,7 +45,7 @@ module TransactionsHelper
     
     #allocate attributes to transactions first
     t.employee = current_user
-    t.location = current_location
+    t.location_id = current_store.id
     t.total_price = get_total_price(t.product_list)
     t.loyalty_points_to_add = get_total_loyalty_points(t.product_list)
     
