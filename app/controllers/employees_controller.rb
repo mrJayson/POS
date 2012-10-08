@@ -1,7 +1,8 @@
 class EmployeesController < ApplicationController
   include ApplicationHelper
+  include EmployeesHelper
   def index
-    @employees = Employee.all
+    @employees = employees_at_store
   end
 
   def new

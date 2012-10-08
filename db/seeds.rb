@@ -4,6 +4,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+include TransactionsHelper
+
 #########################################################################
 ## Locations
 #########################################################################
@@ -62,12 +64,9 @@ Location.create( {
 #########################################################################
 
 #initial transaction open
-t = Transaction.new({:payment_type => 'pending'})
-puts t.valid?
-t.save
-t.product_list = []
-t.product_list << Transaction::Transaction_Entry.new
-t.save
+t = Transaction.create({:payment_type => 'pending', product_list: []})
+#t.product_list = []
+#t.save
   
 #########################################################################
 ## Products/Stock

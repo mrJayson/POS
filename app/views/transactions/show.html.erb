@@ -1,26 +1,27 @@
 <h1>Current Transaction</h1>
 
 
-
-	
-
-
 <table>
   <tr>
     <th>Product</th>
-    <td></td>
-	<td></td>
     <th></th>
     <th>Price</th>
     <th></th>
+    <th>Quantity</th>
   </tr>
 
-<% current_transaction.product_list.each do |s|%>
+<h3>Total Price: <%= @transaction.total_price%></h3>
+
+<h3>Total Loyalty Points: <%= @transaction.loyalty_points_to_add%></h3>
+
+<% @transaction.product_list.each do |s|%>
   <tr>
 
     <td><%= product_name(s.product_id) %></td>
+    <th></th>
+	<td><%= s.quantity%></td>
 	<th></th>
-    <td><%#= s.price %></td>
+    <td><%= s.price %></td>
     <td><%#= link_to 'Show', stock %></td>
     <td><%#= link_to 'Edit', edit_stock_path(stock) %></td>
 	<td><%#= link_to 'Change Stock Quantity', :action => 'quantity', :id => stock %></td>
@@ -35,5 +36,9 @@
 <%= link_to " scan item ", transactions_scan_item_path, :method => :post%></br>
 
 
+<%#%>
+<!-- create link for removing products-->
 
-<%= link_to "complete transaction ", transactions_path, :method => :post%>
+<%= link_to "complete transaction ", transactions_pay_path%></br>
+
+<%= link_to "Back to Menu", sessions_store_main_path%>

@@ -4,13 +4,13 @@ class TransactionsController < ApplicationController
 
   def index
     
-    @transactions = Transaction.all
+    #remove last as it is not complete
+    @transactions = Transaction.all - [Transaction.last]
     
     respond_to do |format|
       format.html # index.html
       format.json { render json: @transactions }
     end
-    
   end
     
   def new
@@ -23,12 +23,16 @@ class TransactionsController < ApplicationController
     end
   end
 
+  def pay
+    
+  end
 
   def create
-
-    @transaction = Transaction.new({:payment_type => 'pending'})
-    @transaction.save
-    redirect_to @transaction
+    #complete transaction before make new one
+    current_transaction.update_attributes({:payment_type => 'cash'})
+    #still error here, possibly validation confliction as payment_type will not save
+    complete_transaction
+    redirect_to current_transaction
 
   end
 
@@ -61,23 +65,14 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
     
     if params[:transaction].has_key?('new_item')
-      item = Transaction::Transaction_Entry.new
-      item.transaction_id = current_transaction.id
-      item.product_id = params[:transaction][:new_item]#params returned should be id number
-      @transaction.product_list << item
-       
-      if @transaction.save
-        redirect_to current_transaction
-      else
-        redirect_to current_transaction
-      end
       
+      update_product_list(params[:transaction][:new_item])
       
-    else
-      format.html { render 'scan_item'}
-      format.html { head :no_content }
-      
+      redirect_to current_transaction
     end
+    
+    #redirect_to current_transaction
+
   end
   
   def scan_item

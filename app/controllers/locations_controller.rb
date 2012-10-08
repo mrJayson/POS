@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
   include ApplicationHelper
   def index
+    #should never reach this page
     @locations = Location.all
   end
 
@@ -58,20 +59,6 @@ class LocationsController < ApplicationController
     #change location type for different filtering of views
     
     redirect_to controller: 'locations', action: @location.location_type, id: @location.id
-=begin
-    if @location.location_type == "store"
-      redirect_to controller: 'locations', action: 'store', :id => @location.id
-    elsif @location.location_type == "shelf"
-      redirect_to controller: 'locations', action: 'shelf', :id => @location.id
-    elsif @location.location_type == "warehouse"
-      redirect_to controller: 'locations', action: 'warehouse', :id => @location.id
-    else
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @location }
-      end
-    end
-=end
   end
   
   def shelf

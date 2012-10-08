@@ -17,12 +17,10 @@
 	    <%= f.label :product %><br />
 	  	<%= f.collection_select :new_item, get_current_products_in_store(current_store), :id, :name%>
 	  </div>
-	
-
 
 	  <div class="actions">
 	    <%= f.submit %>
 	  </div>
 	<% end %>
 
-<%= link_to 'scan item', current_transaction%>
+<%= link_to 'back', current_transaction%>

@@ -11,7 +11,7 @@ class Stock < ActiveRecord::Base
   
   validates_numericality_of :location_id, :product_id, :benchmark, :price, :standard_quantity
   
-  validates_numericality_of :quantity, :greater_than_or_equal_to => 0
+  validates_numericality_of :quantity, :standard_quantity, :benchmark, :greater_than_or_equal_to => 0
   
   validates_associated :location, :product
 end

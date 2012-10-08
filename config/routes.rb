@@ -13,6 +13,8 @@ POSV2::Application.routes.draw do
   
   post 'transactions/scan_item'
   
+  get 'transactions/pay'
+  
   resources :transactions
 
   resources :sessions, :only => [:create, :destroy]

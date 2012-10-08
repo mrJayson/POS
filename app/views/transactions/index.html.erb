@@ -1,11 +1,13 @@
 
-<h1>Transactions#index</h1>
 
 <h1>Listing Transaction history</h1>
 
 <table>
   <tr>
     <th>Transaction No.</th>
+    <th>Location</th>
+    <th>Payment type.</th>
+    <th>Cashier</th>
 
     <th></th>
   </tr>
@@ -14,13 +16,18 @@
 <% @transactions.each do |transaction| %>
   <tr>
     <td><%= transaction.id %></td>
+    <td><%= transaction.location_id %></td>
+    <td><%= transaction.payment_type %></td>
+
+    <td><%= "#{transaction.employee.first_name} #{transaction.employee.last_name}" %></td>
+
 
     <td><%= link_to 'Show', transaction %></td>
   </tr>
 <% end %>
 </table>
 
-<%= link_to "next",transactions_path, :method => :post%>
+<%= link_to 'Back to Menu', sessions_store_main_path%>
 
 <br />
 

@@ -1,4 +1,5 @@
 class Transaction < ActiveRecord::Base
+
   
   class Transaction_Entry
     
@@ -34,7 +35,7 @@ class Transaction < ActiveRecord::Base
   end
   
   
-  serialize :product_list, Array
+  serialize :product_list
   
   belongs_to :location
   belongs_to :employee
