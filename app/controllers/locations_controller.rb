@@ -12,9 +12,12 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(params[:location])
     
+    @location.location = current_location
+    @location.location_type = "shelf"
+    
     respond_to do |format|
       if @location.save
-        format.html { redirect_to locations_path, notice: 'Location was successfully created.' }
+        format.html { redirect_to current_location, notice: 'Location was successfully created.' }
         format.json { render json: @location, status: :created, location: @location }
       else
         format.html { render action: "new" }
