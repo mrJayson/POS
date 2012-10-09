@@ -45,10 +45,7 @@ module TransactionsHelper
     stock_valid = stock.valid?
     
     #allocate attributes to transactions first
-    t.employee = current_user
-    t.location_id = current_store.id
-    t.total_price = get_total_price(t.product_list)
-    t.loyalty_points_to_add = get_total_loyalty_points(t.product_list)
+    t = update_transaction_info(t)
     t_valid = t.valid?
     100.times do |s|
       puts t_valid && stock_valid
@@ -59,6 +56,14 @@ module TransactionsHelper
     else
       
     end
+  end
+  
+  def update_transaction_info (t)
+    t.employee = current_user
+    t.location_id = current_store.id
+    t.total_price = get_total_price(t.product_list)
+    t.loyalty_points_to_add = get_total_loyalty_points(t.product_list)
+    return t
   end
   
   def find_product_on_shelf_with_store (product_id, location)
@@ -99,6 +104,34 @@ module TransactionsHelper
     t.loyalty_points_to_add = 0
     t.total_price = 0
     t.save
+  end
+  
+  def get_array_product_list
+    list = current_transaction.product_list
+    
+    array = []
+    
+    list.each do |e|
+      array << Product.find(e.product_id)
+    end
+    
+    return array
+  end
+  
+  def remove_from_product_list(product_id)
+    list = current_transaction.product_list
+    updated_list = current_transaction.product_list
+    
+    list.each do |item|
+      if item.product_id == product_id
+        updated_list = list - [item]
+      end
+    end
+    t = current_transaction
+    t.product_list = updated_list
+    t = update_transaction_info(t)
+    t.save
+    
   end
   
   def product_in_transaction?(product_id)

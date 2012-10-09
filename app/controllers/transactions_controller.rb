@@ -41,9 +41,6 @@ class TransactionsController < ApplicationController
   def show
     @transaction = Transaction.find(params[:id])
     
-    100.times do
-      puts @transaction
-    end
 
 
     respond_to do |format|
@@ -75,6 +72,10 @@ class TransactionsController < ApplicationController
       update_product_list(params[:transaction][:new_item])
       
       #redirect_to current_transaction
+    elsif params.has_key?('transaction') && params[:transaction].has_key?('remove_item')
+      
+      remove_from_product_list(params[:transaction][:remove_item])
+      
     else
       clear_product_list
     end
@@ -84,6 +85,10 @@ class TransactionsController < ApplicationController
   end
   
   def scan_item
+    @transaction = current_transaction
+  end
+  
+  def remove_item
     @transaction = current_transaction
   end
   
