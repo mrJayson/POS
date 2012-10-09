@@ -60,6 +60,13 @@ module StocksHelper
     return parent_location_stocks - current
   end
   
+  def update_stock(stock, update_quantity)
+    stock.quantity += update_quantity
+    
+    #should return stock that is updated but not saved
+    return stock
+  end
+  
   def product_name(product_id)
     return Product.find(product_id).name if product_id != nil
     

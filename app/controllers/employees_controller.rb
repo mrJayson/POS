@@ -32,7 +32,7 @@ class EmployeesController < ApplicationController
   def update
     @employee = Employee.find(params[:id])
     if @employee.update_attributes(params[:employee])
-      redirect_to @emlpoyee
+      redirect_to @employee
     else
       render 'edit'
     end

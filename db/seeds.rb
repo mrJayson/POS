@@ -144,6 +144,14 @@ Employee.create({
   status: "manager",
   location_id: Location.find_by_name("Northern Branch").id})
 Employee.create({
+  first_name: 'JasonJr',
+  last_name: 'Huang',
+  user_name: 'JasonJrHuang',
+  password: '1234',
+  password_confirmation: '1234', 
+  status: "staff",
+  location_id: Location.find_by_name("Northern Branch").id})
+Employee.create({
   first_name: 'Yere',
   last_name: 'Chung',
   user_name: 'YereChung',

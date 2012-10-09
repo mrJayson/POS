@@ -34,7 +34,6 @@ class Transaction < ActiveRecord::Base
     end
   end
   
-  
   serialize :product_list
   
   belongs_to :location

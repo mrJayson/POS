@@ -48,7 +48,6 @@ module TransactionsHelper
     t.location_id = current_store.id
     t.total_price = get_total_price(t.product_list)
     t.loyalty_points_to_add = get_total_loyalty_points(t.product_list)
-    
     t.save
   end
   

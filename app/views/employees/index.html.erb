@@ -4,13 +4,17 @@
   <tr>
     <th>Name</th>
     <th></th>
+    <th>Status</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @employees.each do |employee| %>
   <tr>
-    <td><%= employee.first_name %></td>
+    <td><%= "#{employee.first_name} #{employee.last_name}" %></td>
+    <th></th>
+    <td><%= employee.status %></td>
+
 
     <td><%= link_to 'Show', employee %></td>
     <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
