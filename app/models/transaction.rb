@@ -8,6 +8,7 @@ class Transaction < ActiveRecord::Base
     @quantity = 0
     @price = 0
     
+    #refactor to remove getter and setter functions
     def product_id
       @product_id
     end

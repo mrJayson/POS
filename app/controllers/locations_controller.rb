@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   include ApplicationHelper
   def index
-    #should never reach this page
+    #this page is not needed, should never reach this page
     @locations = Location.all
   end
 
@@ -53,11 +53,11 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
-    
+    #change location type for different filtering of views
     session[:current_location_type] = nil
     session[:shelf_id] = nil
-    #change location type for different filtering of views
     
+    #redirects to either shelf, store or warehouse controller
     redirect_to controller: 'locations', action: @location.location_type, id: @location.id
   end
   

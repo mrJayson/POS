@@ -2,6 +2,7 @@ class EmployeesController < ApplicationController
   include ApplicationHelper
   include EmployeesHelper
   def index
+    #locate all employees working for 'current_store'
     @employees = employees_at_store
   end
 
@@ -11,6 +12,7 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new(params[:employee])
+    #when creating new employee, the store they work at is assigned by the current_store logged in
     @employee.location_id = current_store.id
     if @employee.save
       redirect_to employees_path

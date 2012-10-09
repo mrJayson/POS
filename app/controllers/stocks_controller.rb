@@ -24,6 +24,8 @@ class StocksController < ApplicationController
     
     marginal_movement_quantity=0
     
+    #create new stock at the given location
+    #can refactor the if statement
     if current_location_type == "store"
       @stock.location = current_store
     elsif
@@ -65,9 +67,9 @@ class StocksController < ApplicationController
   
   def update
     @stock = Stock.find(params[:id])
-    routing = ""
-    pass = false
-    #if movement of functions
+    routing = ""# type string
+    pass = false# true if update successful
+    #if statement for product movement
     if params[:stock].has_key?(:movement_direction) && params[:stock].has_key?(:update_quantity)
       
       to_stock = @stock
@@ -80,6 +82,7 @@ class StocksController < ApplicationController
         #simulates products moving in opposite direction
       end
       
+      #update to and from stock records
       to_stock = update_stock(to_stock, marginal_movement)
       set_marginal_quantity(marginal_movement)
       to_stock_valid = to_stock.valid?
@@ -87,20 +90,23 @@ class StocksController < ApplicationController
       set_marginal_quantity(-marginal_movement)
       from_stock_valid = from_stock.valid?
       
+      #check if the movement is valid
       if to_stock_valid && from_stock_valid
+        #pass = true, now able to redirect out of update page
         pass = true
         to_stock.save
         from_stock.save
       else
         routing = "product_movement"
       end
-    #if update quantity
+    #if statement for update quantity
     elsif params[:stock].has_key?(:update_quantity)
       #args update_quantity, stock object
       @stock = update_stock(@stock, params[:stock][:update_quantity].to_i)
       set_marginal_quantity(params[:stock][:update_quantity].to_i)
       
       if @stock.save
+        #pass = true, now able to redirect out of update page
         pass = true
       else
         routing = "quantity"
@@ -112,6 +118,7 @@ class StocksController < ApplicationController
     if pass
       redirect_to controller: 'locations', action: current_location_type, :id => current_location.id, notice: 'Stock was successfully updated.'
     else
+      #if update not successful, refresh page
     render action: routing
     
     end

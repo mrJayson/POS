@@ -29,11 +29,10 @@ class TransactionsController < ApplicationController
 
   def create
     #complete transaction before make new one
+    #must change to allow for different payment types
     current_transaction.update_attributes({:payment_type => 'cash'})
     
-    
-    
-    
+    # creates new empty transaction record
     complete_transaction
     redirect_to current_transaction
 

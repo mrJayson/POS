@@ -79,10 +79,13 @@ module TransactionsHelper
   end
   
   def get_total_loyalty_points(product_list)
+    #loyalty points a ratio of price, can reciprocal to get different points rate
     return get_total_price(product_list)/2
   end
   
+  #get the price of a product list
   def get_total_price(product_list)
+    
     total = 0
     product_list.each do |item|
       total += item.price * item.quantity

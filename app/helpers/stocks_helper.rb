@@ -44,19 +44,21 @@ module StocksHelper
   
   def get_remaining_products_for_register (location)
     current = []
-    
     parent_location_stocks = []
     
     location.stocks.each do |s|
+      #get stocks currently registered
       current << s.product
     end
     
     location.location.stocks.each do |s|
+      #get all stock in parent location, all possible products for registration
       parent_location_stocks << s.product
     end
     
     #refactor this function
     
+    #all possible products - products already registered
     return parent_location_stocks - current
   end
   
@@ -68,6 +70,8 @@ module StocksHelper
   end
   
   def product_name(product_id)
+    #given an id, find the product name
+    #deprecated
     return Product.find(product_id).name if product_id != nil
     
   end

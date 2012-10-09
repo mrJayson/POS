@@ -32,6 +32,7 @@ module ApplicationHelper
   end
   
   def current_location
+    #must refactor to use this function more
     return current_shelf if current_shelf != nil
     
     if current_location_type == "warehouse"

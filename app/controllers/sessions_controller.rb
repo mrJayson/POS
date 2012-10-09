@@ -30,9 +30,12 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    #nil all session session data so access requires log in again
     session[:user_id] = nil
     session[:store_id] = nil
     session[:status] = nil
+    session[:shelf_id] = nil
+    session[:current_location_type] = nil
     
     respond_to do |format|
       format.html { redirect_to root_url, :notice => "Logged out!" }
