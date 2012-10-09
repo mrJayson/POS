@@ -4,10 +4,9 @@
 
 <table>
   <tr>
-    <th>Transaction No.</th>
-    <th>Location</th>
-    <th>Payment type.</th>
-    <th>Cashier</th>
+    <th>Transaction No:</th>
+    <th>Payment type:</th>
+    <th>Cashier:</th>
 
     <th></th>
   </tr>
@@ -16,7 +15,6 @@
 <% @transactions.each do |transaction| %>
   <tr>
     <td><%= transaction.id %></td>
-    <td><%= transaction.location_id %></td>
     <td><%= transaction.payment_type %></td>
 
     <td><%= "#{transaction.employee.first_name} #{transaction.employee.last_name}" %></td>

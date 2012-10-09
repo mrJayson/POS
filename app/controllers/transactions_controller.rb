@@ -30,7 +30,10 @@ class TransactionsController < ApplicationController
   def create
     #complete transaction before make new one
     current_transaction.update_attributes({:payment_type => 'cash'})
-    #reduce shelf stock according to product_list
+    
+    
+    
+    
     complete_transaction
     redirect_to current_transaction
 

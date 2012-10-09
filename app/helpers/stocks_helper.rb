@@ -25,7 +25,7 @@ module StocksHelper
     return @@marginal_quantity
   end
   
-  def find_stock_in_store(product_id)
+  def find_stock_in_location(location, product_id)
     #given a product_id, find the stock object associated with it
     Stock.find(:first, :conditions => ["location_id = ? AND product_id = ?", current_store.id, product_id])
   end

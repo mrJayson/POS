@@ -16,7 +16,7 @@ module TransactionsHelper
     entry.product_id = product_id
     entry.transaction_id = current_transaction.id
     entry.quantity = 1
-    entry.price = find_stock_in_store(product_id).price
+    entry.price = find_stock_in_location(current_store, product_id).price
     
     return entry
     
@@ -34,21 +34,48 @@ module TransactionsHelper
       
     #if not make new transaction entry
     else
-
       entry = new_transaction_entry(product_id)
-
       #added attributes in above function
       current_transaction.product_list << entry
       t.product_list << entry
-        
     end
+    #minus 1 stock from shelf
+    stock = find_product_on_shelf_with_store(product_id, current_store)
+    stock.quantity -= 1
+    stock_valid = stock.valid?
     
     #allocate attributes to transactions first
     t.employee = current_user
     t.location_id = current_store.id
     t.total_price = get_total_price(t.product_list)
     t.loyalty_points_to_add = get_total_loyalty_points(t.product_list)
-    t.save
+    t_valid = t.valid?
+    100.times do |s|
+      puts t_valid && stock_valid
+    end
+    if t_valid && stock_valid
+      stock.save
+      t.save
+    else
+      
+    end
+  end
+  
+  def find_product_on_shelf_with_store (product_id, location)
+    shelves = location.locations
+    shelf_stock = nil
+    shelves.each do |shelf|
+      shelf.stocks.each do |stock|
+        
+        if stock.product_id == product_id.to_i
+          
+          shelf_stock = stock
+        end
+      end
+    end
+    
+    
+    return shelf_stock
   end
   
   def get_total_loyalty_points(product_list)
