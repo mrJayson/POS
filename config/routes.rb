@@ -15,6 +15,8 @@ POSV2::Application.routes.draw do
   
   get 'transactions/pay'
   
+  put 'transactions/void_transaction'
+  
   resources :transactions
 
   resources :sessions, :only => [:create, :destroy]

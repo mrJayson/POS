@@ -40,6 +40,10 @@ class TransactionsController < ApplicationController
 
   def show
     @transaction = Transaction.find(params[:id])
+    
+    100.times do
+      puts @transaction
+    end
 
 
     respond_to do |format|
@@ -66,19 +70,25 @@ class TransactionsController < ApplicationController
   def update
     @transaction = Transaction.find(params[:id])
     
-    if params[:transaction].has_key?('new_item')
+    if params.has_key?('transaction') && params[:transaction].has_key?('new_item')
       
       update_product_list(params[:transaction][:new_item])
       
-      redirect_to current_transaction
+      #redirect_to current_transaction
+    else
+      clear_product_list
     end
     
-    #redirect_to current_transaction
+    redirect_to current_transaction
 
   end
   
   def scan_item
     @transaction = current_transaction
+  end
+  
+  def void_transaction
+    
   end
 
 
