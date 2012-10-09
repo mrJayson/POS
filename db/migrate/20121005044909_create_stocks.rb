@@ -6,7 +6,7 @@ class CreateStocks < ActiveRecord::Migration
       t.integer :benchmark
       t.integer :standard_quantity
       t.integer :quantity, :default => 0
-      t.integer :price
+      t.decimal :price
 
       t.timestamps
     end

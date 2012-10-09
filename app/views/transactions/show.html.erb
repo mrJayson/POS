@@ -10,7 +10,7 @@
     <th>Quantity</th>
   </tr>
 
-<h3>Total Price: <%= @transaction.total_price%></h3>
+<h3>Total Price: <%= number_to_currency(@transaction.total_price)%></h3>
 
 <h3>Total Loyalty Points: <%= @transaction.loyalty_points_to_add%></h3>
 
@@ -19,7 +19,7 @@
 
     <td><%= product_name(s.product_id) %></td>
     <th></th>
-	<td><%= s.price %></td>
+	<td><%= number_to_currency(s.price) %></td>
 	<th></th>
     <td><%= s.quantity %></td>
     <td><%#= link_to 'Show', stock %></td>

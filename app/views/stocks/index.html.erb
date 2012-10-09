@@ -14,7 +14,7 @@
     <td><%= stock.location.name %></td>
     <td><%= stock.product.name %></td>
     <td><%= stock.quantity%></td>
-    <td><%= stock.price%></td>
+    <td><%= number_to_currency(stock.price)%></td>
     <td><%= link_to 'Show', stock %></td>
     <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
 	<td><%= link_to 'Change Stock Quantity', :action => 'quantity', :id => stock %></td>
