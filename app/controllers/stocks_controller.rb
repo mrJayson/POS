@@ -37,8 +37,9 @@ class StocksController < ApplicationController
     
     respond_to do |format|
       if @stock.save
+        format.html { redirect_to current_location, notice: 'Stock was successfully updated.'}
 
-        format.html { redirect_to controller: 'locations', action: current_location_type, :id => current_location.id, notice: 'Stock was successfully updated.'}
+        #format.html { redirect_to controller: 'locations', action: current_location_type, :id => current_location.id, notice: 'Stock was successfully updated.'}
         format.json { render json: @stock, status: :created, location: @stock }
       else
         format.html { render action: "new" }
@@ -112,11 +113,17 @@ class StocksController < ApplicationController
         routing = "quantity"
       end
     else
+      #normal edit if statement
+      if @stock.update_attributes(params[:stock])
+        pass = true
+      else
+        routing = "edit"
+      end
       
     end
 
     if pass
-      redirect_to controller: 'locations', action: current_location_type, :id => current_location.id, notice: 'Stock was successfully updated.'
+      redirect_to current_location, notice: 'Stock was successfully updated.'
     else
       #if update not successful, refresh page
     render action: routing
@@ -129,7 +136,7 @@ class StocksController < ApplicationController
     @stock.destroy
     
     respond_to do |format|
-      format.html { redirect_to controller: 'locations', action: current_location_type, :id => current_store.id}
+      format.html { redirect_to current_location}
       format.html { head :no_content }
     end
   end

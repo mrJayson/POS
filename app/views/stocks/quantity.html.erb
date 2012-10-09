@@ -24,10 +24,4 @@
 <% end %>
 
 
-<%if current_location_type == "shelf"%>
-<%= link_to 'Back', current_shelf %>
-<% elsif current_location_type == "store"%>
-<%= link_to 'Back', current_store %>
-<% else %>
-<%= link_to 'Back', warehouse %>
-<% end %>
+<%= link_to 'Back', current_location %>
