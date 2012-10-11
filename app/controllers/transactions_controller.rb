@@ -69,7 +69,9 @@ class TransactionsController < ApplicationController
     
     if params.has_key?('transaction') && params[:transaction].has_key?('new_item')
       
-      update_product_list(params[:transaction][:new_item])
+      update_product_list(params[:transaction][:new_item], params[:transaction][:amount_scanned].to_i)
+      
+      
       
       #redirect_to current_transaction
     elsif params.has_key?('transaction') && params[:transaction].has_key?('remove_item')

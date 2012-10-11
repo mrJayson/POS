@@ -17,6 +17,10 @@
 	    <%= f.label :product %><br />
 	  	<%= f.collection_select :new_item, get_all_products_on_all_shelves(current_store), :id, :name%>
 	  </div>
+	  <div class="field">
+	    <%= f.label :amount %><br />
+	  	<%= f.number_field :amount_scanned, :value => 1%>
+	  </div>
 
 	  <div class="actions">
 	    <%= f.submit %>

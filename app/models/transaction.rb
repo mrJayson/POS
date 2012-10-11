@@ -43,7 +43,7 @@ class Transaction < ActiveRecord::Base
   
   attr_accessible :loyalty_points_to_add, :payment_type, :total_price, :product_list, :location_id
   
-  attr_accessor :new_item, :remove_item
+  attr_accessor :new_item, :remove_item, :amount_scanned
   
   validates_inclusion_of :payment_type, :in => ["pending", "cash", "credit"]
   

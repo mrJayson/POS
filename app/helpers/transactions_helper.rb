@@ -11,30 +11,30 @@ module TransactionsHelper
     t = Transaction.create({:payment_type => 'pending', product_list: []})
   end
   
-  def new_transaction_entry(product_id)
+  def new_transaction_entry(product_id, amount)
     entry = Transaction::Transaction_Entry.new
     entry.product_id = product_id
     entry.transaction_id = current_transaction.id
-    entry.quantity = 1
+    entry.quantity = amount
     entry.price = find_stock_in_location(current_store, product_id).price
     
     return entry
     
   end
   
-  def update_product_list(product_id)
+  def update_product_list(product_id, amount)
     #if product exists in transactions currently, update quantity
     t = current_transaction
     if product_in_transaction?(product_id)
       t.product_list.each do |item|
         if item.product_id == product_id
-          item.quantity += 1
+          item.quantity += amount
         end
       end
       
     #if not make new transaction entry
     else
-      entry = new_transaction_entry(product_id)
+      entry = new_transaction_entry(product_id, amount)
       #added attributes in above function
       current_transaction.product_list << entry
       t.product_list << entry
