@@ -22,10 +22,10 @@ module TransactionsHelper
     
   end
   
-  def update_product_list(product_id, amount)
+  def update_product_list(transaction, product_id, amount)
     #if product exists in transactions currently, update quantity
-    t = current_transaction
-    if product_in_transaction?(product_id)
+    t = transaction
+    if product_in_transaction?(transaction, product_id)
       t.product_list.each do |item|
         if item.product_id == product_id
           item.quantity += amount
@@ -66,9 +66,9 @@ module TransactionsHelper
     return t
   end
   
-  def find_product_on_shelf_with_store (product_id, location)
-    shelves = location.locations
+  def find_product_on_shelf_with_store (product_id, store)
     shelf_stock = nil
+    shelves = store.locations
     shelves.each do |shelf|
       shelf.stocks.each do |stock|
         
@@ -98,16 +98,16 @@ module TransactionsHelper
     return total
   end
   
-  def clear_product_list
-    t = current_transaction
+  def clear_product_list(transaction)
+    t = transaction
     t.product_list = []
     t.loyalty_points_to_add = 0
     t.total_price = 0
     t.save
   end
   
-  def get_array_product_list
-    list = current_transaction.product_list
+  def get_array_product_list(transaction)
+    list = transaction.product_list
     
     array = []
     
@@ -118,8 +118,8 @@ module TransactionsHelper
     return array
   end
   
-  def remove_from_product_list(product_id)
-    list = current_transaction.product_list
+  def remove_from_product_list(transaction, product_id)
+    list = transaction.product_list
     updated_list = current_transaction.product_list
     
     list.each do |item|
@@ -134,7 +134,7 @@ module TransactionsHelper
     
   end
   
-  def product_in_transaction?(product_id)
+  def product_in_transaction?(transaction, product_id)
     
     transaction = current_transaction
     

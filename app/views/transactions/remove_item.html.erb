@@ -15,7 +15,7 @@
 
 	  <div class="field">
 	    <%= f.label :product %><br />
-	  	<%= f.collection_select :remove_item, get_array_product_list, :id, :name%>
+	  	<%= f.collection_select :remove_item, get_array_product_list(current_transaction), :id, :name%>
 	  </div>
 
 	  <div class="actions">

@@ -3,7 +3,7 @@ class EmployeesController < ApplicationController
   include EmployeesHelper
   def index
     #locate all employees working for 'current_store'
-    @employees = employees_at_store
+    @employees = employees_at_store(current_store)
   end
 
   def new

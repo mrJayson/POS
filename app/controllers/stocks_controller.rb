@@ -93,15 +93,6 @@ class StocksController < ApplicationController
       set_marginal_quantity(-marginal_movement)
       from_stock_valid = from_stock.valid?
       
-      100.times do
-        
-        puts from_stock.location.name
-        puts from_stock_valid
-        puts to_stock.location.name
-        puts to_stock_valid
-        
-      end
-      
       #check if the movement is valid
       if to_stock_valid && from_stock_valid
         #pass = true, now able to redirect out of update page
