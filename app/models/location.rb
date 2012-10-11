@@ -14,6 +14,7 @@ class Location < ActiveRecord::Base
   attr_accessible :name, :location_type, :max_capacity, :location_id, :stock_id
   
   validates_presence_of :name, :location_type, :max_capacity
+  
   validates_inclusion_of :location_type, :in => ["shelf", "store", "warehouse"]
   validates_numericality_of :max_capacity, :greater_than_or_equal_to => 0
   
@@ -43,7 +44,7 @@ class Location < ActiveRecord::Base
   #all store names must be unique, not shelves as they are typically aisle numbers
   validates_uniqueness_of :name, :unless => :is_shelf?
   def is_shelf?
-    :location_type == "shelf"
+    location_type == "shelf"
   end
   
 end

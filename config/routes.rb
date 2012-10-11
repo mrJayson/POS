@@ -39,6 +39,9 @@ POSV2::Application.routes.draw do
   
   resources :locations
   
+  
+  get 'employees/:id/promote_employee', :to => 'employees#promote_employee', :as => 'employee_status'
+  
   resources :employees
   
   #resources :transactions, :except => [:edit, :update]

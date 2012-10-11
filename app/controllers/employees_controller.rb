@@ -30,20 +30,31 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
     
   end
+  
+  def promote_employee
+    @employee = Employee.find(params[:id])
+  end
 
   def update
     @employee = Employee.find(params[:id])
+    
+    
     if @employee.update_attributes(params[:employee])
       redirect_to @employee
     else
-      render 'edit'
+      if params[:employee].has_key?(:status)
+        render 'promote_employee'
+      else
+        render 'edit'
+      end
+      
     end
   end
 
   def destroy
-    @employee = Employee.find(find[:id])
+    @employee = Employee.find(params[:id])
     @employee.destroy
     
-    redirect_to employee_url
+    redirect_to employees_path
   end
 end
