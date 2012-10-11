@@ -76,4 +76,15 @@ module StocksHelper
     
   end
   
+  def get_all_products_on_all_shelves(location)
+    products = []
+    
+    location.locations.each do |shelf|
+      shelf.stocks.each do |stock|
+        products << stock.product
+      end
+    end
+    return products
+  end
+  
 end
