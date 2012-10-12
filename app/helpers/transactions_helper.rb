@@ -136,14 +136,22 @@ module TransactionsHelper
   
   def product_in_transaction?(transaction, product_id)
     
-    transaction = current_transaction
+    t = transaction
     
-    current_transaction.product_list.each do |item|
+    t.product_list.each do |item|
       if product_id == item.product_id
         return true
       end
     end
     return false
+  end
+  
+  def add_member(transaction, member)
+    
+    t = transaction
+    t.member = Member.find_by_user_name("member")
+    
+    t.save 
   end
   
 end

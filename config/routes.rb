@@ -15,6 +15,8 @@ POSV2::Application.routes.draw do
   
   post 'transactions/remove_item'
   
+  post 'transactions/scan_member'
+  
   get 'transactions/pay'
   
   put 'transactions/void_transaction'

@@ -78,6 +78,14 @@ class TransactionsController < ApplicationController
       
       remove_from_product_list(@transaction, params[:transaction][:remove_item])
       
+    elsif params.has_key?('transaction') && params[:transaction].has_key?('member_id')
+       #scanning in a member for the transaction
+       add_member(@transaction, params[:transaction][:scan_member])
+       10.times do 
+         puts params[:transaction][:scan_member] == nil
+       end
+       
+       
     else
       clear_product_list(@transaction)
     end
@@ -96,6 +104,10 @@ class TransactionsController < ApplicationController
   
   def void_transaction
     
+  end
+  
+  def scan_member
+    @transaction = current_transaction
   end
 
 

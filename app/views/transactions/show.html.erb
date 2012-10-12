@@ -10,6 +10,8 @@
     <th>Quantity</th>
   </tr>
 
+<h3>Member in Session: <%= @transaction.member == nil %></h3>
+
 <h3>Total Price: <%= number_to_currency(@transaction.total_price)%></h3>
 
 <h3>Total Loyalty Points: <%= @transaction.loyalty_points_to_add%></h3>
@@ -27,6 +29,7 @@
 	<td><%#= link_to 'Change Stock Quantity', :action => 'quantity', :id => stock %></td>
     <td><%#= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
+
 <% end %>
 </table>
 
@@ -39,6 +42,7 @@
 
 <%= link_to " void transaction ", current_transaction, :method => :put%></br>
 
+<%= link_to 'scan member', transactions_scan_member_path, :method => :post %></br>
 <%#%>
 <!-- create link for removing products-->
 <%# create link for scanning a member, if there is already a member scanned link is not present if possible%>
