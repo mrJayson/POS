@@ -1,6 +1,20 @@
 POSV2::Application.routes.draw do
   
 
+  get "members/index"
+
+  get "members/new"
+
+  get "members/create"
+
+  get "members/show"
+
+  get "members/edit"
+
+  get "members/update"
+
+  get "members/destroy"
+
   root :to => 'sessions#signin'
   
   get 'sessions/warehouse_main'
@@ -43,6 +57,8 @@ POSV2::Application.routes.draw do
   get 'employees/:id/promote_employee', :to => 'employees#promote_employee', :as => 'employee_status'
   
   resources :employees
+  
+  resources :members
   
   #resources :transactions, :except => [:edit, :update]
 
