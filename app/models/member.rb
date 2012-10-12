@@ -1,4 +1,5 @@
 class Member < ActiveRecord::Base
+  include MembersHelper
   
   has_many :transactions
   

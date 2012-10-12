@@ -1,2 +1,32 @@
-<h1>Members#index</h1>
-<p>Find me in app/views/members/index.html.erb</p>
+<h1>Members</h1>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @members.each do |member| %>
+  <tr>
+	
+	<td><%= member.first_name %> </td>
+    <td><%= member.last_name %></td>
+    <th></th>
+    <td></td>
+
+
+    <td><%= link_to 'Show', member %></td>
+    <td><%= link_to 'Edit Account', edit_member_path(member) %></td>
+    <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Member', new_member_path %></br>
+
+<%= link_to 'Back to Menu', sessions_store_main_path%>

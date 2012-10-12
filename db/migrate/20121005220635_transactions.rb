@@ -4,7 +4,7 @@ class Transactions < ActiveRecord::Migration
       t.integer  :loyalty_points_to_add
       t.string :payment_type
       t.string :product_list
-      t.integer :total_price
+      t.decimal :total_price
       t.references :location
       t.references :member
       t.references :employee

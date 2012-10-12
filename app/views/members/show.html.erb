@@ -1,2 +1,26 @@
-<h1>Members#show</h1>
-<p>Find me in app/views/members/show.html.erb</p>
+<h1>Members</h1>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+	<th>User Name</th>
+    <th>Loyalty Points</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+
+  <tr>
+    <td><%= @member.first_name %></td>
+    <td><%= @member.last_name %></td>
+	<td><%= @member.user_name %></td>
+	<td><%= get_loyalty_points(@member) %></td>
+  </tr>
+
+</table>
+
+<br />
+
+<%= link_to 'Back to Member list', members_path %>
+

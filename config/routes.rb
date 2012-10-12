@@ -1,20 +1,6 @@
 POSV2::Application.routes.draw do
   
 
-  get "members/index"
-
-  get "members/new"
-
-  get "members/create"
-
-  get "members/show"
-
-  get "members/edit"
-
-  get "members/update"
-
-  get "members/destroy"
-
   root :to => 'sessions#signin'
   
   get 'sessions/warehouse_main'
@@ -34,6 +20,8 @@ POSV2::Application.routes.draw do
   put 'transactions/void_transaction'
   
   resources :transactions
+  
+  resources :members
 
   resources :sessions, :only => [:create, :destroy]
 
