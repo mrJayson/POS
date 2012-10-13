@@ -8,7 +8,7 @@ module TransactionsHelper
   end
   
   def complete_transaction
-    t = Transaction.create({:payment_type => 'pending', product_list: []})
+    Transaction.create({:payment_type => 'pending', product_list: []})
   end
   
   def new_transaction_entry(product_id, amount)
@@ -149,7 +149,7 @@ module TransactionsHelper
   def add_member(transaction, member)
     
     t = transaction
-    t.member = Member.find_by_user_name("member")
+    t.member = Member.find_by_user_name(member)
     
     t.save 
   end

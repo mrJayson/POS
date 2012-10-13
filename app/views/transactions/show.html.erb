@@ -10,7 +10,8 @@
     <th>Quantity</th>
   </tr>
 
-<h3>Member in Session: <%= @transaction.member == nil %></h3>
+<h3>Member in Session: <%= @transaction.member.user_name unless @transaction.member == nil %>
+	<%= "No Member" if @transaction.member == nil %></h3>
 
 <h3>Total Price: <%= number_to_currency(@transaction.total_price)%></h3>
 

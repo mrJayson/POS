@@ -80,10 +80,7 @@ class TransactionsController < ApplicationController
       
     elsif params.has_key?('transaction') && params[:transaction].has_key?('member_id')
        #scanning in a member for the transaction
-       add_member(@transaction, params[:transaction][:scan_member])
-       10.times do 
-         puts params[:transaction][:scan_member] == nil
-       end
+       add_member(@transaction, params[:transaction][:member_id])
        
        
     else

@@ -8,6 +8,9 @@ class Transaction < ActiveRecord::Base
     @quantity = 0
     @price = 0
     
+    attr_accessor :product_id, :transaction_id, :quantity, :price
+    
+=begin    
     #refactor to remove getter and setter functions
     def product_id
       @product_id
@@ -33,6 +36,7 @@ class Transaction < ActiveRecord::Base
     def price=(p)
       @price = p
     end
+=end
   end
   
   serialize :product_list
