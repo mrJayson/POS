@@ -13,9 +13,11 @@
 <h3>Member in Session: <%= @transaction.member.user_name unless @transaction.member == nil %>
 	<%= "No Member" if @transaction.member == nil %></h3>
 
-<h3>Total Price: <%= number_to_currency(@transaction.total_price)%></h3>
+<h3>Total Price: <%= number_to_currency(@transaction.total_price) unless number_to_currency(@transaction.total_price) == nil%>
+	<%= 0 if number_to_currency(@transaction.total_price) == nil%></h3>
 
-<h3>Total Loyalty Points: <%= @transaction.loyalty_points_to_add%></h3>
+<h3>Total Loyalty Points: <%= @transaction.loyalty_points_to_add unless @transaction.loyalty_points_to_add == nil%>
+	<%= 0 if @transaction.loyalty_points_to_add == nil%></h3>
 
 <% @transaction.product_list.each do |s|%>
   <tr>

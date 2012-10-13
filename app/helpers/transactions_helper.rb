@@ -41,15 +41,13 @@ module TransactionsHelper
     end
     #minus 1 stock from shelf
     stock = find_product_on_shelf_with_store(product_id, current_store)
-    stock.quantity -= 1
+    stock.quantity -= amount
     stock_valid = stock.valid?
     
     #allocate attributes to transactions first
     t = update_transaction_info(t)
     t_valid = t.valid?
-    100.times do |s|
-      puts t_valid && stock_valid
-    end
+    
     if t_valid && stock_valid
       stock.save
       t.save
@@ -100,7 +98,14 @@ module TransactionsHelper
   
   def clear_product_list(transaction)
     t = transaction
+    t.product_list.each do |product|
+      stock = find_product_on_shelf_with_store(product.product_id, current_store)
+      stock.quantity += product.quantity
+      stock.save
+    end
+    
     t.product_list = []
+    
     t.loyalty_points_to_add = 0
     t.total_price = 0
     t.save
@@ -124,6 +129,9 @@ module TransactionsHelper
     
     list.each do |item|
       if item.product_id == product_id
+        stock = find_product_on_shelf_with_store(item.product_id, current_store)
+        stock.quantity += item.quantity
+        stock.save
         updated_list = list - [item]
       end
     end
