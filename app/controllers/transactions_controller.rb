@@ -23,17 +23,16 @@ class TransactionsController < ApplicationController
     end
   end
 
-  def pay
-    
-  end
-
   def create
     #complete transaction before make new one
-    #must change to allow for different payment types
-    current_transaction.update_attributes({:payment_type => 'cash'})
-    
-    # creates new empty transaction record
-    complete_transaction
+    payment = params[:transaction][:payment].to_i
+    #only able to update if payment is enough
+    if payment >= get_total_price(current_transaction.product_list)
+      current_transaction.update_attributes({:payment_type => params[:transaction][:payment_type]})
+      # creates new empty transaction record
+      complete_transaction
+      #redirect_to current_transaction
+    end
     redirect_to current_transaction
 
   end
@@ -79,10 +78,13 @@ class TransactionsController < ApplicationController
       remove_from_product_list(@transaction, params[:transaction][:remove_item])
       
     elsif params.has_key?('transaction') && params[:transaction].has_key?('member_id')
-       #scanning in a member for the transaction
-       add_member(@transaction, params[:transaction][:member_id])
+      #scanning in a member for the transaction
+      add_member(@transaction, params[:transaction][:member_id])
        
-       
+    elsif params.has_key?('transaction') && params[:transaction].has_key?('payment')
+
+      #redirect_to :controller => 'transactions', :action => 'create', :transaction => params[:transaction]
+      #return
     else
       clear_product_list(@transaction)
     end
@@ -98,6 +100,10 @@ class TransactionsController < ApplicationController
   def remove_item
     @transaction = current_transaction
   end
+  
+  #def complete_transaction
+  #  @transaction = current_transaction
+  #end
   
   def void_transaction
     

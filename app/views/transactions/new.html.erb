@@ -15,25 +15,20 @@
   <% end %>
 
 
-	<div class = "field">
-		<%= f.label :product_list%> <br />
-		<%= f.collection_select :product_list, Product.all, :id, :name%>
-	</div>
-
 
 	<p>
 		<b>Total Price:</b>
-		<%= @transaction.total_price%>
+		$<%= current_transaction.total_price%>
 	</p>
 	
   <div class="field">
     <%= f.label :payment_type %><br />
-	<%= f.select :payment_type, [['Cash', 'Cash'],['EFTPOS','EFTPOS'], ['Gift Card', 'Gift Card']] %>
+	<%= f.select :payment_type, [['cash', 'cash'],['EFTPOS','EFTPOS'], ['gift card', 'gift card']] %>
   </div>
   
   <div class="field">
     <%= f.label :amount_received %><br />
-    <%= f.number_field :amount_received %>
+    <%= f.number_field :payment %>
   </div>
   
   <p>
@@ -48,5 +43,5 @@
   
 <% end %>
 
-<%= link_to 'Back', transactions_path %>
+<%= link_to 'Back', current_transaction %>
 

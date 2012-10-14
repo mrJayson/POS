@@ -11,13 +11,13 @@ POSV2::Application.routes.draw do
   
   get 'sessions/signout'
   
-  post 'transactions/scan_item'
+  #post 'transactions/scan_item'
+  get '/transactions/:id/scan_item', :to => 'transactions#scan_item', :as => 'transactions_scan_item'
   
-  post 'transactions/remove_item'
+  #post 'transactions/remove_item'
+  get '/transactions/:id/remove_item', :to => 'transactions#remove_item', :as => 'transactions_remove_item'
   
   post 'transactions/scan_member'
-  
-  get 'transactions/pay'
   
   put 'transactions/void_transaction'
   

@@ -10,33 +10,6 @@ class Transaction < ActiveRecord::Base
     
     attr_accessor :product_id, :transaction_id, :quantity, :price
     
-=begin    
-    #refactor to remove getter and setter functions
-    def product_id
-      @product_id
-    end
-    def product_id=(p)
-      @product_id = p
-    end
-    def transaction_id
-      @transaction_id
-    end
-    def transaction_id=(t)
-      @transaction_id = t
-    end
-    def quantity
-      @quantity
-    end  
-    def quantity=(q)
-      @quantity = q
-    end
-    def price
-      @price
-    end
-    def price=(p)
-      @price = p
-    end
-=end
   end
   
   serialize :product_list
@@ -47,9 +20,9 @@ class Transaction < ActiveRecord::Base
   
   attr_accessible :loyalty_points_to_add, :payment_type, :total_price, :product_list, :location_id
   
-  attr_accessor :new_item, :remove_item, :amount_scanned, :member_id
+  attr_accessor :new_item, :remove_item, :amount_scanned, :member_id, :payment, :type_payment
   
-  validates_inclusion_of :payment_type, :in => ["pending", "cash", "credit"]
+  validates_inclusion_of :payment_type, :in => ["pending", "cash", "EFTPOS", "gift card"]
   
   validates_presence_of :loyalty_points_to_add, :payment_type, :product_list, :total_price, :location, :location_id, :employee, :if => :paid?
   validates_numericality_of :loyalty_points_to_add, :total_price , :if => :paid?

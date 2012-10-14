@@ -1,6 +1,6 @@
 <h1>Scan new item<h1>
 	
-	<%= form_for(@transaction) do |f| %>
+	<%= form_for(@transaction, :action => :create) do |f| %>
 	  <% if @transaction.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this product from being saved:</h2>
