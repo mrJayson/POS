@@ -73,35 +73,13 @@ class StocksController < ApplicationController
     #if statement for product movement
     if params[:stock].has_key?(:movement_direction) && params[:stock].has_key?(:update_quantity)
       
-      to_stock = @stock
-      from_stock = Stock.find(:first, :conditions => ["location_id = ? AND product_id = ?", @stock.location.location.id, @stock.product_id])
-
-      marginal_movement = params[:stock][:update_quantity].to_i
-      
-      set_direction(params[:stock][:movement_direction])
-      if get_direction == "From"
+      pass = move_stock(@stock, params[:stock][:movement_direction], params[:stock][:update_quantity].to_i)
+      if pass
         
-        marginal_movement *= -1
-        #simulates products moving in opposite direction
-      end
-      
-      #update to and from stock records
-      to_stock = update_stock(to_stock, marginal_movement)
-      set_marginal_quantity(marginal_movement)
-      to_stock_valid = to_stock.valid?
-      from_stock = update_stock(from_stock, -marginal_movement)
-      set_marginal_quantity(-marginal_movement)
-      from_stock_valid = from_stock.valid?
-      
-      #check if the movement is valid
-      if to_stock_valid && from_stock_valid
-        #pass = true, now able to redirect out of update page
-        pass = true
-        to_stock.save
-        from_stock.save
       else
-        routing = "product_movement"
+        routing = "quantity"
       end
+      
     #if statement for update quantity
     elsif params[:stock].has_key?(:update_quantity)
       #args update_quantity, stock object
@@ -114,6 +92,7 @@ class StocksController < ApplicationController
       else
         routing = "quantity"
       end
+
     else
       #normal edit if statement
       if @stock.update_attributes(params[:stock])
@@ -146,4 +125,6 @@ class StocksController < ApplicationController
   def product_movement
     @stock = Stock.find(params[:id])
   end
+  
+
 end

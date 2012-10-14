@@ -12,6 +12,11 @@
   <%= sum_location_quantity (@location) %>
 </p>
 
+<p>
+  <b></b>
+  <td><%= link_to 'Orders', order_location_path(@location)%></td>
+</p>
+
 <%= link_to 'register new product onto shelf', new_stock_path%></br>
 
 

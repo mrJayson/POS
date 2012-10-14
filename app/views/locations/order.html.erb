@@ -1,0 +1,35 @@
+<h1>Orders</h1>
+
+<table>
+  <tr>
+    <th>Product</th>
+    <td></td>
+    <th>location</th>
+    <td></td>
+	<td></td>
+	<td></td>
+	<th>Order amount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @order_list.each do |stock| %>
+  <tr>
+	<td><%= stock.product.name %></td>
+	<td></td>
+	<% if current_location_type == 'shelf'%>
+	<td><%= stock.location.location.name%>, Aisle</td>
+	<% end %>
+	
+    <td><%= stock.location.name %></td>
+	<td></td>
+	<td></td>
+	<td><%= amount_to_move(stock) %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Order stock', order_movement_location_path(@location)%>
+
+<%= link_to 'Back', current_location%>

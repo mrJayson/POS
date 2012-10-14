@@ -12,4 +12,12 @@ module LocationsHelper
     return sum
   end
   
+  def get_order_list(location)
+    order_list = []
+    location.stocks.each do |stock|
+      order_list << stock if stock.benchmark > stock.quantity
+    end
+    return order_list
+  end
+  
 end

@@ -41,6 +41,10 @@ POSV2::Application.routes.draw do
   
   get 'locations/warehouse'
   
+  get '/locations/:id/order', :to => 'locations#order', :as => 'order_location'
+  
+  get '/locations/:id/order_movement', :to => 'locations#order_movement', :as => 'order_movement_location'
+  
   resources :locations
   
   

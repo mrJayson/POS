@@ -9,6 +9,12 @@
   <b>Current Capacity:</b>
   <%= sum_location_quantity (@location) %>
 </p>
+
+
+<p>
+  <b></b>
+  <td><%= link_to 'Orders', order_location_path(@location)%></td>
+</p>
 <p>
   <b></b>
   <td><%= link_to 'Change Maximum Capacity', edit_location_path(@location) %></td>

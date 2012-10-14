@@ -87,4 +87,39 @@ module StocksHelper
     return products
   end
   
+  def amount_to_move(stock)
+    return stock.standard_quantity - stock.quantity
+  end
+  
+  def move_stock(shelf_stock, direction, amount)
+    to_stock = shelf_stock
+    from_stock = Stock.find(:first, :conditions => ["location_id = ? AND product_id = ?", to_stock.location.location.id, to_stock.product_id])
+    #marginal_movement = amount
+    set_direction(direction)
+    if get_direction == "From"
+      #simulates products moving in opposite direction
+      amount *= -1
+    end
+    #update to and from stock records
+    to_stock = update_stock(to_stock, amount)
+    set_marginal_quantity(amount)
+    to_stock_valid = to_stock.valid?
+    from_stock = update_stock(from_stock, -amount)
+    set_marginal_quantity(-amount)
+    from_stock_valid = from_stock.valid?
+    
+    #check if the movement is valid
+    if to_stock_valid && from_stock_valid
+      #pass = true, now able to redirect out of update page
+      pass = true
+      to_stock.save
+      from_stock.save
+      return true
+    else
+      return false
+    end
+    
+    
+  end
+  
 end

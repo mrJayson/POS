@@ -1,5 +1,7 @@
 class LocationsController < ApplicationController
   include ApplicationHelper
+  include LocationsHelper
+  include StocksHelper
   def index
     #this page is not needed, should never reach this page
     @locations = Location.all
@@ -73,7 +75,7 @@ class LocationsController < ApplicationController
   end
   
   def store
-    @location = @location = Location.find(params[:id])#get store
+    @location = Location.find(params[:id])#get store
     @stocks = @location.stocks#get products instore
     @shelves = @location.locations #getting shelves
     session[:current_location_type] = @location.location_type
@@ -85,6 +87,22 @@ class LocationsController < ApplicationController
     @stocks = @location.stocks#get products in warehouse/all products
     session[:current_location_type] = @location.location_type
     #change location type for different filtering of views
-    
+  end
+  
+  def order
+    #@store = current_store
+    @location = Location.find(params[:id])
+    @order_list = get_order_list(@location)
+  end
+  
+  def order_movement
+    #order_list is an array of stocks
+    location = Location.find(params[:id])
+    order_list = get_order_list(location)
+    order_list.each do |stock|
+
+      move_stock(stock, "To", amount_to_move(stock))
+    end
+    redirect_to location
   end
 end
