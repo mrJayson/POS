@@ -17,7 +17,9 @@
   <td><%= link_to 'Orders', order_location_path(@location)%></td>
 </p>
 
-<%= link_to 'register new product onto shelf', new_stock_path%></br>
+<% if session[:status] == "manager"%>
+	<%= link_to 'register new product onto shelf', new_stock_path%></br>
+<% end %>
 
 
 <h3>Products Registered On Shelf</h3>
@@ -35,10 +37,12 @@
     <td><%= stock.quantity %></td>
     <td><%= number_to_currency(stock.price) %></td>
     <td><%= link_to 'Show', stock %></td>
-    <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-    <td><%= link_to 'Update Quantity', quantity_stock_path(stock) %></td>
-	<td><%= link_to 'Move products between this shelf and back storage', movement_stock_path(stock) %></td>
-    <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if session[:status] == "manager"%>
+	    <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
+	    <td><%= link_to 'Update Quantity', quantity_stock_path(stock) %></td>
+		<td><%= link_to 'Move products between this shelf and back storage', movement_stock_path(stock) %></td>
+	    <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<% end %>
   </tr>
 <% end %>
 
