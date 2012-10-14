@@ -41,7 +41,9 @@
 
 <%= link_to " scan item ", transactions_scan_item_path, :method => :post%></br>
 
-<%= link_to " remove item ", transactions_remove_item_path, :method => :post%></br>
+<% if !(@transaction.total_price == 0 || @transaction.total_price == nil)%>
+	<%= link_to " remove item ", transactions_remove_item_path, :method => :post%></br>
+<% end %>
 
 <%= link_to " void transaction ", current_transaction, :method => :put%></br>
 
@@ -53,4 +55,6 @@
 
 <%= link_to "complete transaction ", transactions_pay_path%></br>
 
-<%= link_to "Back to Menu", sessions_store_main_path%>
+<% if @transaction.member == nil && (@transaction.total_price == 0 || @transaction.total_price == nil)%>
+	<%= link_to "Back to Menu", sessions_store_main_path%>
+<% end %>
