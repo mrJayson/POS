@@ -30,6 +30,10 @@
 <% end %>
 </table>
 
-<%= link_to 'Order stock', order_movement_location_path(@location)%>
+<% if session[:status] == "manager"%>
+	<% if get_order_list(@location) != [] %>
+		<%= link_to 'Order stock', order_movement_location_path(@location)%>
+	<% end %>
+<% end %>
 
 <%= link_to 'Back', current_location%>

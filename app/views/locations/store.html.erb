@@ -16,13 +16,17 @@
   <td><%= link_to 'Orders', order_location_path(@location)%></td>
 </p>
 <p>
+<% if session[:status] == "manager"%>
   <b></b>
   <td><%= link_to 'Change Maximum Capacity', edit_location_path(@location) %></td>
+<% end %>
 </p>
 
 
 <h3>Products Registered In Store</h3>
-<%= link_to 'register new product into store', new_stock_path%><br></br>
+<% if session[:status] == "manager"%>
+	<%= link_to 'register new product into store', new_stock_path%><br></br>
+<% end %>
 <table>
   <tr>
     <th>Product</th>
@@ -37,15 +41,19 @@
     <td><%= stock.quantity%></td>
     <td><%= number_to_currency(stock.price)%></td>
     <td><%= link_to 'Show', stock %></td>
-    <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-    <td><%= link_to 'Update Quantity', quantity_stock_path(stock) %></td>
-	<td><%= link_to 'Move products between this warehouse and back storage', movement_stock_path(stock) %></td>
+    <% if session[:status] == "manager"%>
+	    <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
+	    <td><%= link_to 'Update Quantity', quantity_stock_path(stock) %></td>
+		<td><%= link_to 'Move products between this warehouse and back storage', movement_stock_path(stock) %></td>
+	<% end %>
     <td><%#= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 <h3>Store Shelves</h3>
-<%= link_to 'new shelf', new_location_path%>
+<% if session[:status] == "manager"%>
+	<%= link_to 'new shelf', new_location_path%>
+<% end %>
 <table>
   <tr>
     <th>Aisle</th>
@@ -67,8 +75,10 @@
 	<td></td>
 	<td><%= sum_location_quantity (shelf)%></td>
     <td><%= link_to 'Show', shelf %></td>
-    <td><%= link_to 'Change Maximum Capacity', edit_location_path(shelf) %></td>
-    <td><%= link_to 'Destroy', shelf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if session[:status] == "manager"%>
+	    <td><%= link_to 'Change Maximum Capacity', edit_location_path(shelf) %></td>
+	    <td><%= link_to 'Destroy', shelf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<% end %>
   </tr>
 <% end %>
 </table>
