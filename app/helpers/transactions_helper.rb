@@ -108,6 +108,7 @@ module TransactionsHelper
     
     t.loyalty_points_to_add = 0
     t.total_price = 0
+    t.member = nil
     t.save
   end
   
