@@ -254,7 +254,20 @@ Stock.create ({
   benchmark: 5
 })
 
+#########################################################################
+#creating members
 
+Member.create ({
+  first_name: 'lala',
+  last_name: 'lala',
+  user_name: 'lala',
+})
+
+Member.create ({
+  first_name: 'blah',
+  last_name: 'blah',
+  user_name: 'blah',
+})
 #########################################################################
 =begin
 Transaction.create({

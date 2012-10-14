@@ -43,7 +43,7 @@
 		<%= link_to " void transaction ", current_transaction, :method => :put%></br>
 	<% end %>
 	
-	<% if (!@transaction.total_price == 0  || @transaction.total_price == nil)%>
+	<% if !(@transaction.total_price == 0  || @transaction.total_price == nil)%>
 		<%= link_to "complete transaction ", new_transaction_path%></br>
 	<% end %>
 	
@@ -51,9 +51,10 @@
 		<%= link_to 'scan member', transactions_scan_member_path, :method => :post %></br>
 	<% end %>
 	
-	<% if @transaction.total_price == 0 && @transaction.member == nil %>
+	<% if @transaction.total_price == 0 || @transaction.member == nil %>
 		<%= link_to "Back to Menu", sessions_store_main_path%>
 	<% end %>
+	
 <% else %>
 	
 	<%= link_to "Back to Menu", sessions_store_main_path%><br />
