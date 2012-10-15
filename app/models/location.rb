@@ -16,7 +16,10 @@ class Location < ActiveRecord::Base
   validates_presence_of :name, :location_type, :max_capacity
   
   validates_inclusion_of :location_type, :in => ["shelf", "store", "warehouse"]
-  validates_numericality_of :max_capacity, :greater_than_or_equal_to => 0
+  
+  #Capacity-inv3, inv4, MaxLimitOfStorage/Shelf are NAT1
+  #PD 1.2.1 The System is to record the capacity of each shelf and the number of shelves in the store
+  validates_numericality_of :max_capacity, :greater_than => 0
   
   #all locations except warehouse must have a parent location
   validates_presence_of :location_id, :unless => :is_warehouse?
@@ -24,6 +27,9 @@ class Location < ActiveRecord::Base
     :location_type == "warehouse"
   end
   
+  
+  #Capacity-inv13, inv14, totalQuantity <= MaxLimit
+  #PD 1.2.7 The system is to detect and prevent overstocking of products on shelved
   #current_quantity cannot be greater than max_quantity
   validate :max_greater_than_current
   def max_greater_than_current

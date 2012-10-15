@@ -1,7 +1,7 @@
 module LocationsHelper
   include ApplicationHelper
 
-  
+  #Capacity-inv1, inv2, totalNoOfProductInBackStore/Shelf are NAT
   #given a location, sum all the stock in there
   def sum_location_quantity (location)
     stocks = location.stocks

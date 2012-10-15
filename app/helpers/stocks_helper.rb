@@ -42,6 +42,7 @@ module StocksHelper
     return current
   end
   
+  #Product-registerProductToAStore-grd1 product |-> store :/ productInStore
   def get_remaining_products_for_register (location)
     current = []
     parent_location_stocks = []
@@ -87,10 +88,12 @@ module StocksHelper
     return products
   end
   
+
   def amount_to_move(stock)
     return stock.standard_quantity - stock.quantity
   end
   
+  #Reorder inv16, inv17, Checks that the standardQuantity is greater then ProductBenchmark
   def move_stock(shelf_stock, direction, amount)
     to_stock = shelf_stock
     from_stock = Stock.find(:first, :conditions => ["location_id = ? AND product_id = ?", to_stock.location.location.id, to_stock.product_id])
