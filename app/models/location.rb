@@ -21,6 +21,7 @@ class Location < ActiveRecord::Base
   #PD 1.2.1 The System is to record the capacity of each shelf and the number of shelves in the store
   validates_numericality_of :max_capacity, :greater_than => 0
   
+  #PD 1.1.13 The system treats all warehouse as one
   #all locations except warehouse must have a parent location
   validates_presence_of :location_id, :unless => :is_warehouse?
   def is_warehouse?

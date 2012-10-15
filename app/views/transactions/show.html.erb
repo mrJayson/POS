@@ -42,7 +42,7 @@
 	<% if !(@transaction.total_price == 0 || @transaction.total_price == nil) || @transaction.member != nil %>
 		<%= link_to " void transaction ", current_transaction, :method => :put%></br>
 	<% end %>
-	
+	<!--Pay-grd2, grd3 can not proceed to pay if items are empty -->	
 	<% if !(@transaction.total_price == 0  || @transaction.total_price == nil)%>
 		<%= link_to "complete transaction ", new_transaction_path%></br>
 	<% end %>

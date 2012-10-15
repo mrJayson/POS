@@ -31,6 +31,7 @@ class EmployeesController < ApplicationController
     
   end
   
+  #PD 3.1.4 The system can support staff promotion/demotion
   def promote_employee
     @employee = Employee.find(params[:id])
   end

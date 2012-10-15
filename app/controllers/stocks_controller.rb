@@ -66,6 +66,11 @@ class StocksController < ApplicationController
     end
   end
   
+  #shelfOrder-grd1, grd5, grd2, grd4
+  #PD 1.1.14
+  #PD 1.1.15
+  #DZ 1.1.2.1
+  #PD 1.1.11
   def update
     @stock = Stock.find(params[:id])
     routing = "" # type string

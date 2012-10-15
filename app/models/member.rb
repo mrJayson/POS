@@ -1,4 +1,6 @@
 class Member < ActiveRecord::Base
+  #DN 3.4 The system can support a customer membership program
+  
   include MembersHelper
   
   has_many :transactions

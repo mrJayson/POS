@@ -11,6 +11,7 @@ class LocationsController < ApplicationController
     @location = Location.new
   end
 
+  #PD 1.2.2 The System allows for adjustments to be made to the layout of shelves 
   def create
     @location = Location.new(params[:location])
     

@@ -9,6 +9,7 @@ class MembersController < ApplicationController
     @member = Member.new
   end
 
+  #PD 3.4.1 The system is to allow for registration of new members
   def create
     @member = Member.new(params[:member])
     
@@ -37,6 +38,8 @@ class MembersController < ApplicationController
     end
   end
 
+  #PD 3.4.6 The system supports customer member account deletion
+  #deleteMember-grd1, member must exist
   def destroy
     @member = Member.find(params[:id])
     @member.destroy

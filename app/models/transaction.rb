@@ -12,6 +12,7 @@ class Transaction < ActiveRecord::Base
     
   end
   
+  #DZ 2.1.6.1 The system is to temporarily keep track of scanned items
   serialize :product_list
   
   belongs_to :location
@@ -22,7 +23,9 @@ class Transaction < ActiveRecord::Base
   
   attr_accessor :new_item, :remove_item, :amount_scanned, :member_id, :payment, :type_payment #:refund
   
-  validates_inclusion_of :payment_type, :in => ["pending", "cash", "EFTPOS", "gift card", "refund", "exchange"]
+  #DN 2.2 The system can handle multiple forms of payment
+  #Pay-grd7, payment_type must be of cash, EFTPOS, GiftCards
+  validates_inclusion_of :payment_type, :in => ["pending", "cash", "EFTPOS", "gift card"]
   
   validates_presence_of :loyalty_points_to_add, :payment_type, :product_list, :total_price, :location, :location_id, :employee, :if => :paid?
   

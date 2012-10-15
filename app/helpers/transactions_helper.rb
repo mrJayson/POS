@@ -11,6 +11,8 @@ module TransactionsHelper
     Transaction.create({:payment_type => 'pending', product_list: []})
   end
   
+  
+  #DN 2.1 The system can process the sale of products in the store
   def new_transaction_entry(product_id, amount)
     entry = Transaction::Transaction_Entry.new
     entry.product_id = product_id
@@ -81,6 +83,8 @@ module TransactionsHelper
     return shelf_stock
   end
   
+  #PD 3.4.5 The system is to award loyalty points to members when they purchase products
+  #MemberPurchase-grd7, payment*1/2
   def get_total_loyalty_points(product_list)
     #loyalty points a ratio of price, can reciprocal to get different points rate
     return get_total_price(product_list)/2

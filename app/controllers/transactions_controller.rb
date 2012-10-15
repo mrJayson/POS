@@ -13,6 +13,7 @@ class TransactionsController < ApplicationController
     end
   end
     
+  
   def new
     @transaction = Transaction.new
 

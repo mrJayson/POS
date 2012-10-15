@@ -43,6 +43,8 @@ module StocksHelper
   end
   
   #Product-registerProductToAStore-grd1 product |-> store :/ productInStore
+  #RegisterProductToShelf-grd5 product must not already be on shelf to register
+  #PD 1.2.3 The system can allocate products to specific shelves(location)
   def get_remaining_products_for_register (location)
     current = []
     parent_location_stocks = []
@@ -63,6 +65,7 @@ module StocksHelper
     return parent_location_stocks - current
   end
   
+  #PD 3.3.4 The system is to allow changes to product quantity
   def update_stock(stock, update_quantity)
     stock.quantity += update_quantity
     
@@ -88,12 +91,14 @@ module StocksHelper
     return products
   end
   
-
+  #MoveQuantity-grd6 totalProductAmount + amount <= maxLimit
+  #DZ 1.2.1.1 The system is to have an algorithm to determine the capacity available for shelf (any location)
   def amount_to_move(stock)
     return stock.standard_quantity - stock.quantity
   end
   
   #Reorder inv16, inv17, Checks that the standardQuantity is greater then ProductBenchmark
+  #DN 1.1 The system can manage inventory orders to the warehouse that is to be delivered to the Store Branch
   def move_stock(shelf_stock, direction, amount)
     to_stock = shelf_stock
     from_stock = Stock.find(:first, :conditions => ["location_id = ? AND product_id = ?", to_stock.location.location.id, to_stock.product_id])
