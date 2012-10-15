@@ -1,4 +1,4 @@
-<h1>Transactions#new</h1>
+<h1>Total</h1>
 
 
 <%= form_for(@transaction) do |f| %>
@@ -21,6 +21,10 @@
 		$<%= current_transaction.total_price%>
 	</p>
 	
+	<p>
+		<b>Points Collected: <%= current_transaction.loyalty_points_to_add%></b>
+	</p>
+	
   <div class="field">
     <%= f.label :payment_type %><br />
 	<%= f.select :payment_type, [['cash', 'cash'],['EFTPOS','EFTPOS'], ['gift card', 'gift card']] %>
@@ -31,12 +35,7 @@
     <%= f.number_field :payment %>
   </div>
   
-  <p>
-  	<b>Loyalty Points Collected:</b>
-  	<%= @transaction.loyalty_points_to_add%>
-  </p>
   
-  #should redirect to the show page
   <div class="actions">
     <%= f.submit %>
   </div>

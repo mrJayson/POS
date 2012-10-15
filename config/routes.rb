@@ -16,6 +16,10 @@ POSV2::Application.routes.draw do
   
   #post 'transactions/remove_item'
   get '/transactions/:id/remove_item', :to => 'transactions#remove_item', :as => 'transactions_remove_item'
+ 
+  #get 'transactions/refund'
+  
+  #get 'transactions/refund_product'
   
   post 'transactions/scan_member'
   

@@ -11,7 +11,9 @@
 
 <%= link_to 'Transaction', current_transaction%><br />
 
-<%= link_to 'Transaction History', transactions_path%><br />
+<% if session[:status] == "manager"%>
+	<%= link_to 'Transaction History', transactions_path%><br />
+<% end %>
 
 <%= link_to 'Register New Member', new_member_path%><br />
 

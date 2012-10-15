@@ -20,9 +20,9 @@ class Transaction < ActiveRecord::Base
   
   attr_accessible :loyalty_points_to_add, :payment_type, :total_price, :product_list, :location_id
   
-  attr_accessor :new_item, :remove_item, :amount_scanned, :member_id, :payment, :type_payment
+  attr_accessor :new_item, :remove_item, :amount_scanned, :member_id, :payment, :type_payment, #:refund
   
-  validates_inclusion_of :payment_type, :in => ["pending", "cash", "EFTPOS", "gift card"]
+  validates_inclusion_of :payment_type, :in => ["pending", "cash", "EFTPOS", "gift card", "refund", "exchange"]
   
   validates_presence_of :loyalty_points_to_add, :payment_type, :product_list, :total_price, :location, :location_id, :employee, :if => :paid?
   validates_numericality_of :loyalty_points_to_add, :total_price , :if => :paid?

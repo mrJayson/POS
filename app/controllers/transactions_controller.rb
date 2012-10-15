@@ -112,6 +112,24 @@ class TransactionsController < ApplicationController
   def scan_member
     @transaction = current_transaction
   end
-
+  
+  
+  #finds the transaction number and marks the 'new' transaction as either a refund or exchange
+  #def refund
+  #  @transaction = Transaction.find(params[:id])
+    
+  #  number = params[:transaction][:refund].to_i
+    #only able to update if number is part of transaction
+   # if @transaction.include?(:transaction)
+   #   current_transaction.update_attributes({:payment_type => params[:transaction][:payment_type]})
+   #   redirect_to transaction_refund_product_path
+   # end
+    
+  #end
+  
+  #find the products from the transaction number and either refunds or exchanges
+  #def refund_product
+  #  @transaction = Transaction.new
+  #end
 
 end

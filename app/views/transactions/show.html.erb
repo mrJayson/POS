@@ -52,8 +52,12 @@
 	<% end %>
 	
 	<% if @transaction.total_price == 0 || @transaction.member == nil %>
-		<%= link_to "Back to Menu", sessions_store_main_path%>
+		<%= link_to "Back to Menu", sessions_store_main_path%><br />
 	<% end %>
+	
+	<% #if session[:status] == "manager"%>
+		<%#= link_to 'Refund/Exchange', transactions_refund_path, :method => :get%><br />
+	<% #end %>
 	
 <% else %>
 	
