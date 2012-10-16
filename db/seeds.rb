@@ -4,8 +4,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-include TransactionsHelper
-
 #########################################################################
 ## Locations
 #########################################################################
@@ -106,11 +104,8 @@ Location.create( {
 
 #########################################################################
 
-#initial transaction open
 t = Transaction.create({:payment_type => 'pending', product_list: []})
-#t.product_list = []
-#t.save
-  
+
 #########################################################################
 ## Products/Stock
 #########################################################################
@@ -458,18 +453,6 @@ Stock.create({
 #creating members
 
 Member.create({
-  first_name: 'lala',
-  last_name: 'lala',
-  user_name: 'lala',
-})
-
-Member.create({
-  first_name: 'blah',
-  last_name: 'blah',
-  user_name: 'blah',
-})
-
-Member.create({
   first_name: 'mickey',
   last_name: 'mouse',
   user_name: 'mickey',
@@ -489,9 +472,9 @@ Member.create({
 
 
 Member.create({
-  first_name: 'tigret',
-  last_name: 'pig',
-  user_name: 'tigret',
+  first_name: 'tigger',
+  last_name: 'tiger',
+  user_name: 'tigger',
 })
 #########################################################################
 =begin
