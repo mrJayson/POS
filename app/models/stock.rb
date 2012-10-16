@@ -24,5 +24,15 @@ class Stock < ActiveRecord::Base
   #Store-inv3 noOfProductOnShelf : productOnShelf -> NAT
   validates_numericality_of :quantity, :standard_quantity, :benchmark, :greater_than_or_equal_to => 0
   
+  validate :standard_quantity_greater_than_or_eql_to_benchmark
+  
+  def standard_quantity_greater_than_or_eql_to_benchmark
+    #Reorder, inv16, !p.p : productInStore => standardQuantityInBackStore(p) >= storeProductBenchmark(p)
+    #Reorder, inv17, !p.p : productOnShelf => standardQuantityOnShelf(p) >= ShelfProductBenchmark(p)
+    if standard_quantity <= benchmark
+      errors.add(:benchmark, "benchmark cannot be greater than standard quantity")
+    end
+  end
+  
   validates_associated :location, :product
 end
