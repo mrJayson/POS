@@ -79,7 +79,11 @@
     <td><%= link_to 'Show', shelf %></td>
     <% if session[:status] == "manager"%>
 	    <td><%= link_to 'Change Maximum Capacity', edit_location_path(shelf) %></td>
+	    	<% if sum_location_quantity(shelf) == 0%>
+	    	<!--deregisterShelfInStore, grd2 store |-> aisle :/ storeShelf-->
+	    	<!--(cannot deregister a shelf while there is stock on it)-->
 	    <td><%= link_to 'Destroy', shelf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<% end %>
 	<% end %>
   </tr>
 <% end %>
