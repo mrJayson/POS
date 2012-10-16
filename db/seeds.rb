@@ -19,7 +19,7 @@ Location.create( {
 Location.create( {
   name: "Northern Branch",
   location_type: 'store',
-  max_capacity: 500,
+  max_capacity: 5000,
   location_id: Location.find_by_name("Warehouse").id } )
 Location.create( {
   name: "Southern Branch",
@@ -36,6 +36,7 @@ Location.create( {
   location_type: 'store',
   max_capacity: 500,
   location_id: Location.find_by_name("Warehouse").id } )
+
 #########################################################################
 ## Shelves
 Location.create( {
@@ -62,41 +63,6 @@ Location.create( {
   name: "5",
   location_type: 'shelf',
   max_capacity: 100,
-  location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "6",
-  location_type: 'shelf',
-  max_capacity: 100,
-  location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "7",
-  location_type: 'shelf',
-  max_capacity: 100,
-  location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "8",
-  location_type: 'shelf',
-  max_capacity: 100,
-  location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "9",
-  location_type: 'shelf',
-  max_capacity: 120,
-  location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "10",
-  location_type: 'shelf',
-  max_capacity: 100,
-  location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "11",
-  location_type: 'shelf',
-  max_capacity: 150,
-  location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "12",
-  location_type: 'shelf',
-  max_capacity: 200,
   location_id: Location.find_by_name("Northern Branch").id } )
 
 #########################################################################
@@ -267,7 +233,7 @@ Stock.create({
   location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Watermelon').id,
   standard_quantity: 100,
-  quantity: 0,
+  quantity: 30,
   price: 3,
   benchmark: 20
 })
