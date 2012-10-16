@@ -1,7 +1,6 @@
 <h1>Welcome <%= current_user.first_name%></h1>
-<% if session[:status] == "manager"%>
-	<h2>You are a manager!</h2>
-<% end %>
+
+	<h2>Employee Status: <%= session[:status] %> </h2>
 
 <h2><%=current_store.name%></h2>
 

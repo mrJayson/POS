@@ -113,7 +113,7 @@ Stock.create ({location_id: Location.find_by_name("Warehouse").id, product_id: P
 Product.create({name: 'Taro',       barcode: '0000000020'})
 Stock.create ({location_id: Location.find_by_name("Warehouse").id, product_id: Product.find_by_barcode('0000000020').id, standard_quantity: 1000, quantity: 1000, price: 0, benchmark: 0})
 Product.create({name: 'Umbrella',   barcode: '0000000021'})
-Stock.create ({location_id: Location.find_by_name("Warehouse").id, product_id: Product.find_by_barcode('0000000021').id, standard_quantity: 1000, quantity: 1000 price: 0, benchmark: 0})
+Stock.create ({location_id: Location.find_by_name("Warehouse").id, product_id: Product.find_by_barcode('0000000021').id, standard_quantity: 1000, quantity: 1000, price: 0, benchmark: 0})
 Product.create({name: 'Vinegar',    barcode: '0000000022'})
 Stock.create ({location_id: Location.find_by_name("Warehouse").id, product_id: Product.find_by_barcode('0000000022').id, standard_quantity: 1000, quantity: 1000, price: 0, benchmark: 0})
 Product.create({name: 'Watermelon', barcode: '0000000023'})
