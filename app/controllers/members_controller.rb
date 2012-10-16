@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
   include MembersHelper
+  include ApplicationHelper
   
   def index
     @members = Member.all
@@ -14,7 +15,7 @@ class MembersController < ApplicationController
     @member = Member.new(params[:member])
     
     if @member.save
-      redirect_to members_path 
+      redirect_to sessions_store_main_path
     else
       render "new"
     end
@@ -32,7 +33,7 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
     
     if @member.update_attributes(params[:member])
-      redirect_to members_path
+      redirect_to sessions_store_main_path
     else
       render "edit"
     end
@@ -44,6 +45,6 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
     @member.destroy
     
-    redirect_to members_path
+    redirect_to sessions_store_main_path
   end
 end

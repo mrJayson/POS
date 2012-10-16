@@ -4,8 +4,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-include TransactionsHelper
-
 #########################################################################
 ## Locations
 #########################################################################
@@ -21,7 +19,7 @@ Location.create( {
 Location.create( {
   name: "Northern Branch",
   location_type: 'store',
-  max_capacity: 500,
+  max_capacity: 5000,
   location_id: Location.find_by_name("Warehouse").id } )
 Location.create( {
   name: "Southern Branch",
@@ -38,6 +36,7 @@ Location.create( {
   location_type: 'store',
   max_capacity: 500,
   location_id: Location.find_by_name("Warehouse").id } )
+
 #########################################################################
 ## Shelves
 Location.create( {
@@ -65,49 +64,11 @@ Location.create( {
   location_type: 'shelf',
   max_capacity: 100,
   location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "6",
-  location_type: 'shelf',
-  max_capacity: 100,
-  location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "7",
-  location_type: 'shelf',
-  max_capacity: 100,
-  location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "8",
-  location_type: 'shelf',
-  max_capacity: 100,
-  location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "9",
-  location_type: 'shelf',
-  max_capacity: 120,
-  location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "10",
-  location_type: 'shelf',
-  max_capacity: 100,
-  location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "11",
-  location_type: 'shelf',
-  max_capacity: 150,
-  location_id: Location.find_by_name("Northern Branch").id } )
-Location.create( {
-  name: "12",
-  location_type: 'shelf',
-  max_capacity: 200,
-  location_id: Location.find_by_name("Northern Branch").id } )
 
 #########################################################################
 
-#initial transaction open
 t = Transaction.create({:payment_type => 'pending', product_list: []})
-#t.product_list = []
-#t.save
-  
+
 #########################################################################
 ## Products/Stock
 #########################################################################
@@ -272,7 +233,7 @@ Stock.create({
   location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Watermelon').id,
   standard_quantity: 100,
-  quantity: 0,
+  quantity: 30,
   price: 3,
   benchmark: 20
 })
@@ -466,18 +427,6 @@ Stock.create({
 #creating members
 
 Member.create({
-  first_name: 'lala',
-  last_name: 'lala',
-  user_name: 'lala',
-})
-
-Member.create({
-  first_name: 'blah',
-  last_name: 'blah',
-  user_name: 'blah',
-})
-
-Member.create({
   first_name: 'mickey',
   last_name: 'mouse',
   user_name: 'mickey',
@@ -497,9 +446,9 @@ Member.create({
 
 
 Member.create({
-  first_name: 'tigret',
-  last_name: 'pig',
-  user_name: 'tigret',
+  first_name: 'tigger',
+  last_name: 'tiger',
+  user_name: 'tigger',
 })
 #########################################################################
 =begin
