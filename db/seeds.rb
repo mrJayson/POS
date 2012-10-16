@@ -55,54 +55,51 @@ Location.create( {
   location_type: 'shelf',
   max_capacity: 100,
   location_id: Location.find_by_name("Northern Branch").id } )
-
 Location.create( {
-  name: "1",
-  location_type: 'shelf',
-  max_capacity: 80,
-  location_id: Location.find_by_name("Southern Branch").id } )
-Location.create( {
-  name: "2",
+  name: "4",
   location_type: 'shelf',
   max_capacity: 100,
-  location_id: Location.find_by_name("Southern Branch").id } )
+  location_id: Location.find_by_name("Northern Branch").id } )
 Location.create( {
-  name: "3",
+  name: "5",
   location_type: 'shelf',
   max_capacity: 100,
-  location_id: Location.find_by_name("Southern Branch").id } )
-
+  location_id: Location.find_by_name("Northern Branch").id } )
 Location.create( {
-  name: "1",
-  location_type: 'shelf',
-  max_capacity: 80,
-  location_id: Location.find_by_name("Western Branch").id } )
-Location.create( {
-  name: "2",
+  name: "6",
   location_type: 'shelf',
   max_capacity: 100,
-  location_id: Location.find_by_name("Western Branch").id } )
+  location_id: Location.find_by_name("Northern Branch").id } )
 Location.create( {
-  name: "3",
+  name: "7",
+  location_type: 'shelf',
+  max_capacity: 100,
+  location_id: Location.find_by_name("Northern Branch").id } )
+Location.create( {
+  name: "8",
+  location_type: 'shelf',
+  max_capacity: 100,
+  location_id: Location.find_by_name("Northern Branch").id } )
+Location.create( {
+  name: "9",
   location_type: 'shelf',
   max_capacity: 120,
-  location_id: Location.find_by_name("Western Branch").id } )
-
+  location_id: Location.find_by_name("Northern Branch").id } )
 Location.create( {
-  name: "1",
+  name: "10",
   location_type: 'shelf',
   max_capacity: 100,
-  location_id: Location.find_by_name("Eastern Branch").id } )
+  location_id: Location.find_by_name("Northern Branch").id } )
 Location.create( {
-  name: "2",
+  name: "11",
   location_type: 'shelf',
   max_capacity: 150,
-  location_id: Location.find_by_name("Eastern Branch").id } )
+  location_id: Location.find_by_name("Northern Branch").id } )
 Location.create( {
-  name: "3",
+  name: "12",
   location_type: 'shelf',
   max_capacity: 200,
-  location_id: Location.find_by_name("Eastern Branch").id } )
+  location_id: Location.find_by_name("Northern Branch").id } )
 
 #########################################################################
 
@@ -195,6 +192,30 @@ Employee.create({
   status: "staff",
   location_id: Location.find_by_name("Northern Branch").id})
 Employee.create({
+  first_name: 'JasonJr1',
+  last_name: 'Huang',
+  user_name: 'JasonJr1Huang',
+  password: '1234',
+  password_confirmation: '1234', 
+  status: "staff",
+  location_id: Location.find_by_name("Northern Branch").id})
+Employee.create({
+  first_name: 'JasonJr2',
+  last_name: 'Huang',
+  user_name: 'JasonJr2Huang',
+  password: '1234',
+  password_confirmation: '1234', 
+  status: "staff",
+  location_id: Location.find_by_name("Northern Branch").id})
+Employee.create({
+  first_name: 'JasonJr3',
+  last_name: 'Huang',
+  user_name: 'JasonJr3Huang',
+  password: '1234',
+  password_confirmation: '1234', 
+  status: "staff",
+  location_id: Location.find_by_name("Northern Branch").id})
+Employee.create({
   first_name: 'Yere',
   last_name: 'Chung',
   user_name: 'YereChung',
@@ -229,6 +250,7 @@ Stock.create({
   price: 3,
   benchmark: 20
 })
+
 Stock.create({
   location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Banana').id,
@@ -237,6 +259,7 @@ Stock.create({
   price: 3,
   benchmark: 20
 })
+
 Stock.create({
   location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Quince').id,
@@ -255,31 +278,16 @@ Stock.create({
 })
 
 Stock.create({
-  location_id: Location.find_by_name('Southern Branch').id,
-  product_id: Product.find_by_name('Watermelon').id,
-  standard_quantity: 100,
-  quantity: 0,
-  price: 3,
-  benchmark: 20
-})
-Stock.create({
-  location_id: Location.find_by_name('Southern Branch').id,
-  product_id: Product.find_by_name('Banana').id,
-  standard_quantity: 30,
-  quantity: 300,
-  price: 3,
-  benchmark: 10
-})
-Stock.create({
-  location_id: Location.find_by_name('Southern Branch').id,
+  location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Xylophone').id,
   standard_quantity: 30,
   quantity: 0,
   price: 3,
   benchmark: 10
 })
+
 Stock.create({
-  location_id: Location.find_by_name('Southern Branch').id,
+  location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Cherry').id,
   standard_quantity: 100,
   quantity: 0,
@@ -288,31 +296,34 @@ Stock.create({
 })
 
 Stock.create({
-  location_id: Location.find_by_name('Western Branch').id,
+  location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Durian').id,
   standard_quantity: 100,
   quantity: 0,
   price: 3,
   benchmark: 20
 })
+
 Stock.create({
-  location_id: Location.find_by_name('Western Branch').id,
+  location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Eggplant').id,
   standard_quantity: 30,
   quantity: 300,
   price: 3,
   benchmark: 10
 })
+
 Stock.create({
-  location_id: Location.find_by_name('Western Branch').id,
+  location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Mango').id,
   standard_quantity: 30,
   quantity: 0,
   price: 3,
   benchmark: 10
 })
+
 Stock.create({
-  location_id: Location.find_by_name('Western Branch').id,
+  location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Kiwi').id,
   standard_quantity: 100,
   quantity: 0,
@@ -320,17 +331,17 @@ Stock.create({
   benchmark: 20
 })
 
-
 Stock.create({
-  location_id: Location.find_by_name('Eastern Branch').id,
+  location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Yoghurt').id,
   standard_quantity: 100,
   quantity: 0,
   price: 3,
   benchmark: 20
 })
+
 Stock.create({
-  location_id: Location.find_by_name('Eastern Branch').id,
+  location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Taro').id,
   standard_quantity: 30,
   quantity: 300,
@@ -338,7 +349,7 @@ Stock.create({
   benchmark: 10
 })
 Stock.create({
-  location_id: Location.find_by_name('Eastern Branch').id,
+  location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Vinegar').id,
   standard_quantity: 30,
   quantity: 0,
@@ -346,7 +357,7 @@ Stock.create({
   benchmark: 10
 })
 Stock.create({
-  location_id: Location.find_by_name('Eastern Branch').id,
+  location_id: Location.find_by_name('Northern Branch').id,
   product_id: Product.find_by_name('Orange').id,
   standard_quantity: 100,
   quantity: 0,
@@ -381,48 +392,43 @@ Stock.create({
 })
 
 Stock.create({
-  location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Southern Branch').id).id,
+  location_id: Location.find_by_name_and_location_id("2", Location.find_by_name('Northern Branch').id).id,
   product_id: Product.find_by_name('Xylophone').id,
   standard_quantity: 20,
   quantity: 30,
   price: 3,
   benchmark: 5
 })
+
 Stock.create({
-  location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Southern Branch').id).id,
+  location_id: Location.find_by_name_and_location_id("2", Location.find_by_name('Northern Branch').id).id,
   product_id: Product.find_by_name('Banana').id,
   standard_quantity: 20,
   quantity: 20,
   price: 3,
   benchmark: 5
 })
-Stock.create({
-  location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Southern Branch').id).id,
-  product_id: Product.find_by_name('Watermelon').id,
-  standard_quantity: 20,
-  quantity: 10,
-  price: 3,
-  benchmark: 5
-})
 
 Stock.create({
-  location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Western Branch').id).id,
+  location_id: Location.find_by_name_and_location_id("2", Location.find_by_name('Northern Branch').id).id,
   product_id: Product.find_by_name('Kiwi').id,
   standard_quantity: 20,
   quantity: 30,
   price: 3,
   benchmark: 5
 })
+
 Stock.create({
-  location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Western Branch').id).id,
+  location_id: Location.find_by_name_and_location_id("3", Location.find_by_name('Northern Branch').id).id,
   product_id: Product.find_by_name('Mango').id,
   standard_quantity: 20,
   quantity: 20,
   price: 3,
   benchmark: 5
 })
+
 Stock.create({
-  location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Western Branch').id).id,
+  location_id: Location.find_by_name_and_location_id("3", Location.find_by_name('Northern Branch').id).id,
   product_id: Product.find_by_name('Eggplant').id,
   standard_quantity: 20,
   quantity: 10,
@@ -431,23 +437,25 @@ Stock.create({
 })
 
 Stock.create({
-  location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Western Branch').id).id,
+  location_id: Location.find_by_name_and_location_id("3", Location.find_by_name('Northern Branch').id).id,
   product_id: Product.find_by_name('Orange').id,
   standard_quantity: 20,
   quantity: 30,
   price: 3,
   benchmark: 5
 })
+
 Stock.create({
-  location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Western Branch').id).id,
+  location_id: Location.find_by_name_and_location_id("4", Location.find_by_name('Northern Branch').id).id,
   product_id: Product.find_by_name('Taro').id,
   standard_quantity: 20,
   quantity: 20,
   price: 3,
   benchmark: 5
 })
+
 Stock.create({
-  location_id: Location.find_by_name_and_location_id("1", Location.find_by_name('Western Branch').id).id,
+  location_id: Location.find_by_name_and_location_id("5", Location.find_by_name('Northern Branch').id).id,
   product_id: Product.find_by_name('Yoghurt').id,
   standard_quantity: 20,
   quantity: 10,
