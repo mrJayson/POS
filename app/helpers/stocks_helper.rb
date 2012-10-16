@@ -30,6 +30,7 @@ module StocksHelper
     Stock.find(:first, :conditions => ["location_id = ? AND product_id = ?", current_store.id, product_id])
   end
   
+
   def get_current_products_in_store(location)
     #returns array of products registered in store
     #current_store.stocks returns array of 'stocks' objects
@@ -80,6 +81,7 @@ module StocksHelper
     
   end
   
+  #Scan Item -grd6, only the products that are on shelves are to be displayed
   def get_all_products_on_all_shelves(location)
     products = []
     

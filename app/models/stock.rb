@@ -29,7 +29,7 @@ class Stock < ActiveRecord::Base
   def standard_quantity_greater_than_or_eql_to_benchmark
     #Reorder, inv16, !p.p : productInStore => standardQuantityInBackStore(p) >= storeProductBenchmark(p)
     #Reorder, inv17, !p.p : productOnShelf => standardQuantityOnShelf(p) >= ShelfProductBenchmark(p)
-    if standard_quantity <= benchmark
+    if standard_quantity < benchmark
       errors.add(:benchmark, "benchmark cannot be greater than standard quantity")
     end
   end

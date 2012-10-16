@@ -16,9 +16,9 @@
   <div class="field">
     <%= f.label :Movement_direction %><br />
 	<% if current_location_type == 'shelf'%>
-    	<%= f.select :movement_direction, [['To shelf', 'To'],['From shelf','From']] %>
+    	<%= f.select :movement_direction, [['Store to Shelf', 'To'],['Shelf to Store','From']] %>
 	<% elsif current_location_type == 'store'%>
-		<%= f.select :movement_direction, [['To store', 'To'],['From store','From']] %>
+		<%= f.select :movement_direction, [['Warehouse to Store', 'To'],['Store to Warehouse','From']] %>
 	<%else%>
 	
 	<%end%>
